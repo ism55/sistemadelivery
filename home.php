@@ -42,8 +42,8 @@
       <div class="inner">
         <h3 class="masthead-brand">ChinoDeliveryApp</h3>
         <nav class="nav nav-masthead justify-content-center">
-          <a class="nav-link active" href="#">Compras</a>
-          <a class="nav-link" href="#">Contabilidad</a>
+          <a class="nav-link active" href="./home.php">Compras</a>
+          <a class="nav-link" href="./contabilidad.php">Contabilidad</a>
         </nav>
       </div>
     </header>
@@ -57,22 +57,22 @@
           <div class="col">
             <h1 class="cover-heading">Sistema de Gestión</h1>
             <p class="lead">Registra a continuación los datos de la compra</p>
-            <form class="form" method="post" action="registrar.php">
+            <form class="form" id="formulario" onsubmit="imprSelec('comboslista');$.post('registrar.php', $('#formulario').serialize()); alert('Registrado')">
 
 
               <label for="inputCliente" class="">Número de teléfono cliente</label>
-              <input type="tel" id="inputCliente" class="form-control" placeholder="Número de teléfono cliente"  autofocus name="cliente">
+              <input type="tel" id="inputCliente" class="form-control" placeholder="Número de teléfono cliente"  autofocus name="cliente" required>
 
               <label for="inputDeli" class="">Número de teléfono delivery</label>
-              <input type="tel" id="inputDeli" class="form-control" placeholder="Número de teléfono delivery"  name="delivery">
+              <input type="tel" id="inputDeli" class="form-control" placeholder="Número de teléfono delivery"  name="delivery" required>
 
               <label for="inputzona" class="">Dirección del envío</label>
-              <input type="text" id="inputzona" class="form-control" placeholder="Zona del envío"  name="zona">
+              <input type="text" id="inputzona" class="form-control" placeholder="Zona del envío"  name="zona" required>
 
 
               <p>Forma de pago:</p>
               <div class="form-check">
-                <input type="radio" name="formaRadio" value="Transferencia" class="form-check-input" id="rdTransfer"> 
+                <input type="radio" name="formaRadio" value="Transferencia" class="form-check-input" id="rdTransfer" required> 
                 <label class="form-check-label" for="rdTransfer">Transferencia o Pago móvil</label>
               </div>
               <div class="form-check">
@@ -131,9 +131,17 @@
                     <input type="number" min="0" value="0" name="totalcombo2" id="totalcombo2" class=" form-control" readonly>
                   </div>
                 </div>
+                <div class="row">
+                  <button type="button" class="btn btn-lg btn-primary btn-block" onClick="imprSelec('comboslista')">Imprimir orden</button>
+                </div>
+                <div class="row">
+                  <button type="submit" id="cargar" class="btn btn-lg btn-primary btn-block">Cargar a Base de Datos</button>
+                </div>
+                
               </div>
 
-              <button type="submit" class="btn btn-lg btn-primary btn-block">Cargar a Base de Datos</button>
+              
+              
 
             </form>
 
@@ -206,7 +214,6 @@
                 <a href="#" class="card-link text-info" onClick='CopyToClipboard("factura")'>Copiar texto</a>
                 <a href="#"  target="_blank" id="enlaceCliente" class="card-link text-info" onClick='SendToClient()'>Enviar a Cliente</a>
                 <a href="#"  target="_blank" id="enlaceDelivery" class="card-link text-info" onClick='SendToDelivery()'>Enviar a Repartidor</a>
-                <a href="#"  id="enlaceImprimir" class="card-link text-info" onClick="imprSelec('comboslista')">Imprimir Orden</a>
               </div>
             </div>
 
@@ -326,6 +333,8 @@ $("input[name=zona]").change(function (){
 })
 
 
+///////////////////////////////////////////////////////////////////////
+
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -396,16 +405,16 @@ function CopyToClipboard(containerid) {
 
 
    function imprSelec(X){
-        var orden=document.getElementById(X);
-        var ventimp=window.open(' ','popimpr');
-        ventimp.document.write(orden.innerHTML);
-        ventimp.document.close();
-        ventimp.print();
-        ventimp.close();
- }
+    var orden=document.getElementById(X);
+    var ventimp=window.open(' ','popimpr');
+    ventimp.document.write(orden.innerHTML);
+    ventimp.document.close();
+    ventimp.print();
+    ventimp.close();
+  }
 
 
- </script>
+</script>
 </body>
 </html>
 
