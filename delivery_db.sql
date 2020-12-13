@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2020 at 10:11 AM
+-- Generation Time: Dec 13, 2020 at 06:55 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -36,23 +36,31 @@ CREATE TABLE `compras` (
   `ventacombo1` int(20) NOT NULL,
   `totalcombo1` int(20) NOT NULL,
   `ventacombo2` int(20) NOT NULL,
-  `totalcombo2` int(20) NOT NULL
+  `totalcombo2` int(20) NOT NULL,
+  `fecha_hora` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `compras`
 --
 
-INSERT INTO `compras` (`id`, `numcliente`, `numrepartidor`, `direccion`, `formapago`, `ventacombo1`, `totalcombo1`, `ventacombo2`, `totalcombo2`) VALUES
-(2, '04241234567', '04241234567', 'Panteon Av', 'Transferencia', 1, 15, 1, 15),
-(3, '+584241795707', '+584262137759', 'https://goo.gl/maps/hucD4VrEXJvWdy457', 'Transferencia', 1, 15, 2, 30),
-(4, '+584269843538', '+584262137759', 'https://goo.gl/maps/hucD4VrEXJvWdy457', 'Ambos', 1, 15, 1, 15),
-(5, '+584242038292', '+584262137759', 'https://goo.gl/maps/hucD4VrEXJvWdy457', 'Transferencia', 1, 15, 2, 30),
-(7, '04241234567', '04241234567', 'Panteon Av', 'Transferencia', 3, 45, 0, 0),
-(8, '04241234567', '04241234567', 'Panteon Av', 'Efectivo', 0, 0, 1, 15),
-(10, '04241234567', '04241234567', 'Panteon Av', 'Ambos', 0, 0, 2, 30),
-(11, '04241234567', '04241234567', 'Panteon Av', 'Efectivo', 0, 0, 4, 60),
-(12, '04241234567', '04241234567', 'Panteon Av', 'Ambos', 3, 45, 0, 0);
+INSERT INTO `compras` (`id`, `numcliente`, `numrepartidor`, `direccion`, `formapago`, `ventacombo1`, `totalcombo1`, `ventacombo2`, `totalcombo2`, `fecha_hora`) VALUES
+(2, '04241234567', '04241234567', 'Panteon Av', 'Transferencia', 1, 15, 1, 15, '2020-12-13 03:30:26'),
+(3, '+584241795707', '+584262137759', 'https://goo.gl/maps/hucD4VrEXJvWdy457', 'Transferencia', 1, 15, 2, 30, '2020-12-13 03:30:26'),
+(4, '+584269843538', '+584262137759', 'https://goo.gl/maps/hucD4VrEXJvWdy457', 'Ambos', 1, 15, 1, 15, '2020-12-13 03:30:26'),
+(5, '+584242038292', '+584262137759', 'https://goo.gl/maps/hucD4VrEXJvWdy457', 'Transferencia', 1, 15, 2, 30, '2020-12-13 03:30:26'),
+(7, '04241234567', '04241234567', 'Panteon Av', 'Transferencia', 3, 45, 0, 0, '2020-12-13 03:30:26'),
+(8, '04241234567', '04241234567', 'Panteon Av', 'Efectivo', 0, 0, 1, 15, '2020-12-13 03:30:26'),
+(10, '04241234567', '04241234567', 'Panteon Av', 'Ambos', 0, 0, 2, 30, '2020-12-13 03:30:26'),
+(11, '04241234567', '04241234567', 'Panteon Av', 'Efectivo', 0, 0, 4, 60, '2020-12-13 03:30:26'),
+(12, '04241234567', '04241234567', 'Panteon Av', 'Ambos', 3, 45, 0, 0, '2020-12-13 03:30:26'),
+(13, '04241234567', '04241234567', 'Panteon Av', 'Transferencia', 4, 60, 1, 15, '2020-12-13 03:32:46'),
+(14, '04241234567', '04241234567', 'Panteon Av', 'Ambos', 1, 15, 0, 0, '2020-12-13 03:38:25'),
+(15, '04241234567', '04241234567', 'Panteon Av', 'Ambos', 1, 15, 0, 0, '2020-12-13 04:29:03'),
+(16, '04241234567', '04241234567', 'Panteon Av', 'Efectivo', 1, 15, 0, 0, '2020-12-13 04:59:30'),
+(17, '04241234567', '04241234567', 'Panteon Av', 'Efectivo', 1, 15, 0, 0, '2020-12-13 05:02:22'),
+(18, '04241234567', '04241234567', 'Panteon Av', 'Efectivo', 1, 15, 1, 15, '2020-12-13 05:38:31'),
+(19, '04241234567', '04241234567', 'Panteon Av', 'Transferencia', 3, 45, 0, 0, '2020-12-13 05:39:29');
 
 -- --------------------------------------------------------
 
@@ -148,7 +156,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT for table `compras`
 --
 ALTER TABLE `compras`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
