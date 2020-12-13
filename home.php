@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Jekyll v4.1.1">
+  <meta name="description" content="Sistema de Gestion de Ventas por Delivery">
+  <meta name="author" content="Neurona Servicios">
+  <meta name="generator" content="v01.00.00">
   <title>Chinodelivery</title>
 
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/">
+  <link rel="canonical" href="./estilos.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -30,7 +30,7 @@
     }
   </style>
   <!-- Custom styles for this template -->
-  <link href="cover.css" rel="stylesheet">
+  <link href="./estilos.css" rel="stylesheet">
 </head>
 <body class="text-center">
 
@@ -110,7 +110,7 @@
 
 
 
-                <div class="row">
+                <div class="row form-group">
                   <div class="col">
                     <label for="btn_combo2mas" class="col-form-label">Combo 2</label>
                   </div>
@@ -131,10 +131,10 @@
                     <input type="number" min="0" value="0" name="totalcombo2" id="totalcombo2" class=" form-control" readonly>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row form-group">
                   <button type="button" class="btn btn-lg btn-primary btn-block" onClick="imprSelec('comboslista')">Imprimir orden</button>
                 </div>
-                <div class="row">
+                <div class="row form-group">
                   <button type="submit" id="cargar" class="btn btn-lg btn-primary btn-block">Cargar a Base de Datos</button>
                 </div>
                 
