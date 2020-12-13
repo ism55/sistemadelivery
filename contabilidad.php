@@ -2,7 +2,7 @@
 
 include('delivery.php');
 
-$sql = "SELECT SUM(ventacombo1) AS total_combo1, SUM(ventacombo2) AS total_combo2 from compras";
+$sql = "SELECT SUM(ventacombo1) AS total_combo1, SUM(ventacombo2) AS total_combo2, SUM(ventacombo3) AS total_combo3 from compras";
 
 $resultado  = $conex->query($sql);
 
@@ -67,11 +67,13 @@ if ($resultado) {
           while ($fila =$resultado->fetch_assoc()){
             $suma_combo1  = $fila['total_combo1'];
             $suma_combo2  = $fila['total_combo2'];
+            $suma_combo3  = $fila['total_combo3'];
           }
           
 
           echo "['Combo Duo 1',     ".$suma_combo1."],";
-          echo "['Combo Duo 2',     ".$suma_combo2."]";
+          echo "['Combo Duo 2',     ".$suma_combo2."],";
+          echo "['Combo Duo 3',     ".$suma_combo3."]";
           ?>
 
 
@@ -83,106 +85,106 @@ if ($resultado) {
           backgroundColor: { fill:'transparent' },
           titleTextStyle: { color: 'white', fontSize: '20'},
           legend: {
-        "textStyle": {
-            color: 'white', 
-            fontSize: 15
-        }}
-        };
+            "textStyle": {
+              color: 'white', 
+              fontSize: 15
+            }}
+          };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-        chart.draw(data, options);
-      }
-    </script>
+          chart.draw(data, options);
+        }
+      </script>
 
-  </head>
-  <body class="text-center">
-
-
-
-
-    <div class="container">
-      <header class="masthead mb-auto">
-        <div class="inner">
-          <h3 class="masthead-brand">ChinoDeliveryApp</h3>
-          <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link" href="./home.php">Compras</a>
-            <a class="nav-link active" href="./contabilidad.php">Contabilidad</a>
-          </nav>
-        </div>
-      </header>
-
-      <main role="main" class="inner cover">
+    </head>
+    <body class="text-center">
 
 
 
-        <div id="piechart" style="width: 900px; height: 500px;"></div>
 
-        <table class="table table-dark table-striped table-hover">
-          <h1>VENTAS DEL DIA</h1>
-          <thead>
-            <tr>
+      <div class="container">
+        <header class="masthead mb-auto">
+          <div class="inner">
+            <h3 class="masthead-brand">ChinoDeliveryApp</h3>
+            <nav class="nav nav-masthead justify-content-center">
+              <a class="nav-link" href="./home.php">Compras</a>
+              <a class="nav-link active" href="./contabilidad.php">Contabilidad</a>
+            </nav>
+          </div>
+        </header>
 
-              <th scope="col">EFECTIVO</th>
-              <th scope="col">TRANSFERENCIA Y PAGO MOVIL</th>
-              <th scope="col">AMBOS</th>
+        <main role="main" class="inner cover">
 
-            </tr>
-          </thead>
 
-          <?php 
-          date_default_timezone_set('America/Caracas'); 
-          $fecha_actual = date_parse(date("Y-m-d H:i:s"));
-          $suma_diaria_efectivo=0;
-          $suma_diaria_transfer=0;
-          $suma_diaria_ambos=0;
-          ?>
 
-          <?php foreach ($conex->query('SELECT * from compras') as $row){ // aca puedes hacer la consulta e iterarla con each. ?>
-            <?php $timestamp = date_parse($row['fecha_hora']) ?> 
-            
+          <div id="piechart" style="width: 900px; height: 500px;"></div>
+
+          <table class="table table-dark table-striped table-hover">
+            <h1>VENTAS DEL DIA</h1>
+            <thead>
+              <tr>
+
+                <th scope="col">TRANSFERENCIA Y PAGO MOVIL</th>
+                <th scope="col">EFECTIVO</th>
+                <th scope="col">AMBOS</th>
+
+              </tr>
+            </thead>
+
             <?php 
+            date_default_timezone_set('America/Caracas'); 
+            $fecha_actual = date_parse(date("Y-m-d H:i:s"));
+            $suma_diaria_efectivo=0;
+            $suma_diaria_transfer=0;
+            $suma_diaria_ambos=0;
+            ?>
 
-            echo '<tr scope="row">';
-            if ($timestamp["day"] === $fecha_actual["day"]){
+            <?php foreach ($conex->query('SELECT * from compras') as $row){ // aca puedes hacer la consulta e iterarla con each. ?>
+              <?php $timestamp = date_parse($row['fecha_hora']) ?> 
+
+              <?php 
+
+              echo '<tr scope="row">';
+              if ($timestamp["day"] === $fecha_actual["day"]){
 
 
-             if ($row['formapago'] === "Efectivo"){
-              $suma_diaria_efectivo = $suma_diaria_efectivo + $row['totalcombo1'] + $row['totalcombo2'];
+               if ($row['formapago'] === "Efectivo"){
+                $suma_diaria_efectivo = $suma_diaria_efectivo + $row['totalcombo1'] + $row['totalcombo2'];
+              }
+
+              if ($row['formapago'] === "Transferencia"){
+                $suma_diaria_transfer = $suma_diaria_transfer + $row['totalcombo1'] + $row['totalcombo2'];
+              }
+
+
+
+              if ($row['formapago'] === "Ambos"){
+                $suma_diaria_ambos = $suma_diaria_ambos + $row['totalcombo1'] + $row['totalcombo2'];
+              }
+
+
+
+
             }
-
-            if ($row['formapago'] === "Transferencia"){
-              $suma_diaria_transfer = $suma_diaria_transfer + $row['totalcombo1'] + $row['totalcombo2'];
-            }
-
-
-
-            if ($row['formapago'] === "Ambos"){
-              $suma_diaria_ambos = $suma_diaria_ambos + $row['totalcombo1'] + $row['totalcombo2'];
-            }
-
-
 
 
           }
+          echo "<td>".$suma_diaria_transfer."</td>" ;
+          echo "<td>".$suma_diaria_efectivo ."</td>" ;
+          echo "<td>".$suma_diaria_ambos."</td>" ;
+          echo '</tr>';
+          ?>
+        </table>
 
 
-        }
-        echo "<td>".$suma_diaria_efectivo ."</td>" ;
-        echo "<td>".$suma_diaria_transfer."</td>" ;
-        echo "<td>".$suma_diaria_ambos."</td>" ;
-        echo '</tr>';
-        ?>
-      </table>
-
-
-      <table class="table table-dark table-striped table-hover">
+        <table class="table table-dark table-striped table-hover">
           <h1>VENTAS DEL MES</h1>
           <thead>
             <tr>
 
-              <th scope="col">EFECTIVO</th>
               <th scope="col">TRANSFERENCIA Y PAGO MOVIL</th>
+              <th scope="col">EFECTIVO</th>
               <th scope="col">AMBOS</th>
 
             </tr>
@@ -226,8 +228,8 @@ if ($resultado) {
 
 
         }
-        echo "<td>".$suma_mensual_efectivo ."</td>" ;
         echo "<td>".$suma_mensual_transfer."</td>" ;
+        echo "<td>".$suma_mensual_efectivo ."</td>" ;
         echo "<td>".$suma_mensual_ambos."</td>" ;
         echo '</tr>';
         ?>

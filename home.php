@@ -68,7 +68,9 @@
 
               <label for="inputzona" class="">Dirección del envío</label>
               <input type="text" id="inputzona" class="form-control" placeholder="Zona del envío"  name="zona" required>
-
+              <!--  ################################################################# -->
+              <!--                    FORMAS DE PAGO                 -->
+              <!--  ################################################################# -->
 
               <p>Forma de pago:</p>
               <div class="form-check">
@@ -83,7 +85,9 @@
                 <input type="radio" name="formaRadio" value="Ambos" class="form-check-input" id="rdAmbos"> 
                 <label class="form-check-label" for="rdAmbos">Ambos</label>
               </div>
-              
+              <!--  ################################################################# -->
+              <!--                    COMBO #1                  -->
+              <!--  ################################################################# -->
 
               <div class="container">
                 <div class="row form-group">
@@ -108,7 +112,9 @@
                   </div>
                 </div>
 
-
+                <!--  ################################################################# -->
+                <!--                    COMBO #2                  -->
+                <!--  ################################################################# -->
 
                 <div class="row form-group">
                   <div class="col">
@@ -123,7 +129,7 @@
                     <button type="button" id="btn_combo2menos" class="btn btn-lg btn-primary btn-block">-</button>
                   </div>
                   <div class="col">
-                    <label for="combo1" class="col-form-label">Cant</label>
+                    <label for="combo2" class="col-form-label">Cant</label>
                     <input type="number" min="0" name="combo2" class="cantCombo2 form-control" value="0" readonly>
                   </div>
                   <div class="col">
@@ -131,9 +137,40 @@
                     <input type="number" min="0" value="0" name="totalcombo2" id="totalcombo2" class=" form-control" readonly>
                   </div>
                 </div>
+
+                <!--  ################################################################# -->
+                <!--                    COMBO #3                  -->
+                <!--  ################################################################# -->
+                <div class="row form-group">
+                  <div class="col">
+                    <label for="btn_combo3mas" class="col-form-label">Combo 3</label>
+                  </div>
+                  <div class="col">
+                    <label  class="col-form-label">Agregar</label>
+                    <button type="button" id="btn_combo3mas" class="btn btn-lg btn-primary btn-block">+</button>
+                  </div>
+                  <div class="col">
+                    <label class="col-form-label">Quitar</label>
+                    <button type="button" id="btn_combo3menos" class="btn btn-lg btn-primary btn-block">-</button>
+                  </div>
+                  <div class="col">
+                    <label for="combo3" class="col-form-label">Cant</label>
+                    <input type="number" min="0" name="combo3" class="cantCombo3 form-control" value="0" readonly>
+                  </div>
+                  <div class="col">
+                    <label for="totalcombo3" class="col-form-label">$</label>
+                    <input type="number" min="0" value="0" name="totalcombo3" id="totalcombo3" class=" form-control" readonly>
+                  </div>
+                </div>
+                <!--  ################################################################# -->
+                <!--                    IMPRIMIR ORDEN                  -->
+                <!--  ################################################################# -->
                 <div class="row form-group">
                   <button type="button" class="btn btn-lg btn-primary btn-block" onClick="imprSelec('comboslista')">Imprimir orden</button>
                 </div>
+                <!--  ################################################################# -->
+                <!--                    REGISTRAR ORDEN                 -->
+                <!--  ################################################################# -->
                 <div class="row form-group">
                   <button type="submit" id="cargar" class="btn btn-lg btn-primary btn-block">Cargar a Base de Datos</button>
                 </div>
@@ -144,7 +181,9 @@
               
 
             </form>
-
+            <!--  ################################################################# -->
+            <!--                    RECIBO DE COMPRA          -->
+            <!--  ################################################################# -->
           </div>
           <div class="col">
             <div class="card border-dark mb-3 " style="max-width: 30rem;">
@@ -197,8 +236,9 @@
                     </div>
                     <div class="col">
                       <div id="comboslista">
-                        <div class="row"> <div id="listaCombo1"></div></div>
+                        <div class="row"><div id="listaCombo1"></div></div>
                         <div class="row"><div id="listaCombo2"></div></div>
+                        <div class="row"><div id="listaCombo3"></div></div>
                       </div><br>
                     </div>
                   </div>
@@ -240,21 +280,25 @@
 
   <script type="text/javascript">
 
-    var contcombo1 = 0;
+    var contcombo1  = 0;
     var contcombo2  = 0;
+    var contcombo3  = 0;
     var totalglobal = 0;
     var precioCombo1 = 15;
     var precioCombo2 = 15;
+    var precioCombo3 = 20;
   ////////////////////////////////////////////////////////////////////////
+  /////                 COMBO # 1                           //////////////
+  ///////////////////////////////////////////////////////////////////
 
   $("#btn_combo1mas").click(function   () {
 
     contcombo1+=1;
-    //$('#compratotal').text("x" + contcombo1 + " Combos #1");
+    
 
     $('input[name=combo1]').val(contcombo1);
     $('input[name=totalcombo1]').val(contcombo1*precioCombo1);
-    $("#totalCompra").text(parseInt($("input[name=totalcombo1]").val()) + parseInt($("input[name=totalcombo2]").val()));
+    $("#totalCompra").text(sumarTodo());
 
     if($('input[name=combo1]').val()>0){
       $('#listaCombo1').text("x" + contcombo1 + " Combos #1");}
@@ -265,11 +309,11 @@
 
     contcombo1-=1;
     if(contcombo1<0){contcombo1=0;}
-      //$('#compratotal').text("x" + contcombo1 + " Combos #1");
+     
 
       $('input[name=combo1]').val(contcombo1);
       $('input[name=totalcombo1]').val(contcombo1*precioCombo1);
-      $("#totalCompra").text(parseInt($("input[name=totalcombo1]").val()) + parseInt($("input[name=totalcombo2]").val()));
+      $("#totalCompra").text(sumarTodo());
 
       if($('input[name=combo1]').val()>0){
         $('#listaCombo1').text("x" + contcombo1 + " Combos #1");
@@ -280,37 +324,74 @@
     })
 
   ////////////////////////////////////////////////////////////////////////
+/////////                        COMBO # 2                ////////////////
+  ///////////////////////////////////////////////////////////////////
 
   $("#btn_combo2mas").click(function   () {
 
     contcombo2+=1;
-    //$('#compratotal').text("x" + contcombo1 + " Combos #1");
-
+   
     $('input[name=combo2]').val(contcombo2);
     $('input[name=totalcombo2]').val(contcombo2*precioCombo2);
-    $("#totalCompra").text(parseInt($("input[name=totalcombo1]").val()) + parseInt($("input[name=totalcombo2]").val()));
+    $("#totalCompra").text(sumarTodo());
 
     if($('input[name=combo2]').val()>0){
       $('#listaCombo2').text("x" + contcombo2 + " Combos #2");}
     })
 
-http://wa.me/+56979184554?text=Hola%20quiero%20contactarlo
-$("#btn_combo2menos").click(function   () {
 
-  contcombo2-=1;
-  if(contcombo2<0){contcombo2=0;}
+  $("#btn_combo2menos").click(function   () {
 
-  $('input[name=combo2]').val(contcombo2);
-  $('input[name=totalcombo2]').val(contcombo2*precioCombo2);
-  $("#totalCompra").text(parseInt($("input[name=totalcombo1]").val()) + parseInt($("input[name=totalcombo2]").val()));
+    contcombo2-=1;
+    if(contcombo2<0){contcombo2=0;}
 
-  if($('input[name=combo2]').val()>0){
-    $('#listaCombo2').text("x" + contcombo2 + " Combos #2");
-  }
-  else {
-    $('#listaCombo2').text("");
-  }
-})
+    $('input[name=combo2]').val(contcombo2);
+    $('input[name=totalcombo2]').val(contcombo2*precioCombo2);
+    $("#totalCompra").text(sumarTodo());
+
+    if($('input[name=combo2]').val()>0){
+      $('#listaCombo2').text("x" + contcombo2 + " Combos #2");
+    }
+    else {
+      $('#listaCombo2').text("");
+    }
+  })
+
+
+  ////////////////////////////////////////////////////////////////////////
+  /////                  COMBO # 3                                ///////
+  ///////////////////////////////////////////////////////////////////
+
+  $("#btn_combo3mas").click(function   () {
+
+    contcombo3+=1;
+    
+
+    $('input[name=combo3]').val(contcombo3);
+    $('input[name=totalcombo3]').val(contcombo3*precioCombo3);
+    $("#totalCompra").text(sumarTodo());
+
+    if($('input[name=combo3]').val()>0){
+      $('#listaCombo3').text("x" + contcombo3 + " Combos #3");}
+    })
+
+
+  $("#btn_combo3menos").click(function   () {
+
+    contcombo3-=1;
+    if(contcombo3<0){contcombo3=0;}
+
+    $('input[name=combo3]').val(contcombo3);
+    $('input[name=totalcombo3]').val(contcombo3*precioCombo3);
+    $("#totalCompra").text(sumarTodo());
+
+    if($('input[name=combo3]').val()>0){
+      $('#listaCombo3').text("x" + contcombo3 + " Combos #3");
+    }
+    else {
+      $('#listaCombo3').text("");
+    }
+  })
 /////////////////////////////////////////////////////////////////////
 
 $("input[name=cliente]").change(function (){
@@ -377,7 +458,7 @@ function CopyToClipboard(containerid) {
      //+56979184554?text=Hola%20quiero%20contactarlo
      document.body.removeChild(textarea)
 
-     return auxval;
+     
    }
 
    function SendToDelivery(){
@@ -399,7 +480,7 @@ function CopyToClipboard(containerid) {
      //+56979184554?text=Hola%20quiero%20contactarlo
      document.body.removeChild(textarea)
 
-     return auxval;
+    
    }
 
 
@@ -413,6 +494,12 @@ function CopyToClipboard(containerid) {
     ventimp.close();
   }
 
+
+function sumarTodo () {
+
+
+  return parseInt($("input[name=totalcombo1]").val())+ parseInt($("input[name=totalcombo2]").val()) + parseInt($("input[name=totalcombo3]").val()) ;
+}
 
 </script>
 </body>
