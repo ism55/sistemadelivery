@@ -19,7 +19,7 @@ $id = trim($row[0]);
 }
 
 
-$sql = "INSERT INTO compras (id,numcliente,numrepartidor,direccion,formapago,ventacombo1,totalcombo1,ventacombo2,totalcombo2) VALUES ('$id'+1,'$cliente', '$delivery','$zona','$formapago','$combo1','$totalcombo1','$combo2','$totalcombo2')";
+$sql = "INSERT INTO compras VALUES ('$id'+1,'$cliente', '$delivery','$zona','$formapago','$combo1','$totalcombo1','$combo2','$totalcombo2',CURRENT_TIMESTAMP)";
 
 if (mysqli_query($conex, $sql)) {
       echo "<script language='javascript'>alert('Registro Correcto')</script>";
