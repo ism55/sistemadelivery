@@ -6,6 +6,7 @@
 	<meta name="description" content="Sistema de Gestion de Ventas por Delivery">
 	<meta name="author" content="Neurona Servicios">
 	<meta name="generator" content="v01.00.00">
+	<meta name="viewport" content="initial-scale=1">
 	<title>Chinodelivery</title>
 
 	<link rel="canonical" href="./estilos.css">
@@ -37,1994 +38,2005 @@
 
 
 
-	<div class="container">
-		<header class="masthead mb-auto">
-			<div class="inner">
-				<h3 class="masthead-brand">ChinoDeliveryApp</h3>
-				<nav class="nav nav-masthead justify-content-center">
-					<a class="nav-link active" href="./home.php">Compras</a>
-					<a class="nav-link" href="./contabilidad.php">Contabilidad</a>
-				</nav>
+	
+	<header class="masthead mb-auto">
+		<div class="inner">
+
+			<img src="./img/logo.png" width="100em" height="100em" class="masthead-brand">
+			<nav class="nav nav-masthead justify-content-center">
+				<a class="nav-link active" href="./home.php">Compras</a>
+				<a class="nav-link" href="./contabilidad.php">Contabilidad</a>
+			</nav>
+		</div>
+	</header>
+
+
+
+	<form class="form" id="formulario" onsubmit="imprSelec('comboslista');$.post('registrar.php', $('#formulario').serialize()); alert('Registrado')">
+
+		<main>
+			<div class="row w-100 p-3">
+				<div class="col">
+					<h1 class="cover-heading">Sistema de Gestión</h1>
+					<p class="lead">Registra a continuación los datos de la compra</p>
+				</div>
 			</div>
-		</header>
+			<section>
+				<div style="float:left; min-height: 50vh;" class="w-50 p-3">
+					<label for="inputCliente" class="">Número de teléfono cliente</label>
+					<input type="tel" id="inputCliente" class="form-control" placeholder="Número de teléfono cliente"  autofocus name="cliente" required>
 
-		<main role="main" class="inner cover">
+					<label for="inputDeli" class="">Número de teléfono delivery</label>
+					<input type="tel" id="inputDeli" class="form-control" placeholder="Número de teléfono delivery"  name="delivery" required>
 
+					<label for="inputzona" class="">Dirección del envío</label>
+					<input type="text" id="inputzona" class="form-control" placeholder="Zona del envío"  name="zona" required>
+					<!--  ################################################################# -->
+					<!--                    FORMAS DE PAGO                 -->
+					<!--  ################################################################# -->
 
+					<p>Forma de pago:</p>
+					<div class="form-check">
+						<input type="radio" name="formaRadio" value="Transferencia" class="form-check-input" id="rdTransfer" required> 
+						<label class="form-check-label" for="rdTransfer">Transferencia o Pago móvil</label>
+					</div>
+					<div class="form-check">
+						<input type="radio" name="formaRadio"  value="Efectivo" class="form-check-input" id="rdEfect"> 
+						<label class="form-check-label" for="rdEfect">Efectivo</label>
+					</div>
+					<div class="form-check">
+						<input type="radio" name="formaRadio" value="Ambos" class="form-check-input" id="rdAmbos"> 
+						<label class="form-check-label" for="rdAmbos">Ambos</label>
+					</div>
 
-			<div class="container">
-				<div class="row w-100 p-3">
-					<div class="col">
-						<h1 class="cover-heading">Sistema de Gestión</h1>
-						<p class="lead">Registra a continuación los datos de la compra</p>
-					</main>
-					<form class="form" id="formulario" onsubmit="imprSelec('comboslista');$.post('registrar.php', $('#formulario').serialize()); alert('Registrado')">
-
-
-						<label for="inputCliente" class="">Número de teléfono cliente</label>
-						<input type="tel" id="inputCliente" class="form-control" placeholder="Número de teléfono cliente"  autofocus name="cliente" required>
-
-						<label for="inputDeli" class="">Número de teléfono delivery</label>
-						<input type="tel" id="inputDeli" class="form-control" placeholder="Número de teléfono delivery"  name="delivery" required>
-
-						<label for="inputzona" class="">Dirección del envío</label>
-						<input type="text" id="inputzona" class="form-control" placeholder="Zona del envío"  name="zona" required>
+					<div class="container">
 						<!--  ################################################################# -->
-						<!--                    FORMAS DE PAGO                 -->
+						<!--                    IMPRIMIR ORDEN                  -->
 						<!--  ################################################################# -->
-
-						<p>Forma de pago:</p>
-						<div class="form-check">
-							<input type="radio" name="formaRadio" value="Transferencia" class="form-check-input" id="rdTransfer" required> 
-							<label class="form-check-label" for="rdTransfer">Transferencia o Pago móvil</label>
+						<div class="row form-group">
+							<button type="button" class="btn btn-sm btn-primary btn-block" onClick="imprSelec('comboslista')">Imprimir orden</button>
 						</div>
-						<div class="form-check">
-							<input type="radio" name="formaRadio"  value="Efectivo" class="form-check-input" id="rdEfect"> 
-							<label class="form-check-label" for="rdEfect">Efectivo</label>
-						</div>
-						<div class="form-check">
-							<input type="radio" name="formaRadio" value="Ambos" class="form-check-input" id="rdAmbos"> 
-							<label class="form-check-label" for="rdAmbos">Ambos</label>
+						<!--  ################################################################# -->
+						<!--                    REGISTRAR ORDEN                 -->
+						<!--  ################################################################# -->
+						<div class="row form-group">
+							<button type="submit" id="cargar" class="btn btn-sm btn-warning btn-block">Cargar a Base de Datos</button>
 						</div>
 
+					</div> 
+				</div>
 
-						<div class="container">
-							<div class="row w-100 p-3">
-								<div class="col">
-									<!--  ################################################################# -->
-									<!--                   MEGA COMBOS                 -->
-									<!--  ################################################################# -->
-									<div class="card">
-										<div class="card-header text-dark">
-											Mega Combos
-										</div>
-										<div class="card-body text-dark">
-											<!--  ################################################################# -->
-											<!--                   MEGA COMBO #1                  -->
-											<!--  ################################################################# -->
-											<div class="container">
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_combo1mas" class="col-form-label"> Mega Combo 1</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_combo1mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Quitar</label>
-														<button type="button" id="btn_combo1menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="combo1" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="combo1" id="combo1" class="cantCombo1 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcombo1" class="col-form-label">$</label>
-														<input type="number" min="0" name="totalcombo1" id="totalcombo1" class=" form-control" value="0" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                   MEGA COMBO #2                  -->
-												<!--  ################################################################# -->
-
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_combo2mas" class="col-form-label">Mega Combo 2</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_combo2mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_combo2menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="combo2" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="combo2" class="cantCombo2 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcombo2" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcombo2" id="totalcombo2" class=" form-control" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                   MEGA COMBO #3                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_combo3mas" class="col-form-label"> Mega Combo 3</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_combo3mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_combo3menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="combo3" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="combo3" class="cantCombo3 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcombo3" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcombo3" id="totalcombo3" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# -->
-												<!--                   MEGA COMBO #4                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_combo4mas" class="col-form-label"> Mega Combo 4</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_combo4mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_combo4menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="combo4" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="combo4" class="cantCombo4 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcombo4" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcombo4" id="totalcombo4" class=" form-control" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                   MEGA COMBO #5                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_combo5mas" class="col-form-label"> Mega Combo 5</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_combo5mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_combo5menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="combo5" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="combo5" class="cantCombo5 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcombo5" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcombo5" id="totalcombo5" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# -->
-												<!--                   MEGA COMBO #6                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_combo6mas" class="col-form-label"> Mega Combo 6</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_combo6mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_combo6menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col-2">
-														<label for="combo6" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="combo6" class="cantCombo6 form-control" value="0" readonly>
-													</div>
-													<div class="col-2">
-														<label for="totalcombo6" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcombo6" id="totalcombo6" class=" form-control" readonly>
-													</div>
-												</div>
-
-
-											</div>
-										</div>  
-									</div>
-
-								</div>
-
-
-								<div class="col">
-									<!--  ################################################################# -->
-									<!--                    COMBOS  DUOS               -->
-									<!--  ################################################################# -->
-									<div class="card">
-										<div class="card-header text-dark">
-											Combos Duos
-										</div>
-										<div class="card-body text-dark">
-											<!--  ################################################################# -->
-											<!--                    COMBO DUO #1                  -->
-											<!--  ################################################################# -->
-											<div class="container">
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_combo1duomas" class="col-form-label">  Combo Duo 1</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_combo1duomas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Quitar</label>
-														<button type="button" id="btn_combo1duomenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="combo1duo" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="combo1duo" id="combo1duo" class="cantCombo1duo form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcombo1duo" class="col-form-label">$</label>
-														<input type="number" min="0" name="totalcombo1duo" id="totalcombo1duo" class=" form-control" value="0" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                    COMBO DUO #2                  -->
-												<!--  ################################################################# -->
-
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_combo2duomas" class="col-form-label"> Combo Duo 2</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_combo2duomas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_combo2duomenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="combo2duo" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="combo2duo" class="cantCombo2duo form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcombo2duo" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcombo2duo" id="totalcombo2duo" class=" form-control" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                    COMBO DUO #3                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_combo3duomas" class="col-form-label">  Combo Duo 3</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_combo3duomas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_combo3duomenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="combo3duo" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="combo3duo" class="cantCombo3duo form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcombo3duo" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcombo3duo" id="totalcombo3duo" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# -->
-												<!--                    COMBO DUO #4                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_combo4duomas" class="col-form-label"> Combo Duo 4</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_combo4duomas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_combo4duomenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="combo4duo" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="combo4duo" class="cantCombo4duo form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcombo4duo" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcombo4duo" id="totalcombo4duo" class=" form-control" readonly>
-													</div>
-												</div>
-
-											</div>  
-										</div>
-									</div>
-								</div>
-
-								
-
-
-								<div class="col">
-									<!--  ################################################################# -->
-									<!--                    Kombos               -->
-									<!--  ################################################################# -->
-									<div class="card">
-										<div class="card-header text-dark">
-											Kombos
-										</div>
-										<div class="card-body text-dark">
-											<!--  ################################################################# -->
-											<!--                    Kombo #1                  -->
-											<!--  ################################################################# -->
-											<div class="container">
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_kombo1mas" class="col-form-label">  Kombo 1</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_kombo1mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Quitar</label>
-														<button type="button" id="btn_kombo1menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="kombo1" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="kombo1" id="kombo1" class="cantkombo1 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalkombo1" class="col-form-label">$</label>
-														<input type="number" min="0" name="totalkombo1" id="totalkombo1" class=" form-control" value="0" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                    kombo #2                  -->
-												<!--  ################################################################# -->
-
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_kombo2mas" class="col-form-label"> kombo 2</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_kombo2mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_kombo2menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="kombo2" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="kombo2" class="cantkombo2 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalkombo2" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalkombo2" id="totalkombo2" class=" form-control" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                    kombo #3                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_kombo3mas" class="col-form-label">  kombo 3</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_kombo3mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_kombo3menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="kombo3" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="kombo3" class="cantkombo3 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalkombo3" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalkombo3" id="totalkombo3" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# -->
-												<!--                   kombo #4                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_kombo4mas" class="col-form-label"> kombo 4</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_kombo4mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_kombo4menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="kombo4" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="kombo4" class="cantkombo4 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalkombo4" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalkombo4" id="totalkombo4" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# -->
-												<!--                   kombo #5                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_kombo5mas" class="col-form-label"> kombo 5</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_kombo5mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_kombo5menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="kombo5" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="kombo5" class="cantkombo5 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalkombo5" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalkombo5" id="totalkombo5" class=" form-control" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                   kombo #6                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_kombo6mas" class="col-form-label"> kombo 6</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_kombo6mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_kombo6menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="kombo6" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="kombo6" class="cantkombo6 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalkombo6" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalkombo6" id="totalkombo6" class=" form-control" readonly>
-													</div>
-												</div>
-
-											</div>  
-										</div>
-									</div>
-								</div>
-								<div class="col">
-									<!--  ################################################################# -->
-									<!--                   Arroz frito               -->
-									<!--  ################################################################# -->
-									<div class="card">
-										<div class="card-header text-dark">
-											Arroz frito
-										</div>
-										<div class="card-body text-dark">
-											<!--  ################################################################# -->
-											<!--                   Vegetariano                 -->
-											<!--  ################################################################# -->
-											<div class="container">
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_vegetarianomas" class="col-form-label"> Arroz frito vegetariano</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_vegetarianomas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Quitar</label>
-														<button type="button" id="btn_vegetarianomenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="vegetariano" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="vegetariano" id="vegetariano" class="cantvegetariano form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalvegetariano" class="col-form-label">$</label>
-														<input type="number" min="0" name="totalvegetariano" id="totalvegetariano" class=" form-control" value="0" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                    Arroz con pollo                  -->
-												<!--  ################################################################# -->
-
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_pollomas" class="col-form-label"> Arroz frito con pollo</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_pollomas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_pollomenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="pollo" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="pollo" class="cantpollo form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalpollo" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalpollo" id="totalpollo" class=" form-control" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                    Arroz frito con Jamon                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_jamonmas" class="col-form-label">  Arroz frito con jamón</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_jamonmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_jamonmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="jamon" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="jamon" class="cantjamon form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totaljamon" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totaljamon" id="totaljamon" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# -->
-												<!--                   Arroz frito con cerdo                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_cerdomas" class="col-form-label"> Arroz frito con cerdo</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_cerdomas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_cerdomenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="cerdo" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="cerdo" class="cantcerdo form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcerdo" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcerdo" id="totalcerdo" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# -->
-												<!--                   Arroz frito especial                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_especialmas" class="col-form-label"> Arroz frito especial</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_especialmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_especialmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="especial" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="especial" class="cantespecial form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalespecial" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalespecial" id="totalespecial" class=" form-control" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                Arroz frito con camarones                 -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_camaronesmas" class="col-form-label"> Arroz frito con camarones</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_camaronesmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_camaronesmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="camarones" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="camarones" class="cantcamarones form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcamarones" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcamarones" id="totalcamarones" class=" form-control" readonly>
-													</div>
-												</div>
-
-											</div>  
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</div>
-
-
-						<div class="container">
-							<div class="row w-100 p-3">
-								<div class="col">
-									<!--  ################################################################# -->
-									<!--                  LomMien               -->
-									<!--  ################################################################# -->
-									<div class="card">
-										<div class="card-header text-dark">
-											LomMien
-										</div>
-										<div class="card-body text-dark">
-											<!--  ################################################################# -->
-											<!--                 LomMien  Vegetariano                 -->
-											<!--  ################################################################# -->
-											<div class="container">
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_lmvegetarianomas" class="col-form-label"> LomMien vegetariano</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_lmvegetarianomas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Quitar</label>
-														<button type="button" id="btn_lmvegetarianomenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="lmvegetariano" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="lmvegetariano" id="lmvegetariano" class="cantlmvegetariano form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totallmvegetariano" class="col-form-label">$</label>
-														<input type="number" min="0" name="totallmvegetariano" id="totallmvegetariano" class=" form-control" value="0" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                    LomMien pollo                  -->
-												<!--  ################################################################# -->
-
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_lmpollomas" class="col-form-label"> LomMien con pollo</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_lmpollomas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_lmpollomenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="lmpollo" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="lmpollo" class="cantlmpollo form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totallmpollo" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totallmpollo" id="totallmpollo" class=" form-control" readonly>
-													</div>
-												</div>
-
-												
-												<!--  ################################################################# -->
-												<!--                   LomMien con cerdo                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_lmcerdomas" class="col-form-label"> LomMien con cerdo</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_lmcerdomas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_lmcerdomenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="lmcerdo" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="lmcerdo" class="cantlmcerdo form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totallmcerdo" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totallmcerdo" id="totallmcerdo" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# -->
-												<!--                   LomMien especial                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_lmespecialmas" class="col-form-label"> LomMien especial</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_lmespecialmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_lmespecialmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="lmespecial" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="lmespecial" class="cantlmespecial form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totallmespecial" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totallmespecial" id="totallmespecial" class=" form-control" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                LomMien con camarones                 -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_lmcamaronesmas" class="col-form-label"> LomMien con camarones</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_lmcamaronesmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_lmcamaronesmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="lmcamarones" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="lmcamarones" class="cantlmcamarones form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totallmcamarones" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totallmcamarones" id="totallmcamarones" class=" form-control" readonly>
-													</div>
-												</div>
-
-											</div>  
-										</div>
-									</div>
-
-								</div>
-								<div class="col">
-									<!--  ################################################################# -->
-									<!--                  Pollo              -->
-									<!--  ################################################################# -->
-									<div class="card">
-										<div class="card-header text-dark">
-											Pollo
-										</div>
-										<div class="card-body text-dark">
-											<!--  ################################################################# -->
-											<!--                 Pollo agridulce                  -->
-											<!--  ################################################################# -->
-											<div class="container">
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_pagridulcemas" class="col-form-label"> Pollo agridulce</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_pagridulcemas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Quitar</label>
-														<button type="button" id="btn_pagridulcemenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="pagridulce" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="pagridulce" id="pagridulce" class="cantpagridulce form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalpagridulce" class="col-form-label">$</label>
-														<input type="number" min="0" name="totalpagridulce" id="totalpagridulce" class=" form-control" value="0" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                   Pollo con soya                  -->
-												<!--  ################################################################# -->
-
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_psoyamas" class="col-form-label"> Pollo con soya</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_psoyamas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_psoyamenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="psoya" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="psoya" class="cantpsoya form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalpsoya" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalpsoya" id="totalpsoya" class=" form-control" readonly>
-													</div>
-												</div>
-
-												
-												<!--  ################################################################# -->
-												<!--                   Pollo con curry                   -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_pcurrymas" class="col-form-label"> Pollo con curry</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_pcurrymas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_pcurrymenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="pcurry" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="pcurry" class="cantpcurry form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalpcurry" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalpcurry" id="totalpcurry" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# -->
-												<!--                   Pollo con ostras                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_postrasmas" class="col-form-label"> Pollo con ostras</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_postrasmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_postrasmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="postras" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="postras" class="cantpostras form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalpostras" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalpostras" id="totalpostras" class=" form-control" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                Pollo con ajonjoli y miel                 -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_pajonjolimas" class="col-form-label"> Pollo con ajonjolí y miel </label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_pajonjolimas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_pajonjolimenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="pajonjoli" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="pajonjoli" class="cantpajonjoli form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalpajonjoli" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalpajonjoli" id="totalpajonjoli" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# -->
-												<!--                Pollo con asado cantones                -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_pasadomas" class="col-form-label"> Pollo con asado cantonés </label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_pasadomas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_pasadomenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="pasado" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="pasado" class="cantpasado form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalpasado" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalpasado" id="totalpasado" class=" form-control" readonly>
-													</div>
-												</div>
-
-											</div>  
-										</div>
-									</div>
-								</div>
-
-								<div class="col">
-									<!--  ################################################################# -->
-									<!--                  Carne             -->
-									<!--  ################################################################# -->
-									<div class="card">
-										<div class="card-header text-dark">
-											Carne
-										</div>
-										<div class="card-body text-dark">
-											<!--  ################################################################# -->
-											<!--                 Carne con Ostras                 -->
-											<!--  ################################################################# -->
-											<div class="container">
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_costrasmas" class="col-form-label"> Carne con ostras</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_costrasmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Quitar</label>
-														<button type="button" id="btn_costrasmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="costras" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="costras" id="costras" class="cantcostras form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcostras" class="col-form-label">$</label>
-														<input type="number" min="0" name="totalcostras" id="totalcostras" class=" form-control" value="0" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                   Carne con curry                  -->
-												<!--  ################################################################# -->
-
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_ccurrymas" class="col-form-label"> Carne con curry</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_ccurrymas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_ccurrymenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="ccurry" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="ccurry" class="cantccurry form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalccurry" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalccurry" id="totalccurry" class=" form-control" readonly>
-													</div>
-												</div>
-
-												
-												<!--  ################################################################# -->
-												<!--                   Carne con brócoli                   -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_cbrocolimas" class="col-form-label"> Carne con brócoli </label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_cbrocolimas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_cbrocolimenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="cbrocoli" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="cbrocoli" class="cantcbrocoli form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcbrocoli" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcbrocoli" id="totalcbrocoli" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# -->
-												<!--            Carne con vegetales chinos                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_cvegetalesmas" class="col-form-label"> Carne con vegetales chinos</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_cvegetalesmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_cvegetalesmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="cvegetales" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="cvegetales" class="cantcvegetales form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcvegetales" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcvegetales" id="totalcvegetales" class=" form-control" readonly>
-													</div>
-												</div>
-											</div>  
-										</div>
-									</div>
-								</div>
-								<div class="col">
-									<!--  ################################################################# -->
-									<!--                  Cerdo              -->
-									<!--  ################################################################# -->
-									<div class="card">
-										<div class="card-header text-dark">
-											Cerdo
-										</div>
-										<div class="card-body text-dark">
-											<!--  ################################################################# -->
-											<!--                 Costilla                  -->
-											<!--  ################################################################# -->
-											<div class="container">
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_costillamas" class="col-form-label">Costilla</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_costillamas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Quitar</label>
-														<button type="button" id="btn_costillamenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="costilla" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="costilla" id="costilla" class="cantcostilla form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcostilla" class="col-form-label">$</label>
-														<input type="number" min="0" name="totalcostilla" id="totalcostilla" class=" form-control" value="0" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                   Cerdo asado                  -->
-												<!--  ################################################################# -->
-
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_cerdoamas" class="col-form-label"> Cerdo asado</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_cerdoamas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_cerdoamenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="cerdoa" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="cerdoa" class="cantcerdoa form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcerdoa" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcerdoa" id="totalcerdoa" class=" form-control" readonly>
-													</div>
-												</div>
-
-												
-												<!--  ################################################################# --> 
-												<!--                   Cerdo con sal y pimienta             -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_cerdosypmas" class="col-form-label"> Cerdo con sal y pimienta</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_cerdosypmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_cerdosypmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="cerdosyp" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="cerdosyp" class="cantcerdosyp form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcerdosyp" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcerdosyp" id="totalcerdosyp" class=" form-control" readonly>
-													</div>
-												</div>
-												
-											</div>  
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="container">
-							<div class="row w-100 p-3">
-								<div class="col">
-									<!--  ################################################################# -->
-									<!--                Otros             -->
-									<!--  ################################################################# -->
-									<div class="card">
-										<div class="card-header text-dark">
-											Otros
-										</div>
-										<div class="card-body text-dark">
-											<!--  ################################################################# -->
-											<!--                Lúmpias                   -->
-											<!--  ################################################################# -->
-											<div class="container">
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_lumpiasmas" class="col-form-label"> Lúmpia</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_lumpiasmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Quitar</label>
-														<button type="button" id="btn_lumpiasmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="lumpias" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="lumpias" id="lumpias" class="cantlumpias form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totallumpias" class="col-form-label">$</label>
-														<input type="number" min="0" name="totallumpias" id="totallumpias" class=" form-control" value="0" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                   Wantón frito                  -->
-												<!--  ################################################################# -->
-
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_wantonfmas" class="col-form-label"> Wantón frito</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_wantonfmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_wantonfmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="wantonf" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="wantonf" class="cantwantonf form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalwantonf" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalwantonf" id="totalwantonf" class=" form-control" readonly>
-													</div>
-												</div>
-
-												
-												<!--  ################################################################# -->
-												<!--                   Fideos singapur                   -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_fideossmas" class="col-form-label"> Fideos singapur</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_fideossmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_fideossmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="fideoss" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="fideoss" class="cantfideoss form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalfideoss" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalfideoss" id="totalfideoss" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# -->
-												<!--                   Fu yong                 -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_fuyongmas" class="col-form-label"> Fu yong</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_fuyongmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_fuyongmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="fuyong" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="fuyong" class="cantfuyong form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalfuyong" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalfuyong" id="totalfuyong" class=" form-control" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--               Refresco 2lt                 -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_refresco2mas" class="col-form-label"> Refresco 2 lts </label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_refresco2mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_refresco2menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="refresco2" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="refresco2" class="cantrefresco2 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalrefresco2" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalrefresco2" id="totalrefresco2" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# -->
-												<!--          Liptón (Durazno, limón, verde)                -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_liptonmas" class="col-form-label"> Liptón (Durazno, limón, verde) </label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_liptonmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_liptonmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="lipton" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="lipton" class="cantlipton form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totallipton" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totallipton" id="totallipton" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# -->
-												<!--               Refresco lata                 -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_refrescolmas" class="col-form-label"> Refresco lata </label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_refrescolmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_refrescolmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="refrescol" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="refrescol" class="cantrefrescol form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalrefrescol" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalrefrescol" id="totalrefrescol" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# -->
-												<!--              Agua 600ml                 -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_agua6mas" class="col-form-label"> Agua 600 ml </label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_agua6mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_agua6menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="agua6" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="agua6" class="cantagua6 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalagua6" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalagua6" id="totalagua6" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# -->
-												<!--             pan chino 4 unidades                -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_pancmas" class="col-form-label"> Pan chino 4 unidades </label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_pancmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_pancmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="panc" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="panc" class="cantpanc form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalpanc" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalpanc" id="totalpanc" class=" form-control" readonly>
-													</div>
-												</div>
-											</div>  
-										</div>
-									</div>
-								</div>
-								<div class="col">
-									<!--  ################################################################# -->
-									<!--                  Sopa              -->
-									<!--  ################################################################# -->
-									<div class="card">
-										<div class="card-header text-dark">
-											Sopa
-										</div>
-										<div class="card-body text-dark">
-											<!--  ################################################################# -->
-											<!--               Sopa Wantón                 -->
-											<!--  ################################################################# -->
-											<div class="container">
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_sopawmas" class="col-form-label">Sopa wantón</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_sopawmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Quitar</label>
-														<button type="button" id="btn_sopawmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="sopaw" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="sopaw" id="sopaw" class="cantsopaw form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalsopaw" class="col-form-label">$</label>
-														<input type="number" min="0" name="totalsopaw" id="totalsopaw" class=" form-control" value="0" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                  Sopa wantón Mien                  -->
-												<!--  ################################################################# -->
-
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_swantonmienmas" class="col-form-label"> Sopa wantón mien</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_swantonmienmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_swantonmienmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="swantonmien" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="swantonmien" class="cantswantonmien form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalswantonmien" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalswantonmien" id="totalswantonmien" class=" form-control" readonly>
-													</div>
-												</div>
-											</div>  
-										</div>
-									</div>
-								</div>
-								<div class="col">
-									<!--  ################################################################# -->
-									<!--                  Chop Suey              -->
-									<!--  ################################################################# -->
-									<div class="card">
-										<div class="card-header text-dark">
-											Chop Suey
-										</div>
-										<div class="card-body text-dark">
-											<!--  ################################################################# -->
-											<!--                 Chop suey de vegetales                  -->
-											<!--  ################################################################# -->
-											<div class="container">
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_csvegetalesmas" class="col-form-label">Chop Suey de vegetales</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_csvegetalesmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Quitar</label>
-														<button type="button" id="btn_csvegetalesmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="csvegetales" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="csvegetales" id="csvegetales" class="cantcsvegetales form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcsvegetales" class="col-form-label">$</label>
-														<input type="number" min="0" name="totalcsvegetales" id="totalcsvegetales" class=" form-control" value="0" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                   Chop suey de pollo                  -->
-												<!--  ################################################################# -->
-
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_cspollomas" class="col-form-label"> Chop Suey de pollo</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_cspollomas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_cspollomenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="cspollo" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="cspollo" class="cantcspollo form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcspollo" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcspollo" id="totalcspollo" class=" form-control" readonly>
-													</div>
-												</div>
-
-												
-												<!--  ################################################################# --> 
-												<!--                   Chop suey de cerdo             -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_cscerdomas" class="col-form-label"> Chop Suey de cerdo</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_cscerdomas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_cscerdomenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="cscerdo" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="cscerdo" class="cantcscerdo form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcscerdo" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcscerdo" id="totalcscerdo" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# --> 
-												<!--                   Chop suey de carne            -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_cscarnemas" class="col-form-label"> Chop Suey de carne</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_cscarnemas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_cscarnemenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="cscarne" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="cscarne" class="cantcscarne form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcscarne" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcscarne" id="totalcscarne" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# --> 
-												<!--                   Chop suey de camarones            -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_cscamaronesmas" class="col-form-label"> Chop Suey de camarones</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_cscamaronesmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_cscamaronesmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="cscamarones" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="cscamarones" class="cantcscamarones form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcscamarones" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcscamarones" id="totalcscamarones" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# --> 
-												<!--             Chop suey de pollo y camarones            -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_cspolloycmas" class="col-form-label"> Chop Suey de pollo y camarones</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_cspolloycmas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_cspolloycmenos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="cspolloyc" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="cspolloyc" class="cantcspolloyc form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalcspolloyc" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalcspolloyc" id="totalcspolloyc" class=" form-control" readonly>
-													</div>
-												</div>
-											</div>  
-										</div>
-									</div>
-								</div>
-								<div class="col">
-									<!--  ################################################################# -->
-									<!--                 Martes 2*3 kombos individuales              -->
-									<!--  ################################################################# -->
-									<div class="card">
-										<div class="card-header text-dark">
-											Martes 2*3 kombos individuales
-										</div>
-										<div class="card-body text-dark">
-											<!--  ################################################################# -->
-											<!--                 Martes Kombo #1                  -->
-											<!--  ################################################################# -->
-											<div class="container">
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_marteskombo1mas" class="col-form-label"> Martes de Kombo 1</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_marteskombo1mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Quitar</label>
-														<button type="button" id="btn_marteskombo1menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="marteskombo1" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="marteskombo1" id="marteskombo1" class="cantmarteskombo1 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalmarteskombo1" class="col-form-label">$</label>
-														<input type="number" min="0" name="totalmarteskombo1" id="totalmarteskombo1" class=" form-control" value="0" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                 Martes de 2*3 kombo #2                  -->
-												<!--  ################################################################# -->
-
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_marteskombo2mas" class="col-form-label"> Martes de kombo 2</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_marteskombo2mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_marteskombo2menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="marteskombo2" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="marteskombo2" class="cantmarteskombo2 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalmarteskombo2" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalmarteskombo2" id="totalmarteskombo2" class=" form-control" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--            Martes de 2*3 de kombo #3                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_marteskombo3mas" class="col-form-label"> martes de kombo 3</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_marteskombo3mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_marteskombo3menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="marteskombo3" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="marteskombo3" class="cantmarteskombo3 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalmarteskombo3" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalmarteskombo3" id="totalmarteskombo3" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# -->
-												<!--                 Martes 2*3  kombo #4                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_marteskombo4mas" class="col-form-label"> Martes de kombo 4</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_marteskombo4mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_marteskombo4menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="marteskombo4" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="marteskombo4" class="cantmarteskombo4 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalmarteskombo4" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalmarteskombo4" id="totalmarteskombo4" class=" form-control" readonly>
-													</div>
-												</div>
-												<!--  ################################################################# -->
-												<!--             Martes de 2*3  kombo #5                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_marteskombo5mas" class="col-form-label"> Martes de kombo 5</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_marteskombo5mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_marteskombo5menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="marteskombo5" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="marteskombo5" class="cantmarteskombo5 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalmarteskombo5" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalmarteskombo5" id="totalmarteskombo5" class=" form-control" readonly>
-													</div>
-												</div>
-
-												<!--  ################################################################# -->
-												<!--                Martes de 2*3 kombo #6                  -->
-												<!--  ################################################################# -->
-												<div class="row form-group">
-													<div class="col">
-														<label for="btn_marteskombo6mas" class="col-form-label"> Martes de kombo 6</label>
-													</div>
-													<div class="col">
-														<label  class="col-form-label">Agregar</label>
-														<button type="button" id="btn_marteskombo6mas" class="btn btn-sm btn-success btn-block">+</button>
-													</div>
-													<div class="col">
-														<label class="col-form-label">Quitar</label>
-														<button type="button" id="btn_marteskombo6menos" class="btn btn-sm btn-danger btn-block">-</button>
-													</div>
-													<div class="col">
-														<label for="marteskombo6" class="col-form-label">Cant</label>
-														<input type="number" min="0" name="marteskombo6" class="cantmarteskombo6 form-control" value="0" readonly>
-													</div>
-													<div class="col">
-														<label for="totalmarteskombo6" class="col-form-label">$</label>
-														<input type="number" min="0" value="0" name="totalmarteskombo6" id="totalmarteskombo6" class=" form-control" readonly>
-													</div>
-												</div>
-
-											</div>  
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-
-
-
-						<div class="container">
-							<!--  ################################################################# -->
-							<!--                    IMPRIMIR ORDEN                  -->
-							<!--  ################################################################# -->
-							<div class="row form-group">
-								<button type="button" class="btn btn-sm btn-primary btn-block" onClick="imprSelec('comboslista')">Imprimir orden</button>
-							</div>
-							<!--  ################################################################# -->
-							<!--                    REGISTRAR ORDEN                 -->
-							<!--  ################################################################# -->
-							<div class="row form-group">
-								<button type="submit" id="cargar" class="btn btn-sm btn-warning btn-block">Cargar a Base de Datos</button>
-							</div>
-
-						</div> 
-
-
-					</form>
+				<div style="float:left; min-height:50vh" class="w-50 p-3">
 					<!--  ################################################################# -->
 					<!--                    RECIBO DE COMPRA          -->
 					<!--  ################################################################# -->
-				</div>
-				<div class="col-3">
-					<div class="card border-dark mb-3 " style="max-width: 30rem;">
-						<div class="card-header text-dark">ChinoDelivery</div>
-						<div class="card-body text-dark">
-							<h5 class="card-title">Recibo de compra</h5>
-							<p class="card-text">Datos del pedido</p>
-
-							<div class="container-fluid" id="factura" style="text-align: justify;">
-								<div class="row">
-									<div class="col">
-										<span>Numero del cliente: </span>
-									</div>
-									<div class="col">
-										<span id="numCliente"></span><br>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="col">
-										<span>Numero del repartidor: </span>
-									</div>
-									<div class="col">
-										<span id="numRepartidor"></span><br>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="col">
-										<span>Dirección: </span>
-									</div>
-									<div class="col">
-										<span id="linkMapa"></span><br>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="col">
-										<span>Forma de pago: </span>
-									</div>
-									<div class="col">
-										<span id="formaPago"></span><br>
-									</div>
-								</div>
+					<div class="">
+						<div class="card border-dark mb-3 " style="max-width: 30rem;">
+							<div class="card-header text-dark">
+								<h5 class="card-title">Datos del pedido</h5></div>
+								<div class="card-body text-dark">
 
 
-								<div class="row">
-									<div class="col">
-										<span>Pedido: </span>
+
+									<div class="container-fluid" id="factura" style="text-align: justify;">
+										<div class="row">
+											<div class="col">
+												<span>Numero del cliente: </span>
+											</div>
+											<div class="col">
+												<span id="numCliente"></span><br>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col">
+												<span>Numero del repartidor: </span>
+											</div>
+											<div class="col">
+												<span id="numRepartidor"></span><br>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col">
+												<span>Dirección: </span>
+											</div>
+											<div class="col">
+												<span id="linkMapa"></span><br>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col">
+												<span>Forma de pago: </span>
+											</div>
+											<div class="col">
+												<span id="formaPago"></span><br>
+											</div>
+										</div>
+
+
+										<div class="row">
+											<div class="col">
+												<span>Pedido: </span>
+											</div>
+											<div class="col">
+												<div id="comboslista">
+													<div class="row"><div id="listaCombo1"></div></div>
+													<div class="row"><div id="listaCombo2"></div></div>
+													<div class="row"><div id="listaCombo3"></div></div>
+													<div class="row"><div id="listaCombo4"></div></div>
+													<div class="row"><div id="listaCombo5"></div></div>
+													<div class="row"><div id="listaCombo6"></div></div>
+													<div class="row"><div id="listaCombo1duo"></div></div>
+													<div class="row"><div id="listaCombo2duo"></div></div>
+													<div class="row"><div id="listaCombo3duo"></div></div>
+													<div class="row"><div id="listaCombo4duo"></div></div>
+													<div class="row"><div id="listakombo1"></div></div>
+													<div class="row"><div id="listakombo2"></div></div>
+													<div class="row"><div id="listakombo3"></div></div>
+													<div class="row"><div id="listakombo4"></div></div>
+													<div class="row"><div id="listakombo5"></div></div>
+													<div class="row"><div id="listakombo6"></div></div>
+													<div class="row"><div id="listavegetariano"></div></div>
+													<div class="row"><div id="listapollo"></div></div>
+													<div class="row"><div id="listajamon"></div></div>
+													<div class="row"><div id="listacerdo"></div></div>
+													<div class="row"><div id="listaespecial"></div></div>
+													<div class="row"><div id="listacamarones"></div></div>
+													<div class="row"><div id="listalmvegetariano"></div></div>
+													<div class="row"><div id="listalmpollo"></div></div>
+													<div class="row"><div id="listalmcerdo"></div></div>
+													<div class="row"><div id="listalmespecial"></div></div>
+													<div class="row"><div id="listalmcamarones"></div></div>
+													<div class="row"><div id="listapagridulce"></div></div>
+													<div class="row"><div id="listapsoya"></div></div>
+													<div class="row"><div id="listapcurry"></div></div>
+													<div class="row"><div id="listapostras"></div></div>
+													<div class="row"><div id="listapajonjoli"></div></div>
+													<div class="row"><div id="listapasado"></div></div>
+													<div class="row"><div id="listacostras"></div></div>
+													<div class="row"><div id="listaccurry"></div></div>
+													<div class="row"><div id="listacbrocoli"></div></div>
+													<div class="row"><div id="listacvegetales"></div></div>
+													<div class="row"><div id="listacostilla"></div></div>
+													<div class="row"><div id="listacerdoa"></div></div>
+													<div class="row"><div id="listacerdosyp"></div></div>
+													<div class="row"><div id="listalumpias"></div></div>
+													<div class="row"><div id="listawantonf"></div></div>
+													<div class="row"><div id="listafideoss"></div></div>
+													<div class="row"><div id="listafuyong"></div></div>
+													<div class="row"><div id="listarefresco2"></div></div>
+													<div class="row"><div id="listalipton"></div></div>
+													<div class="row"><div id="listarefrescol"></div></div>
+													<div class="row"><div id="listaagua6"></div></div>
+													<div class="row"><div id="listapanc"></div></div>
+													<div class="row"><div id="listasopaw"></div></div>
+													<div class="row"><div id="listaswantonmien"></div></div>
+													<div class="row"><div id="listacsvegetales"></div></div>
+													<div class="row"><div id="listacspollo"></div></div>
+													<div class="row"><div id="listacscerdo"></div></div>
+													<div class="row"><div id="listacscarne"></div></div>
+													<div class="row"><div id="listacscamarones"></div></div>
+													<div class="row"><div id="listacspolloyc"></div></div>
+													<div class="row"><div id="listamarteskombo1"></div></div>
+													<div class="row"><div id="listamarteskombo2"></div></div>
+													<div class="row"><div id="listamarteskombo3"></div></div>
+													<div class="row"><div id="listamarteskombo4"></div></div>
+													<div class="row"><div id="listamarteskombo5"></div></div>
+													<div class="row"><div id="listamarteskombo6"></div></div>
+												</div><br>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col">
+												<span>Total: </span>
+											</div>
+											<div class="col">
+												<span id="totalCompra"></span><br>
+											</div>
+										</div>
 									</div>
-									<div class="col">
-										<div id="comboslista">
-											<div class="row"><div id="listaCombo1"></div></div>
-											<div class="row"><div id="listaCombo2"></div></div>
-											<div class="row"><div id="listaCombo3"></div></div>
-											<div class="row"><div id="listaCombo4"></div></div>
-											<div class="row"><div id="listaCombo5"></div></div>
-											<div class="row"><div id="listaCombo6"></div></div>
-											<div class="row"><div id="listaCombo1duo"></div></div>
-											<div class="row"><div id="listaCombo2duo"></div></div>
-											<div class="row"><div id="listaCombo3duo"></div></div>
-											<div class="row"><div id="listaCombo4duo"></div></div>
-											<div class="row"><div id="listakombo1"></div></div>
-											<div class="row"><div id="listakombo2"></div></div>
-											<div class="row"><div id="listakombo3"></div></div>
-											<div class="row"><div id="listakombo4"></div></div>
-											<div class="row"><div id="listakombo5"></div></div>
-											<div class="row"><div id="listakombo6"></div></div>
-											<div class="row"><div id="listavegetariano"></div></div>
-											<div class="row"><div id="listapollo"></div></div>
-											<div class="row"><div id="listajamon"></div></div>
-											<div class="row"><div id="listacerdo"></div></div>
-											<div class="row"><div id="listaespecial"></div></div>
-											<div class="row"><div id="listacamarones"></div></div>
-											<div class="row"><div id="listalmvegetariano"></div></div>
-											<div class="row"><div id="listalmpollo"></div></div>
-											<div class="row"><div id="listalmcerdo"></div></div>
-											<div class="row"><div id="listalmespecial"></div></div>
-											<div class="row"><div id="listalmcamarones"></div></div>
-											<div class="row"><div id="listapagridulce"></div></div>
-											<div class="row"><div id="listapsoya"></div></div>
-											<div class="row"><div id="listapcurry"></div></div>
-											<div class="row"><div id="listapostras"></div></div>
-											<div class="row"><div id="listapajonjoli"></div></div>
-											<div class="row"><div id="listapasado"></div></div>
-											<div class="row"><div id="listacostras"></div></div>
-											<div class="row"><div id="listaccurry"></div></div>
-											<div class="row"><div id="listacbrocoli"></div></div>
-											<div class="row"><div id="listacvegetales"></div></div>
-											<div class="row"><div id="listacostilla"></div></div>
-											<div class="row"><div id="listacerdoa"></div></div>
-											<div class="row"><div id="listacerdosyp"></div></div>
-											<div class="row"><div id="listalumpias"></div></div>
-											<div class="row"><div id="listawantonf"></div></div>
-											<div class="row"><div id="listafideoss"></div></div>
-											<div class="row"><div id="listafuyong"></div></div>
-											<div class="row"><div id="listarefresco2"></div></div>
-											<div class="row"><div id="listalipton"></div></div>
-											<div class="row"><div id="listarefrescol"></div></div>
-											<div class="row"><div id="listaagua6"></div></div>
-											<div class="row"><div id="listapanc"></div></div>
-											<div class="row"><div id="listasopaw"></div></div>
-											<div class="row"><div id="listaswantonmien"></div></div>
-											<div class="row"><div id="listacsvegetales"></div></div>
-											<div class="row"><div id="listacspollo"></div></div>
-											<div class="row"><div id="listacscerdo"></div></div>
-											<div class="row"><div id="listacscarne"></div></div>
-											<div class="row"><div id="listacscamarones"></div></div>
-											<div class="row"><div id="listacspolloyc"></div></div>
-											<div class="row"><div id="listamarteskombo1"></div></div>
-											<div class="row"><div id="listamarteskombo2"></div></div>
-											<div class="row"><div id="listamarteskombo3"></div></div>
-											<div class="row"><div id="listamarteskombo4"></div></div>
-											<div class="row"><div id="listamarteskombo5"></div></div>
-											<div class="row"><div id="listamarteskombo6"></div></div>
-										</div><br>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col">
-										<span>Total: </span>
-									</div>
-									<div class="col">
-										<span id="totalCompra"></span><br>
-									</div>
+									<a href="#" class="card-link text-info" onClick='CopyToClipboard("factura")'>Copiar texto</a>
+									<a href="#"  target="_blank" id="enlaceCliente" class="card-link text-info" onClick='SendToClient()'>Enviar a Cliente</a>
+									<a href="#"  target="_blank" id="enlaceDelivery" class="card-link text-info" onClick='SendToDelivery()'>Enviar a Repartidor</a>
 								</div>
 							</div>
-							<a href="#" class="card-link text-info" onClick='CopyToClipboard("factura")'>Copiar texto</a>
-							<a href="#"  target="_blank" id="enlaceCliente" class="card-link text-info" onClick='SendToClient()'>Enviar a Cliente</a>
-							<a href="#"  target="_blank" id="enlaceDelivery" class="card-link text-info" onClick='SendToDelivery()'>Enviar a Repartidor</a>
+						</div>
+
+					</div>
+
+				</div>
+
+			</section>
+
+		</main>
+
+
+
+
+
+
+
+		<section>
+			<div class="container-fluid">
+				<div class="row w-100 p-3">
+					<div class="col">
+						<!--  ################################################################# -->
+						<!--                   MEGA COMBOS                 -->
+						<!--  ################################################################# -->
+						<div class="card">
+							<div class="card-header text-dark">
+								Mega Combos
+							</div>
+							<div class="card-body text-dark">
+								<!--  ################################################################# -->
+								<!--                   MEGA COMBO #1                  -->
+								<!--  ################################################################# -->
+								<div class="container">
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_combo1mas" class="col-form-label"> Mega Combo 1</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_combo1mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Del</label>
+											<button type="button" id="btn_combo1menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="combo1" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="combo1" id="combo1" class="cantCombo1 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcombo1" class="col-form-label">$</label>
+											<input type="number" min="0" name="totalcombo1" id="totalcombo1" class=" form-control" value="0" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                   MEGA COMBO #2                  -->
+									<!--  ################################################################# -->
+
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_combo2mas" class="col-form-label">Mega Combo 2</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_combo2mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_combo2menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="combo2" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="combo2" class="cantCombo2 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcombo2" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcombo2" id="totalcombo2" class=" form-control" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                   MEGA COMBO #3                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_combo3mas" class="col-form-label"> Mega Combo 3</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_combo3mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_combo3menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="combo3" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="combo3" class="cantCombo3 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcombo3" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcombo3" id="totalcombo3" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--                   MEGA COMBO #4                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_combo4mas" class="col-form-label"> Mega Combo 4</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_combo4mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_combo4menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="combo4" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="combo4" class="cantCombo4 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcombo4" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcombo4" id="totalcombo4" class=" form-control" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                   MEGA COMBO #5                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_combo5mas" class="col-form-label"> Mega Combo 5</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_combo5mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_combo5menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="combo5" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="combo5" class="cantCombo5 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcombo5" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcombo5" id="totalcombo5" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--                   MEGA COMBO #6                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_combo6mas" class="col-form-label"> Mega Combo 6</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_combo6mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_combo6menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="combo6" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="combo6" class="cantCombo6 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcombo6" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcombo6" id="totalcombo6" class=" form-control" readonly>
+										</div>
+									</div>
+
+
+								</div>
+							</div>  
 						</div>
 					</div>
 
+					<div class="col">
+						<!--  ################################################################# -->
+						<!--                    COMBOS  DUOS               -->
+						<!--  ################################################################# -->
+						<div class="card">
+							<div class="card-header text-dark">
+								Combos Duos
+							</div>
+							<div class="card-body text-dark">
+								<!--  ################################################################# -->
+								<!--                    COMBO DUO #1                  -->
+								<!--  ################################################################# -->
+								<div class="container">
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_combo1duomas" class="col-form-label">  Combo Duo 1</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_combo1duomas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Del</label>
+											<button type="button" id="btn_combo1duomenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="combo1duo" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="combo1duo" id="combo1duo" class="cantCombo1duo form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcombo1duo" class="col-form-label">$</label>
+											<input type="number" min="0" name="totalcombo1duo" id="totalcombo1duo" class=" form-control" value="0" readonly>
+										</div>
+									</div>
 
+									<!--  ################################################################# -->
+									<!--                    COMBO DUO #2                  -->
+									<!--  ################################################################# -->
+
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_combo2duomas" class="col-form-label"> Combo Duo 2</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_combo2duomas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_combo2duomenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="combo2duo" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="combo2duo" class="cantCombo2duo form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcombo2duo" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcombo2duo" id="totalcombo2duo" class=" form-control" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                    COMBO DUO #3                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_combo3duomas" class="col-form-label">  Combo Duo 3</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_combo3duomas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_combo3duomenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="combo3duo" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="combo3duo" class="cantCombo3duo form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcombo3duo" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcombo3duo" id="totalcombo3duo" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--                    COMBO DUO #4                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_combo4duomas" class="col-form-label"> Combo Duo 4</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_combo4duomas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_combo4duomenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="combo4duo" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="combo4duo" class="cantCombo4duo form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcombo4duo" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcombo4duo" id="totalcombo4duo" class=" form-control" readonly>
+										</div>
+									</div>
+
+								</div>  
+							</div>
+						</div>
+					</div>
+
+					<div class="col">
+						<!--  ################################################################# -->
+						<!--                    Kombos               -->
+						<!--  ################################################################# -->
+						<div class="card">
+							<div class="card-header text-dark">
+								Kombos
+							</div>
+							<div class="card-body text-dark">
+								<!--  ################################################################# -->
+								<!--                    Kombo #1                  -->
+								<!--  ################################################################# -->
+								<div class="container">
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_kombo1mas" class="col-form-label">  Kombo 1</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_kombo1mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Del</label>
+											<button type="button" id="btn_kombo1menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="kombo1" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="kombo1" id="kombo1" class="cantkombo1 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalkombo1" class="col-form-label">$</label>
+											<input type="number" min="0" name="totalkombo1" id="totalkombo1" class=" form-control" value="0" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                    kombo #2                  -->
+									<!--  ################################################################# -->
+
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_kombo2mas" class="col-form-label"> kombo 2</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_kombo2mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_kombo2menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="kombo2" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="kombo2" class="cantkombo2 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalkombo2" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalkombo2" id="totalkombo2" class=" form-control" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                    kombo #3                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_kombo3mas" class="col-form-label">  kombo 3</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_kombo3mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_kombo3menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="kombo3" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="kombo3" class="cantkombo3 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalkombo3" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalkombo3" id="totalkombo3" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--                   kombo #4                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_kombo4mas" class="col-form-label"> kombo 4</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_kombo4mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_kombo4menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="kombo4" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="kombo4" class="cantkombo4 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalkombo4" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalkombo4" id="totalkombo4" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--                   kombo #5                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_kombo5mas" class="col-form-label"> kombo 5</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_kombo5mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_kombo5menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="kombo5" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="kombo5" class="cantkombo5 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalkombo5" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalkombo5" id="totalkombo5" class=" form-control" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                   kombo #6                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_kombo6mas" class="col-form-label"> kombo 6</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_kombo6mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_kombo6menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="kombo6" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="kombo6" class="cantkombo6 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalkombo6" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalkombo6" id="totalkombo6" class=" form-control" readonly>
+										</div>
+									</div>
+
+								</div>  
+							</div>
+						</div>
+					</div>
+
+					<div class="col">
+						<!--  ################################################################# -->
+						<!--                   Arroz frito               -->
+						<!--  ################################################################# -->
+						<div class="card">
+							<div class="card-header text-dark">
+								Arroz frito
+							</div>
+							<div class="card-body text-dark">
+								<!--  ################################################################# -->
+								<!--                   Vegetariano                 -->
+								<!--  ################################################################# -->
+								<div class="container">
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_vegetarianomas" class="col-form-label"> Arroz frito vegetariano</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_vegetarianomas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Del</label>
+											<button type="button" id="btn_vegetarianomenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="vegetariano" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="vegetariano" id="vegetariano" class="cantvegetariano form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalvegetariano" class="col-form-label">$</label>
+											<input type="number" min="0" name="totalvegetariano" id="totalvegetariano" class=" form-control" value="0" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                    Arroz con pollo                  -->
+									<!--  ################################################################# -->
+
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_pollomas" class="col-form-label"> Arroz frito con pollo</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_pollomas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_pollomenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="pollo" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="pollo" class="cantpollo form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalpollo" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalpollo" id="totalpollo" class=" form-control" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                    Arroz frito con Jamon                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_jamonmas" class="col-form-label">  Arroz frito con jamón</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_jamonmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_jamonmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="jamon" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="jamon" class="cantjamon form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totaljamon" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totaljamon" id="totaljamon" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--                   Arroz frito con cerdo                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_cerdomas" class="col-form-label"> Arroz frito con cerdo</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_cerdomas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_cerdomenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="cerdo" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="cerdo" class="cantcerdo form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcerdo" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcerdo" id="totalcerdo" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--                   Arroz frito especial                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_especialmas" class="col-form-label"> Arroz frito especial</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_especialmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_especialmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="especial" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="especial" class="cantespecial form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalespecial" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalespecial" id="totalespecial" class=" form-control" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                Arroz frito con camarones                 -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_camaronesmas" class="col-form-label"> Arroz frito con camarones</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_camaronesmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_camaronesmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="camarones" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="camarones" class="cantcamarones form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcamarones" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcamarones" id="totalcamarones" class=" form-control" readonly>
+										</div>
+									</div>
+
+								</div>  
+							</div>
+						</div>
+					</div>
 
 				</div>
 			</div>
-		</div>
 
 
+			<div class="container-fluid">
+				<div class="row w-100 p-3">
+					<div class="col">
+						<!--  ################################################################# -->
+						<!--                  LomMien               -->
+						<!--  ################################################################# -->
+						<div class="card">
+							<div class="card-header text-dark">
+								LomMien
+							</div>
+							<div class="card-body text-dark">
+								<!--  ################################################################# -->
+								<!--                 LomMien  Vegetariano                 -->
+								<!--  ################################################################# -->
+								<div class="container">
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_lmvegetarianomas" class="col-form-label"> LomMien vegetariano</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_lmvegetarianomas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Del</label>
+											<button type="button" id="btn_lmvegetarianomenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="lmvegetariano" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="lmvegetariano" id="lmvegetariano" class="cantlmvegetariano form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totallmvegetariano" class="col-form-label">$</label>
+											<input type="number" min="0" name="totallmvegetariano" id="totallmvegetariano" class=" form-control" value="0" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                    LomMien pollo                  -->
+									<!--  ################################################################# -->
+
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_lmpollomas" class="col-form-label"> LomMien con pollo</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_lmpollomas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_lmpollomenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="lmpollo" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="lmpollo" class="cantlmpollo form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totallmpollo" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totallmpollo" id="totallmpollo" class=" form-control" readonly>
+										</div>
+									</div>
 
 
+									<!--  ################################################################# -->
+									<!--                   LomMien con cerdo                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_lmcerdomas" class="col-form-label"> LomMien con cerdo</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_lmcerdomas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_lmcerdomenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="lmcerdo" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="lmcerdo" class="cantlmcerdo form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totallmcerdo" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totallmcerdo" id="totallmcerdo" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--                   LomMien especial                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_lmespecialmas" class="col-form-label"> LomMien especial</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_lmespecialmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_lmespecialmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="lmespecial" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="lmespecial" class="cantlmespecial form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totallmespecial" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totallmespecial" id="totallmespecial" class=" form-control" readonly>
+										</div>
+									</div>
 
-		
+									<!--  ################################################################# -->
+									<!--                LomMien con camarones                 -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_lmcamaronesmas" class="col-form-label"> LomMien con camarones</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_lmcamaronesmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_lmcamaronesmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="lmcamarones" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="lmcamarones" class="cantlmcamarones form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totallmcamarones" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totallmcamarones" id="totallmcamarones" class=" form-control" readonly>
+										</div>
+									</div>
 
-		<footer class="mastfoot mt-auto">
-			<div class="inner">
-				<p>Desarrollado por <a href="https://www.instagram.com/neurona.servicios">@Neurona.Servicios</a></p>
+								</div>  
+							</div>
+						</div>
+
+					</div>
+
+					<div class="col">
+						<!--  ################################################################# -->
+						<!--                  Pollo              -->
+						<!--  ################################################################# -->
+						<div class="card">
+							<div class="card-header text-dark">
+								Pollo
+							</div>
+							<div class="card-body text-dark">
+								<!--  ################################################################# -->
+								<!--                 Pollo agridulce                  -->
+								<!--  ################################################################# -->
+								<div class="container">
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_pagridulcemas" class="col-form-label"> Pollo agridulce</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_pagridulcemas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Del</label>
+											<button type="button" id="btn_pagridulcemenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="pagridulce" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="pagridulce" id="pagridulce" class="cantpagridulce form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalpagridulce" class="col-form-label">$</label>
+											<input type="number" min="0" name="totalpagridulce" id="totalpagridulce" class=" form-control" value="0" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                   Pollo con soya                  -->
+									<!--  ################################################################# -->
+
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_psoyamas" class="col-form-label"> Pollo con soya</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_psoyamas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_psoyamenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="psoya" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="psoya" class="cantpsoya form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalpsoya" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalpsoya" id="totalpsoya" class=" form-control" readonly>
+										</div>
+									</div>
+
+
+									<!--  ################################################################# -->
+									<!--                   Pollo con curry                   -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_pcurrymas" class="col-form-label"> Pollo con curry</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_pcurrymas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_pcurrymenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="pcurry" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="pcurry" class="cantpcurry form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalpcurry" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalpcurry" id="totalpcurry" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--                   Pollo con ostras                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_postrasmas" class="col-form-label"> Pollo con ostras</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_postrasmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_postrasmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="postras" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="postras" class="cantpostras form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalpostras" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalpostras" id="totalpostras" class=" form-control" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                Pollo con ajonjoli y miel                 -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_pajonjolimas" class="col-form-label"> Pollo con ajonjolí y miel </label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_pajonjolimas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_pajonjolimenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="pajonjoli" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="pajonjoli" class="cantpajonjoli form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalpajonjoli" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalpajonjoli" id="totalpajonjoli" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--                Pollo con asado cantones                -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_pasadomas" class="col-form-label"> Pollo con asado cantonés </label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_pasadomas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_pasadomenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="pasado" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="pasado" class="cantpasado form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalpasado" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalpasado" id="totalpasado" class=" form-control" readonly>
+										</div>
+									</div>
+
+								</div>  
+							</div>
+						</div>
+					</div>
+
+					<div class="col">
+						<!--  ################################################################# -->
+						<!--                  Carne             -->
+						<!--  ################################################################# -->
+						<div class="card">
+							<div class="card-header text-dark">
+								Carne
+							</div>
+							<div class="card-body text-dark">
+								<!--  ################################################################# -->
+								<!--                 Carne con Ostras                 -->
+								<!--  ################################################################# -->
+								<div class="container">
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_costrasmas" class="col-form-label"> Carne con ostras</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_costrasmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Del</label>
+											<button type="button" id="btn_costrasmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="costras" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="costras" id="costras" class="cantcostras form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcostras" class="col-form-label">$</label>
+											<input type="number" min="0" name="totalcostras" id="totalcostras" class=" form-control" value="0" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                   Carne con curry                  -->
+									<!--  ################################################################# -->
+
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_ccurrymas" class="col-form-label"> Carne con curry</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_ccurrymas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_ccurrymenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="ccurry" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="ccurry" class="cantccurry form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalccurry" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalccurry" id="totalccurry" class=" form-control" readonly>
+										</div>
+									</div>
+
+
+									<!--  ################################################################# -->
+									<!--                   Carne con brócoli                   -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_cbrocolimas" class="col-form-label"> Carne con brócoli </label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_cbrocolimas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_cbrocolimenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="cbrocoli" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="cbrocoli" class="cantcbrocoli form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcbrocoli" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcbrocoli" id="totalcbrocoli" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--            Carne con vegetales chinos                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_cvegetalesmas" class="col-form-label"> Carne con vegetales chinos</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_cvegetalesmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_cvegetalesmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="cvegetales" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="cvegetales" class="cantcvegetales form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcvegetales" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcvegetales" id="totalcvegetales" class=" form-control" readonly>
+										</div>
+									</div>
+								</div>  
+							</div>
+						</div>
+					</div>
+
+					<div class="col">
+						<!--  ################################################################# -->
+						<!--                  Cerdo              -->
+						<!--  ################################################################# -->
+						<div class="card">
+							<div class="card-header text-dark">
+								Cerdo
+							</div>
+							<div class="card-body text-dark">
+								<!--  ################################################################# -->
+								<!--                 Costilla                  -->
+								<!--  ################################################################# -->
+								<div class="container">
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_costillamas" class="col-form-label">Costilla</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_costillamas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Del</label>
+											<button type="button" id="btn_costillamenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="costilla" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="costilla" id="costilla" class="cantcostilla form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcostilla" class="col-form-label">$</label>
+											<input type="number" min="0" name="totalcostilla" id="totalcostilla" class=" form-control" value="0" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                   Cerdo asado                  -->
+									<!--  ################################################################# -->
+
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_cerdoamas" class="col-form-label"> Cerdo asado</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_cerdoamas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_cerdoamenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="cerdoa" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="cerdoa" class="cantcerdoa form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcerdoa" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcerdoa" id="totalcerdoa" class=" form-control" readonly>
+										</div>
+									</div>
+
+
+									<!--  ################################################################# --> 
+									<!--                   Cerdo con sal y pimienta             -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_cerdosypmas" class="col-form-label"> Cerdo con sal y pimienta</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_cerdosypmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_cerdosypmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="cerdosyp" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="cerdosyp" class="cantcerdosyp form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcerdosyp" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcerdosyp" id="totalcerdosyp" class=" form-control" readonly>
+										</div>
+									</div>
+
+								</div>  
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-		</footer>
-	</div>
+			<div class="container-fluid">
+				<div class="row w-100 p-3">
+					<div class="col">
+						<!--  ################################################################# -->
+						<!--                Otros             -->
+						<!--  ################################################################# -->
+						<div class="card">
+							<div class="card-header text-dark">
+								Otros
+							</div>
+							<div class="card-body text-dark">
+								<!--  ################################################################# -->
+								<!--                Lúmpias                   -->
+								<!--  ################################################################# -->
+								<div class="container">
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_lumpiasmas" class="col-form-label"> Lúmpia</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_lumpiasmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Del</label>
+											<button type="button" id="btn_lumpiasmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="lumpias" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="lumpias" id="lumpias" class="cantlumpias form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totallumpias" class="col-form-label">$</label>
+											<input type="number" min="0" name="totallumpias" id="totallumpias" class=" form-control" value="0" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                   Wantón frito                  -->
+									<!--  ################################################################# -->
+
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_wantonfmas" class="col-form-label"> Wantón frito</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_wantonfmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_wantonfmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="wantonf" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="wantonf" class="cantwantonf form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalwantonf" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalwantonf" id="totalwantonf" class=" form-control" readonly>
+										</div>
+									</div>
+
+
+									<!--  ################################################################# -->
+									<!--                   Fideos singapur                   -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_fideossmas" class="col-form-label"> Fideos singapur</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_fideossmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_fideossmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="fideoss" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="fideoss" class="cantfideoss form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalfideoss" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalfideoss" id="totalfideoss" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--                   Fu yong                 -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_fuyongmas" class="col-form-label"> Fu yong</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_fuyongmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_fuyongmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="fuyong" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="fuyong" class="cantfuyong form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalfuyong" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalfuyong" id="totalfuyong" class=" form-control" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--               Refresco 2lt                 -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_refresco2mas" class="col-form-label"> Refresco 2 lts </label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_refresco2mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_refresco2menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="refresco2" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="refresco2" class="cantrefresco2 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalrefresco2" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalrefresco2" id="totalrefresco2" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--          Liptón (Durazno, limón, verde)                -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_liptonmas" class="col-form-label"> Liptón (Durazno, limón, verde) </label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_liptonmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_liptonmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="lipton" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="lipton" class="cantlipton form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totallipton" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totallipton" id="totallipton" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--               Refresco lata                 -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_refrescolmas" class="col-form-label"> Refresco lata </label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_refrescolmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_refrescolmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="refrescol" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="refrescol" class="cantrefrescol form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalrefrescol" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalrefrescol" id="totalrefrescol" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--              Agua 600ml                 -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_agua6mas" class="col-form-label"> Agua 600 ml </label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_agua6mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_agua6menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="agua6" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="agua6" class="cantagua6 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalagua6" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalagua6" id="totalagua6" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--             pan chino 4 unidades                -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_pancmas" class="col-form-label"> Pan chino 4 unidades </label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_pancmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_pancmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="panc" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="panc" class="cantpanc form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalpanc" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalpanc" id="totalpanc" class=" form-control" readonly>
+										</div>
+									</div>
+								</div>  
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<!--  ################################################################# -->
+						<!--                  Sopa              -->
+						<!--  ################################################################# -->
+						<div class="card">
+							<div class="card-header text-dark">
+								Sopa
+							</div>
+							<div class="card-body text-dark">
+								<!--  ################################################################# -->
+								<!--               Sopa Wantón                 -->
+								<!--  ################################################################# -->
+								<div class="container">
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_sopawmas" class="col-form-label">Sopa wantón</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_sopawmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Del</label>
+											<button type="button" id="btn_sopawmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="sopaw" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="sopaw" id="sopaw" class="cantsopaw form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalsopaw" class="col-form-label">$</label>
+											<input type="number" min="0" name="totalsopaw" id="totalsopaw" class=" form-control" value="0" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                  Sopa wantón Mien                  -->
+									<!--  ################################################################# -->
+
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_swantonmienmas" class="col-form-label"> Sopa wantón mien</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_swantonmienmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_swantonmienmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="swantonmien" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="swantonmien" class="cantswantonmien form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalswantonmien" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalswantonmien" id="totalswantonmien" class=" form-control" readonly>
+										</div>
+									</div>
+								</div>  
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<!--  ################################################################# -->
+						<!--                  Chop Suey              -->
+						<!--  ################################################################# -->
+						<div class="card">
+							<div class="card-header text-dark">
+								Chop Suey
+							</div>
+							<div class="card-body text-dark">
+								<!--  ################################################################# -->
+								<!--                 Chop suey de vegetales                  -->
+								<!--  ################################################################# -->
+								<div class="container">
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_csvegetalesmas" class="col-form-label">Chop Suey de vegetales</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_csvegetalesmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Del</label>
+											<button type="button" id="btn_csvegetalesmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="csvegetales" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="csvegetales" id="csvegetales" class="cantcsvegetales form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcsvegetales" class="col-form-label">$</label>
+											<input type="number" min="0" name="totalcsvegetales" id="totalcsvegetales" class=" form-control" value="0" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                   Chop suey de pollo                  -->
+									<!--  ################################################################# -->
+
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_cspollomas" class="col-form-label"> Chop Suey de pollo</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_cspollomas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_cspollomenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="cspollo" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="cspollo" class="cantcspollo form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcspollo" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcspollo" id="totalcspollo" class=" form-control" readonly>
+										</div>
+									</div>
+
+
+									<!--  ################################################################# --> 
+									<!--                   Chop suey de cerdo             -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_cscerdomas" class="col-form-label"> Chop Suey de cerdo</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_cscerdomas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_cscerdomenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="cscerdo" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="cscerdo" class="cantcscerdo form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcscerdo" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcscerdo" id="totalcscerdo" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# --> 
+									<!--                   Chop suey de carne            -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_cscarnemas" class="col-form-label"> Chop Suey de carne</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_cscarnemas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_cscarnemenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="cscarne" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="cscarne" class="cantcscarne form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcscarne" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcscarne" id="totalcscarne" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# --> 
+									<!--                   Chop suey de camarones            -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_cscamaronesmas" class="col-form-label"> Chop Suey de camarones</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_cscamaronesmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_cscamaronesmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="cscamarones" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="cscamarones" class="cantcscamarones form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcscamarones" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcscamarones" id="totalcscamarones" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# --> 
+									<!--             Chop suey de pollo y camarones            -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_cspolloycmas" class="col-form-label"> Chop Suey de pollo y camarones</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_cspolloycmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_cspolloycmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="cspolloyc" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="cspolloyc" class="cantcspolloyc form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcspolloyc" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalcspolloyc" id="totalcspolloyc" class=" form-control" readonly>
+										</div>
+									</div>
+								</div>  
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<!--  ################################################################# -->
+						<!--                 Martes 2*3 kombos individuales              -->
+						<!--  ################################################################# -->
+						<div class="card">
+							<div class="card-header text-dark">
+								Martes 2*3 kombos individuales
+							</div>
+							<div class="card-body text-dark">
+								<!--  ################################################################# -->
+								<!--                 Martes Kombo #1                  -->
+								<!--  ################################################################# -->
+								<div class="container">
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_marteskombo1mas" class="col-form-label"> Martes de Kombo 1</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_marteskombo1mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Del</label>
+											<button type="button" id="btn_marteskombo1menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="marteskombo1" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="marteskombo1" id="marteskombo1" class="cantmarteskombo1 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalmarteskombo1" class="col-form-label">$</label>
+											<input type="number" min="0" name="totalmarteskombo1" id="totalmarteskombo1" class=" form-control" value="0" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                 Martes de 2*3 kombo #2                  -->
+									<!--  ################################################################# -->
+
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_marteskombo2mas" class="col-form-label"> Martes de kombo 2</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_marteskombo2mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_marteskombo2menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="marteskombo2" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="marteskombo2" class="cantmarteskombo2 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalmarteskombo2" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalmarteskombo2" id="totalmarteskombo2" class=" form-control" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--            Martes de 2*3 de kombo #3                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_marteskombo3mas" class="col-form-label"> martes de kombo 3</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_marteskombo3mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_marteskombo3menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="marteskombo3" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="marteskombo3" class="cantmarteskombo3 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalmarteskombo3" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalmarteskombo3" id="totalmarteskombo3" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--                 Martes 2*3  kombo #4                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_marteskombo4mas" class="col-form-label"> Martes de kombo 4</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_marteskombo4mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_marteskombo4menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="marteskombo4" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="marteskombo4" class="cantmarteskombo4 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalmarteskombo4" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalmarteskombo4" id="totalmarteskombo4" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--             Martes de 2*3  kombo #5                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_marteskombo5mas" class="col-form-label"> Martes de kombo 5</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_marteskombo5mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_marteskombo5menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="marteskombo5" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="marteskombo5" class="cantmarteskombo5 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalmarteskombo5" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalmarteskombo5" id="totalmarteskombo5" class=" form-control" readonly>
+										</div>
+									</div>
+
+									<!--  ################################################################# -->
+									<!--                Martes de 2*3 kombo #6                  -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_marteskombo6mas" class="col-form-label"> Martes de kombo 6</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_marteskombo6mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_marteskombo6menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="marteskombo6" class="col-form-label">Cant</label>
+											<input type="number" min="0" name="marteskombo6" class="cantmarteskombo6 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalmarteskombo6" class="col-form-label">$</label>
+											<input type="number" min="0" value="0" name="totalmarteskombo6" id="totalmarteskombo6" class=" form-control" readonly>
+										</div>
+									</div>
+
+								</div>  
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+
+
+
+
+	</form>
+
+	
+
+
+	<footer class="mastfoot mt-auto">
+		<div class="inner">
+			<p>Desarrollado por <a href="https://www.instagram.com/neurona.servicios">@Neurona.Servicios</a></p>
+		</div>
+	</footer>
+	
 
 
 
