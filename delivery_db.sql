@@ -2,10 +2,10 @@
 -- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 13, 2020 at 07:46 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 01-03-2021 a las 05:12:13
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `delivery_db`
+-- Base de datos: `delivery_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `compras`
+-- Estructura de tabla para la tabla `compras`
 --
 
 CREATE TABLE `compras` (
@@ -43,7 +43,7 @@ CREATE TABLE `compras` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `compras`
+-- Volcado de datos para la tabla `compras`
 --
 
 INSERT INTO `compras` (`id`, `numcliente`, `numrepartidor`, `direccion`, `formapago`, `ventacombo1`, `totalcombo1`, `ventacombo2`, `totalcombo2`, `ventacombo3`, `totalcombo3`, `fecha_hora`) VALUES
@@ -69,7 +69,7 @@ INSERT INTO `compras` (`id`, `numcliente`, `numrepartidor`, `direccion`, `formap
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menus`
+-- Estructura de tabla para la tabla `menus`
 --
 
 CREATE TABLE `menus` (
@@ -79,7 +79,7 @@ CREATE TABLE `menus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `menus`
+-- Volcado de datos para la tabla `menus`
 --
 
 INSERT INTO `menus` (`combo`, `precio`, `descripcion`) VALUES
@@ -89,7 +89,74 @@ INSERT INTO `menus` (`combo`, `precio`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `repartidores`
+--
+
+CREATE TABLE `repartidores` (
+  `nombre` varchar(100) NOT NULL,
+  `telefono` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `repartidores`
+--
+
+INSERT INTO `repartidores` (`nombre`, `telefono`) VALUES
+('José Pérez', '123456789'),
+('Pedro López', '987654321'),
+('Jack Sparrow', '9999999'),
+('Capitan Barbosa', '888888'),
+('Jesus Infante', '+584129333126'),
+('Javier Serpa', '+584242317545'),
+('Alan Serpa', '+584241754271'),
+('Braulio Labrador', '+584127003702'),
+('Alejandro Romero', '+584241116724'),
+('Jesus Romero', '+584143382339'),
+('Felix Machado', '+584166292862'),
+('Darling Duran', '+584242832881'),
+('Jesus Infante', '+584129333126'),
+('Javier Serpa', '+584242317545'),
+('Alan Serpa', '+584241754271'),
+('Braulio Labrador', '+584127003702'),
+('Alejandro Romero', '+584241116724'),
+('Jesus Romero', '+584143382339'),
+('Felix Machado', '+584166292862'),
+('Darling Duran', '+584242832881');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tasadeldia`
+--
+
+CREATE TABLE `tasadeldia` (
+  `tasa` int(100) NOT NULL,
+  `fecha_hora` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tasadeldia`
+--
+
+INSERT INTO `tasadeldia` (`tasa`, `fecha_hora`) VALUES
+(1865613, '2021-03-01 01:40:08'),
+(1865613, '2021-03-01 01:40:08'),
+(1865614, '2021-03-01 01:40:39'),
+(18656132, '2021-03-01 02:32:25'),
+(1234567, '2021-03-01 02:39:25'),
+(0, '2021-03-01 02:40:57'),
+(0, '2021-03-01 02:42:08'),
+(0, '2021-03-01 02:43:31'),
+(0, '2021-03-01 02:45:54'),
+(123456798, '2021-03-01 02:47:12'),
+(1234567989, '2021-03-01 02:49:24'),
+(1234567989, '2021-03-01 02:51:35'),
+(3043, '2021-03-01 02:52:16');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -99,7 +166,7 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `usuarios`
+-- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `user`, `pass`) VALUES
@@ -115,7 +182,7 @@ INSERT INTO `usuarios` (`id`, `user`, `pass`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ventas`
+-- Estructura de tabla para la tabla `ventas`
 --
 
 CREATE TABLE `ventas` (
@@ -131,45 +198,45 @@ CREATE TABLE `ventas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `compras`
+-- Indices de la tabla `compras`
 --
 ALTER TABLE `compras`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `usuarios`
+-- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ventas`
+-- Indices de la tabla `ventas`
 --
 ALTER TABLE `ventas`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `compras`
+-- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `usuarios`
+-- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `ventas`
+-- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
