@@ -2,9 +2,14 @@
 
 include('delivery.php');
 
-$sql = "SELECT SUM(ventacombo1) AS total_combo1, SUM(ventacombo2) AS total_combo2, SUM(ventacombo3) AS total_combo3 from compras";
+$sql = "SELECT SUM(ventacombo1) AS total_combo1, SUM(ventacombo2) AS total_combo2, SUM(ventacombo3) AS total_combo3, numrepartidor from compras";
 
 $resultado  = $conex->query($sql);
+
+
+$cons = "SELECT * FROM repartidores";
+$obtener= $conex->query($cons);
+
 
 
 if ($resultado) {
@@ -106,7 +111,7 @@ if ($resultado) {
       <div class="container">
         <header class="masthead mb-auto">
           <div class="inner">
-            <h3 class="masthead-brand">ChinoDeliveryApp</h3>
+            <img src="./img/logo.png" width="100em" height="100em" class="masthead-brand">
             <nav class="nav nav-masthead justify-content-center">
               <a class="nav-link" href="./home.php">Compras</a>
               <a class="nav-link active" href="./contabilidad.php">Contabilidad</a>
@@ -235,17 +240,14 @@ if ($resultado) {
         ?>
       </table>
 
+  </main>
 
-
-
-    </main>
-
-    <footer class="mastfoot mt-auto">
-      <div class="inner">
-        <p>Desarrollado por <a href="https://www.instagram.com/neurona.servicios">@Neurona.Servicios</a></p>
-      </div>
-    </footer>
-  </div>
+  <footer class="mastfoot mt-auto">
+    <div class="inner">
+      <p>Desarrollado por <a href="https://www.instagram.com/neurona.servicios">Neurona Servicios</a></p>
+    </div>
+  </footer>
+</div>
 
 </body>
 </html>
