@@ -285,10 +285,13 @@ if ($restasa) {
 													<div class="row"><div id="listacerdocurry"></div></div>
 													<div class="row"><div id="listacerdoostra"></div></div>
 													<div class="row"><div id="listalumpias"></div></div>
+													<div class="row"><div id="listaracionlumpias"></div></div>
 													<div class="row"><div id="listawantonf"></div></div>
 													<div class="row"><div id="listafideoss"></div></div>
 													<div class="row"><div id="listafuyong"></div></div>
+													<div class="row"><div id="listacostillaunidad"></div></div>
 													<div class="row"><div id="listarefresco2"></div></div>
+													<div class="row"><div id="listarefresco1"></div></div>
 													<div class="row"><div id="listalipton"></div></div>
 													<div class="row"><div id="listarefrescol"></div></div>
 													<div class="row"><div id="listaagua6"></div></div>
@@ -1845,6 +1848,31 @@ if ($restasa) {
 											<input type="number" min="0" name="totallumpias" id="totallumpias" class=" form-control" value="0" readonly>
 										</div>
 									</div>
+									<!--  ################################################################# -->
+								<!--                Lúmpias                   -->
+								<!--  ################################################################# -->
+								
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_racionlumpiasmas" class="col-form-label">Ración Lúmpias</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_racionlumpiasmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Del</label>
+											<button type="button" id="btn_racionlumpiasmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="racionlumpias" class="col-form-label">Cantidad</label>
+											<input type="number" min="0" name="racionlumpias" id="racionlumpias" class="cantracionlumpias form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalracionlumpias" class="col-form-label">Subtotal</label>
+											<input type="number" min="0" name="totalracionlumpias" id="totalracionlumpias" class=" form-control" value="0" readonly>
+										</div>
+									</div>
 
 									<!--  ################################################################# -->
 									<!--                   Wantón frito                  -->
@@ -1923,102 +1951,6 @@ if ($restasa) {
 									</div>
 
 									<!--  ################################################################# -->
-									<!--               Refresco 2lt                 -->
-									<!--  ################################################################# -->
-									<div class="row form-group">
-										<div class="col">
-											<label for="btn_refresco2mas" class="col-form-label"> Refresco 2 lts </label>
-										</div>
-										<div class="col">
-											<label  class="col-form-label">Add</label>
-											<button type="button" id="btn_refresco2mas" class="btn btn-sm btn-success btn-block">+</button>
-										</div>
-										<div class="col">
-											<label class="col-form-label">Del</label>
-											<button type="button" id="btn_refresco2menos" class="btn btn-sm btn-danger btn-block">-</button>
-										</div>
-										<div class="col">
-											<label for="refresco2" class="col-form-label">Cantidad</label>
-											<input type="number" min="0" name="refresco2" class="cantrefresco2 form-control" value="0" readonly>
-										</div>
-										<div class="col">
-											<label for="totalrefresco2" class="col-form-label">Subtotal</label>
-											<input type="number" min="0" value="0" name="totalrefresco2" id="totalrefresco2" class=" form-control" readonly>
-										</div>
-									</div>
-									<!--  ################################################################# -->
-									<!--          Liptón (Durazno, limón, verde)                -->
-									<!--  ################################################################# -->
-									<div class="row form-group">
-										<div class="col">
-											<label for="btn_liptonmas" class="col-form-label"> Liptón (Durazno, limón, verde) </label>
-										</div>
-										<div class="col">
-											<label  class="col-form-label">Add</label>
-											<button type="button" id="btn_liptonmas" class="btn btn-sm btn-success btn-block">+</button>
-										</div>
-										<div class="col">
-											<label class="col-form-label">Del</label>
-											<button type="button" id="btn_liptonmenos" class="btn btn-sm btn-danger btn-block">-</button>
-										</div>
-										<div class="col">
-											<label for="lipton" class="col-form-label">Cantidad</label>
-											<input type="number" min="0" name="lipton" class="cantlipton form-control" value="0" readonly>
-										</div>
-										<div class="col">
-											<label for="totallipton" class="col-form-label">Subtotal</label>
-											<input type="number" min="0" value="0" name="totallipton" id="totallipton" class=" form-control" readonly>
-										</div>
-									</div>
-									<!--  ################################################################# -->
-									<!--               Refresco lata                 -->
-									<!--  ################################################################# -->
-									<div class="row form-group">
-										<div class="col">
-											<label for="btn_refrescolmas" class="col-form-label"> Refresco lata </label>
-										</div>
-										<div class="col">
-											<label  class="col-form-label">Add</label>
-											<button type="button" id="btn_refrescolmas" class="btn btn-sm btn-success btn-block">+</button>
-										</div>
-										<div class="col">
-											<label class="col-form-label">Del</label>
-											<button type="button" id="btn_refrescolmenos" class="btn btn-sm btn-danger btn-block">-</button>
-										</div>
-										<div class="col">
-											<label for="refrescol" class="col-form-label">Cantidad</label>
-											<input type="number" min="0" name="refrescol" class="cantrefrescol form-control" value="0" readonly>
-										</div>
-										<div class="col">
-											<label for="totalrefrescol" class="col-form-label">Subtotal</label>
-											<input type="number" min="0" value="0" name="totalrefrescol" id="totalrefrescol" class=" form-control" readonly>
-										</div>
-									</div>
-									<!--  ################################################################# -->
-									<!--              Agua 600ml                 -->
-									<!--  ################################################################# -->
-									<div class="row form-group">
-										<div class="col">
-											<label for="btn_agua6mas" class="col-form-label"> Agua 600 ml </label>
-										</div>
-										<div class="col">
-											<label  class="col-form-label">Add</label>
-											<button type="button" id="btn_agua6mas" class="btn btn-sm btn-success btn-block">+</button>
-										</div>
-										<div class="col">
-											<label class="col-form-label">Del</label>
-											<button type="button" id="btn_agua6menos" class="btn btn-sm btn-danger btn-block">-</button>
-										</div>
-										<div class="col">
-											<label for="agua6" class="col-form-label">Cantidad</label>
-											<input type="number" min="0" name="agua6" class="cantagua6 form-control" value="0" readonly>
-										</div>
-										<div class="col">
-											<label for="totalagua6" class="col-form-label">Subtotal</label>
-											<input type="number" min="0" value="0" name="totalagua6" id="totalagua6" class=" form-control" readonly>
-										</div>
-									</div>
-									<!--  ################################################################# -->
 									<!--             pan chino 4 unidades                -->
 									<!--  ################################################################# -->
 									<div class="row form-group">
@@ -2040,6 +1972,31 @@ if ($restasa) {
 										<div class="col">
 											<label for="totalpanc" class="col-form-label">Subtotal</label>
 											<input type="number" min="0" value="0" name="totalpanc" id="totalpanc" class=" form-control" readonly>
+										</div>
+									</div>
+										<!--  ################################################################# -->
+									<!--                   Costilla unidad                  -->
+									<!--  ################################################################# -->
+
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_costillaunidadmas" class="col-form-label"> Costilla unidad</label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_costillaunidadmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_costillaunidadmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="costillaunidad" class="col-form-label">Cantidad</label>
+											<input type="number" min="0" name="costillaunidad" class="cantcostillaunidad form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalcostillaunidad" class="col-form-label">Subtotal</label>
+											<input type="number" min="0" value="0" name="totalcostillaunidad" id="totalcostillaunidad" class=" form-control" readonly>
 										</div>
 									</div>
 								</div>  
@@ -2704,9 +2661,144 @@ if ($restasa) {
 							
 						</div>
 					</div>
-				</div>
 				
-			</div>
+					<div class="col">
+						<!--  ################################################################# -->
+						<!--                bebidas             -->
+						<!--  ################################################################# -->
+						<div class="card">
+							<div class="card-header text-dark">
+								Bebidas
+							</div>
+							<div class="card-body text-dark">
+								
+
+									<!--  ################################################################# -->
+									<!--               Refresco 1.5lt                 -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_refresco2mas" class="col-form-label"> Refresco 1.5 lts </label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_refresco2mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_refresco2menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="refresco2" class="col-form-label">Cantidad</label>
+											<input type="number" min="0" name="refresco2" class="cantrefresco2 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalrefresco2" class="col-form-label">Subtotal</label>
+											<input type="number" min="0" value="0" name="totalrefresco2" id="totalrefresco2" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--               Refresco 1.5lt                 -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_refresco1mas" class="col-form-label"> Refresco 1 lts </label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_refresco1mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_refresco1menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="refresco1" class="col-form-label">Cantidad</label>
+											<input type="number" min="0" name="refresco1" class="cantrefresco1 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalrefresco1" class="col-form-label">Subtotal</label>
+											<input type="number" min="0" value="0" name="totalrefresco1" id="totalrefresco1" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--          Liptón (Durazno, limón, verde)                -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_liptonmas" class="col-form-label"> Liptón 1.5 Lts (Durazno, limón, verde) </label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_liptonmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_liptonmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="lipton" class="col-form-label">Cantidad</label>
+											<input type="number" min="0" name="lipton" class="cantlipton form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totallipton" class="col-form-label">Subtotal</label>
+											<input type="number" min="0" value="0" name="totallipton" id="totallipton" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--               Refresco lata                 -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_refrescolmas" class="col-form-label"> Refresco lata </label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_refrescolmas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_refrescolmenos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="refrescol" class="col-form-label">Cantidad</label>
+											<input type="number" min="0" name="refrescol" class="cantrefrescol form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalrefrescol" class="col-form-label">Subtotal</label>
+											<input type="number" min="0" value="0" name="totalrefrescol" id="totalrefrescol" class=" form-control" readonly>
+										</div>
+									</div>
+									<!--  ################################################################# -->
+									<!--              Agua 600ml                 -->
+									<!--  ################################################################# -->
+									<div class="row form-group">
+										<div class="col">
+											<label for="btn_agua6mas" class="col-form-label"> Agua 600 ml </label>
+										</div>
+										<div class="col">
+											<label  class="col-form-label">Add</label>
+											<button type="button" id="btn_agua6mas" class="btn btn-sm btn-success btn-block">+</button>
+										</div>
+										<div class="col">
+											<label class="col-form-label">Del</label>
+											<button type="button" id="btn_agua6menos" class="btn btn-sm btn-danger btn-block">-</button>
+										</div>
+										<div class="col">
+											<label for="agua6" class="col-form-label">Cantidad</label>
+											<input type="number" min="0" name="agua6" class="cantagua6 form-control" value="0" readonly>
+										</div>
+										<div class="col">
+											<label for="totalagua6" class="col-form-label">Subtotal</label>
+											<input type="number" min="0" value="0" name="totalagua6" id="totalagua6" class=" form-control" readonly>
+										</div>
+									</div>
+									
+							</div>  
+						</div>
+					</div>
+				
+				</div>
 			
 		</section>
 

@@ -51,6 +51,7 @@ var contwantonf = 0;
 var contfideoss = 0;
 var contfuyong = 0;
 var contrefresco2 = 0;
+var contrefresco1 = 0;
 var contlipton = 0;
 var contrefrescol = 0;
 var contagua6 = 0;
@@ -91,6 +92,8 @@ var contcmcamarones = 0;
 var contcmpolloycamarones = 0;
 var contcerdocurry = 0;
 var contcerdoostra = 0;
+var contcostillaunidad = 0;
+var contracionlumpias = 0;
 var totalglobal = 0;
 var precioMegaCombo1 = 26;
 var precioMegaCombo2 = 26;
@@ -184,6 +187,9 @@ var preciocerdoostra = 10;
 var preciocsjamon = 7;
 var preciocsespecial = 8;
 var preciocskowloon = 9;
+var preciorefresco1 = 2;
+var preciocostillaunidad = 2;
+var precioracionlumpias = 3;
 ////////////////////////////////////////////////////////////////////////
 /////                  MEGA COMBO # 1                           //////////////
 ///////////////////////////////////////////////////////////////////
@@ -1986,6 +1992,42 @@ $("#btn_lumpiasmenos").click(function () {
   }
 });
 ////////////////////////////////////////////////////////////////////////
+/////              Racion   Lumpias                            ///////
+///////////////////////////////////////////////////////////////////
+
+$("#btn_racionlumpiasmas").click(function () {
+  contracionlumpias += 1;
+
+  $("input[name=racionlumpias]").val(contracionlumpias);
+  $("input[name=totalracionlumpias]").val(
+    contracionlumpias * precioracionlumpias
+  );
+  $("#totalCompra").text(sumarTodo());
+
+  if ($("input[name=racionlumpias]").val() > 0) {
+    $("#listaracionlumpias").text("x" + contracionlumpias + "Ración Lumpia");
+  }
+});
+
+$("#btn_racionlumpiasmenos").click(function () {
+  contracionlumpias -= 1;
+  if (contracionlumpias < 0) {
+    contracionlumpias = 0;
+  }
+
+  $("input[name=racionlumpias]").val(contracionlumpias);
+  $("input[name=totalracionlumpias]").val(
+    contracionlumpias * precioracionlumpias
+  );
+  $("#totalCompra").text(sumarTodo());
+
+  if ($("input[name=racionlumpias]").val() > 0) {
+    $("#listaracionlumpias").text("x" + contracionlumpias + " Ración lumpia");
+  } else {
+    $("#listaracionlumpias").text("");
+  }
+});
+////////////////////////////////////////////////////////////////////////
 /////                Wantón frito                            ///////
 ///////////////////////////////////////////////////////////////////
 
@@ -2084,7 +2126,48 @@ $("#btn_fuyongmenos").click(function () {
 });
 
 ////////////////////////////////////////////////////////////////////////
-/////                Refresco 2 lts                            ///////
+/////                Costilla unidad                           ///////
+///////////////////////////////////////////////////////////////////
+
+$("#btn_costillaunidadmas").click(function () {
+  contcostillaunidad += 1;
+
+  $("input[name=costillaunidad]").val(contcostillaunidad);
+  $("input[name=totalcostillaunidad]").val(
+    contcostillaunidad * preciocostillaunidad
+  );
+  $("#totalCompra").text(sumarTodo());
+
+  if ($("input[name=costillaunidad]").val() > 0) {
+    $("#listacostillaunidad").text(
+      "x" + contcostillaunidad + " Costilla unidad"
+    );
+  }
+});
+
+$("#btn_costillaunidadmenos").click(function () {
+  contcostillaunidad -= 1;
+  if (contcostillaunidad < 0) {
+    contcostillaunidad = 0;
+  }
+
+  $("input[name=costillaunidad]").val(contcostillaunidad);
+  $("input[name=totalcostillaunidad]").val(
+    contcostillaunidad * preciocostillaunidad
+  );
+  $("#totalCompra").text(sumarTodo());
+
+  if ($("input[name=costillaunidad]").val() > 0) {
+    $("#listacostillaunidad").text(
+      "x" + contcostillaunidad + " Costilla unidad"
+    );
+  } else {
+    $("#listacostillaunidad").text("");
+  }
+});
+
+////////////////////////////////////////////////////////////////////////
+/////                Refresco 1.5 lts                            ///////
 ///////////////////////////////////////////////////////////////////
 
 $("#btn_refresco2mas").click(function () {
@@ -2095,7 +2178,7 @@ $("#btn_refresco2mas").click(function () {
   $("#totalCompra").text(sumarTodo());
 
   if ($("input[name=refresco2]").val() > 0) {
-    $("#listarefresco2").text("x" + contrefresco2 + " Refresco 2 lts");
+    $("#listarefresco2").text("x" + contrefresco2 + " Refresco 1.5 lts");
   }
 });
 
@@ -2110,9 +2193,41 @@ $("#btn_refresco2menos").click(function () {
   $("#totalCompra").text(sumarTodo());
 
   if ($("input[name=refresco2]").val() > 0) {
-    $("#listarefresco2").text("x" + contrefresco2 + "Refresco 2 lts");
+    $("#listarefresco2").text("x" + contrefresco2 + "Refresco 1.5 lts");
   } else {
     $("#listarefresco2").text("");
+  }
+});
+////////////////////////////////////////////////////////////////////////
+/////                Refresco 1 lts                            ///////
+///////////////////////////////////////////////////////////////////
+
+$("#btn_refresco1mas").click(function () {
+  contrefresco1 += 1;
+
+  $("input[name=refresco1]").val(contrefresco1);
+  $("input[name=totalrefresco1]").val(contrefresco1 * preciorefresco1);
+  $("#totalCompra").text(sumarTodo());
+
+  if ($("input[name=refresco1]").val() > 0) {
+    $("#listarefresco1").text("x" + contrefresco1 + " Refresco 1 lts");
+  }
+});
+
+$("#btn_refresco1menos").click(function () {
+  contrefresco1 -= 1;
+  if (contrefresco1 < 0) {
+    contrefresco1 = 0;
+  }
+
+  $("input[name=refresco1]").val(contrefresco1);
+  $("input[name=totalrefresco1]").val(contrefresco1 * preciorefresco1);
+  $("#totalCompra").text(sumarTodo());
+
+  if ($("input[name=refresco1]").val() > 0) {
+    $("#listarefresco1").text("x" + contrefresco1 + "Refresco 1 lts");
+  } else {
+    $("#listarefresco1").text("");
   }
 });
 ////////////////////////////////////////////////////////////////////////
@@ -2128,7 +2243,7 @@ $("#btn_liptonmas").click(function () {
 
   if ($("input[name=lipton]").val() > 0) {
     $("#listalipton").text(
-      "x" + contlipton + " liptón (Durazno, verde, limón)"
+      "x" + contlipton + " liptón 1.5 Lts (Durazno, verde, limón)"
     );
   }
 });
@@ -2145,7 +2260,7 @@ $("#btn_liptonmenos").click(function () {
 
   if ($("input[name=lipton]").val() > 0) {
     $("#listalipton").text(
-      "x" + contlipton + " liptón (Durazno, verde, limón)"
+      "x" + contlipton + " liptón 1.5 Lts(Durazno, verde, limón)"
     );
   } else {
     $("#listalipton").text("");
@@ -3231,6 +3346,7 @@ function sumarTodo() {
     parseInt($("input[name=totalrefresco2]").val()) +
     parseInt($("input[name=totallipton]").val()) +
     parseInt($("input[name=totalrefrescol]").val()) +
+    parseInt($("input[name=totalrefrescol]").val()) +
     parseInt($("input[name=totalagua6]").val()) +
     parseInt($("input[name=totalpanc]").val()) +
     parseInt($("input[name=totalsopaw]").val()) +
@@ -3261,6 +3377,8 @@ function sumarTodo() {
     parseInt($("input[name=totalcmpolloycamarones]").val()) +
     parseInt($("input[name=totalcsjamon]").val()) +
     parseInt($("input[name=totalcsespecial]").val()) +
-    parseInt($("input[name=totalcskowloon]").val())
+    parseInt($("input[name=totalcskowloon]").val()) +
+    parseInt($("input[name=totalcostillaunidad]").val()) +
+    parseInt($("input[name=totalracionlumpias]").val())
   );
 }
