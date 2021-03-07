@@ -1925,7 +1925,7 @@ if ($restasa) {
 											<input type="number" min="0" step='.01' value="0" name="totalcerdocurry" id="totalcerdocurry" class=" form-control" readonly>
 										</div>
 									</div>
-									<!--  ################################################################# --> 
+									<!--  ################################################################# -->
 									<!--                   Cerdo con ostra             -->
 									<!--  ################################################################# -->
 									<hr>
@@ -2974,11 +2974,11 @@ if ($restasa) {
 										<input type="number" min="0" step='.01' value="0" name="totalagua6" id="totalagua6" class=" form-control" readonly>
 									</div>
 								</div>
-								
-							</div>  
-						</div>
-					</div>
 
+									</div>
+									</div>
+									</div>
+								
 					<div class="col">
 						<!--  ################################################################# -->
 						<!--                bebidas             -->
@@ -3004,7 +3004,7 @@ if ($restasa) {
 										<label for="totalitem1" class="col-form-label">Subtotal</label>
 										<input type="number" min="0" step='.01' value="0" name="totalitem1" id="totalitem1" class=" form-control" >
 									</div>
-								</div>
+										</div>
 								<!--  ################################################################# -->
 								<!--               ITEM 2                -->
 								<!--  ################################################################# -->
@@ -3014,8 +3014,8 @@ if ($restasa) {
 									<label for="item1" class="col-form-label">Item</label>
 									<input type="text" name="item2" id="item2" class=" form-control" placeholder="Item 2">
 									</div>
-									
-									<div class="col">
+
+										<div class="col">
 										<label for="totalitem2" class="col-form-label">Subtotal</label>
 										<input type="number" min="0" step='.01' value="0" name="totalitem2" id="totalitem2" class=" form-control" >
 									</div>
