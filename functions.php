@@ -3323,10 +3323,10 @@ var intervalo = window.setInterval(function(){
     parseFloat( 
       (isNaN(
         parseFloat($(subtotalCompra).text())
-        ) ? 0 : parseFloat($(subtotalCompra).text()).toFixed(2)) + 
+        ) ? 0 : parseFloat($(subtotalCompra).text())) + 
     (isNaN( 
       parseFloat($("#pagoDelivery").text())
-      )  ? 0  :  parseFloat($("#pagoDelivery").text()).toFixed(2)))
+      )  ? 0  :  parseFloat($("#pagoDelivery").text())))
     );
 
     $(subtotalCompra).text(
