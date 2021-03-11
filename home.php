@@ -165,7 +165,11 @@ if ($restasa) {
 
 					<label for="inputzona" class="" style="float:left"><br><h6>Ubicación (Google Maps) / Dirección</h6></label>
 					<input type="text" id="inputzona" class="form-control" placeholder="Ubicación"  name="zona" required>
+					
+					<label for="inputzonaextra" class="" style="float:left"><br><h6>Referencia de zona de envio</h6></label>
+					<input type="text" id="inputzonaextra" class="form-control" placeholder="Referencia de zona de envio"  autofocus name="zonaextra" required>
 
+					   
 
 					<!--  ################################################################# -->
 					<!--                    FORMAS DE PAGO                 -->
@@ -276,6 +280,14 @@ if ($restasa) {
 											</div>
 											<div class="col">
 												<span id="linkMapa"></span><br>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col">
+												<span>Ubicación datos extras: </span>
+											</div>
+											<div class="col">
+												<span id="zonaextra"></span><br>
 											</div>
 										</div>
 

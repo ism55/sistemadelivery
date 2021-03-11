@@ -3229,6 +3229,10 @@ $("input[name=zona]").change(function () {
   $("#linkMapa").text($("input[name=zona]").val());
 });
 
+$("input[name=zonaextra]").change(function () {
+  $("#zonaextra").text($("input[name=zonaextra]").val());
+});
+
 $("input[name=bolivares]").change(function () {
   $("#pagoBs").text($("input[name=bolivares]").val());
 
@@ -3513,7 +3517,9 @@ function SendToDelivery() {
     document.getElementById("nombreZona").innerText +
     "\n\n" +
     "Ubicación: \n\n" + 
-    document.getElementById("linkMapa").innerText +
+    document.getElementById("linkMapa").innerText +"\n\n" +
+    "Ubicación datos extras: \n\n" +
+    document.getElementById("zonaextra").innerText +
     "\n\n" +
     "Contacto del cliente:\n\n" +
     $("input[name=cliente]").val().replaceAll(' ','').replaceAll("(",'').replaceAll(")",'').replaceAll('-','');
