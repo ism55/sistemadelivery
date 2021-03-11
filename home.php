@@ -447,7 +447,7 @@ if ($restasa) {
 
 										<div class="row">
 											<div class="col">
-												<span>Faltante: </span>
+												<span>Cambio: </span>
 											</div>
 											<div class="col">
 												<span id="pagoFaltante"></span><br>
