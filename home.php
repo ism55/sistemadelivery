@@ -187,7 +187,7 @@ if ($restasa) {
 					</select>
 					
 					<label for="inputbolivares" class="" style="float:left"><br><h6>Bolívares</h6></label>
-					<input type="number" min="0" step='.01' value="0" id="inputbolivares" class="form-control" placeholder="Bs"  name="bolivares" step='.01' required>
+					<input type="number" min="0" step='.01' value="0" id="inputbolivares" class="form-control" placeholder="USD"  name="bolivares" step='.01' required>
 
 					<label for="inputdolares" class="" style="float:left"><br><h6>Dólares</h6></label>
 					<input type="number" min="0" step='.01' value ="0" id="inputdolares" class="form-control" placeholder="USD"  name="dolares" step='.01' required>
@@ -458,6 +458,7 @@ if ($restasa) {
 									<a href="#" class="card-link text-info" onClick='CopyToClipboard("factura")'>Copiar texto</a>
 									<a href="#"  target="_blank" id="enlaceCliente" class="card-link text-info" onClick='SendToClient()'>Enviar a Cliente</a>
 									<a href="#"  target="_blank" id="enlaceDelivery" class="card-link text-info" onClick='SendToDelivery()'>Enviar a Repartidor</a>
+									<a href="#"  target="_blank" id="enlaceCliente2" class="card-link text-info" onClick='SendToClient2()'>Cambio Cliente</a>
 								</div>
 							</div>
 						</div>

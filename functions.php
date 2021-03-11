@@ -3234,7 +3234,10 @@ $("input[name=zonaextra]").change(function () {
 });
 
 $("input[name=bolivares]").change(function () {
-  $("#pagoBs").text($("input[name=bolivares]").val());
+
+var auxbs = parseFloat($("input[name=bolivares]").val())*parseFloat($("#tasaDia").val());
+  
+  $("#pagoBs").text(auxbs);
 
   var totalFaltante =
     (isNaN(parseFloat($(subtotalCompra).text()).toFixed(2))
@@ -3347,25 +3350,9 @@ var intervalo = window.setInterval(function(){
 
 
   $("#pagoUSD").text($("input[name=dolares]").val());
-  var totalFaltante =
-    (isNaN(parseFloat($(totalCompra).text()).toFixed(2))
-      ? 0
-      : parseFloat($(totalCompra).text()).toFixed(2)) -
-    (isNaN(parseFloat($("#pagoUSD").text()).toFixed(2))
-      ? 0
-      : parseFloat($("#pagoUSD").text()).toFixed(2)) -
-    (isNaN(parseFloat($("#pagoBs").text()).toFixed(2))
-      ? 0
-      : parseFloat($("#pagoBs").text()).toFixed(2) /
-        parseFloat($("#tasaDia").val()));
-  $("#pagoFaltante").text(
-    totalFaltante.toFixed(2) +
-      "$" +
-      " /  " +
-      (totalFaltante * parseFloat($("#tasaDia").val())).toFixed(2) +
-      "Bs"
-  );
-  $("#pagoBs").text($("input[name=bolivares]").val());
+
+  var auxbs = parseFloat($("input[name=bolivares]").val())*parseFloat($("#tasaDia").val());
+  $("#pagoBs").text(auxbs);
 
   var totalFaltante =
     (isNaN(parseFloat($(totalCompra).text()).toFixed(2))
@@ -3385,6 +3372,8 @@ var intervalo = window.setInterval(function(){
       (totalFaltante * parseFloat($("#tasaDia").val(), 10)).toFixed(2) +
       "Bs"
   );
+
+
 
 }, 1000);
 
@@ -3497,7 +3486,32 @@ function SendToClient() {
   //+56979184554?text=Hola%20quiero%20contactarlo
   document.body.removeChild(textarea);
 }
+function SendToClient2() {
+  let textarea = document.createElement("textarea");
+  textarea.id = "t";
+  // Optional step to make less noise on the page, if any!
+  textarea.style.height = 0;
+  // Now append it to your page somewhere, I chose <body>
+  document.body.appendChild(textarea);
+  // Give our textarea a value of whatever inside the div of id=containerid
+  document.getElementById("comboslista").innerText;
+  textarea.value = document.getElementById("comboslista").innerText;
+ 
+ var auxval ="Su cambio es de : " + $("#pagoFaltante").text();
+  document
+    .getElementById("enlaceCliente2")
+    .setAttribute(
+      "href",
+      "http://wa.me/" +
+        $("input[name=cliente]").val().replaceAll(' ','').replaceAll("(",'').replaceAll(")",'').replaceAll('-','') +
+        "?" +
+        "text=" +
+        encodeURIComponent(auxval)
+    );
 
+  //+56979184554?text=Hola%20quiero%20contactarlo
+  document.body.removeChild(textarea);
+}
 function SendToDelivery() {
   let textarea = document.createElement("textarea");
   textarea.id = "t";
@@ -3522,7 +3536,14 @@ function SendToDelivery() {
     document.getElementById("zonaextra").innerText +
     "\n\n" +
     "Contacto del cliente:\n\n" +
-    $("input[name=cliente]").val().replaceAll(' ','').replaceAll("(",'').replaceAll(")",'').replaceAll('-','');
+    $("input[name=cliente]").val().replaceAll(' ','').replaceAll("(",'').replaceAll(")",'').replaceAll('-','')+"\n\n"+
+    "El cambio del cliente es: " + $("#pagoFaltante").text()+ "\n\n"
+    
+    
+    
+    +"Tipo de pago:" + $("#tipoPago").val()
+    
+    ;
 
   document
     .getElementById("enlaceDelivery")
