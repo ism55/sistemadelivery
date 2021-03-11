@@ -174,9 +174,10 @@ if ($restasa) {
 					<label for="tipoPago" class="" style="float:left"><br><h6>Forma de pago</h6></label>
 					<select id="tipoPago" name="formaRadio" class="form-control">
 						<option value="">Ninguno</option>
-						<option value="Transferencia">Transferencia o Pago móvil</option>
+						<option value="Transferencia">Transferencia Banesco o Pago móvil</option>
 						<option value="Efectivo">Efectivo</option>
 						<option value="Ambos">Ambos</option>
+						<option value="PayPal">Paypal</option>
 						
 
 					</select>

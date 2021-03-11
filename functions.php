@@ -3422,10 +3422,14 @@ function SendToClient() {
     textarea.value +
     "\n\n" +
     "Por un total de: " +
+    
     document.getElementById("totalCompra").innerText +
     "$" + " / " +   String(parseFloat($("#tasaDia").val()) * parseFloat(document.getElementById("totalCompra").innerText)) + "Bs" +
     "\n\n" +
-    "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"+ "\n\n" +
+    "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"+
+    
+    
+     "\n\n" +
     "¿Cómo desea pagar?" + 
     "\n\n"+
 
