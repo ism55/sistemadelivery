@@ -130,6 +130,7 @@ var contcerdoostra = 0;
 var contcostillaunidad = 0;
 var contracionlumpias = 0;
 var totalglobal = 0;
+
 <?php
 echo "var precioMegaCombo1 = $arreglo[1];\n";
 echo "var precioMegaCombo2 = $arreglo[3];\n";
@@ -3205,7 +3206,7 @@ $("#btn_cmpolloycamaronesmenos").click(function () {
 /////////////////////////////////////////////////////////////////////
 
 $("input[name=cliente]").change(function () {
-  $("#numCliente").text($("input[name=cliente]").val());
+  $("#numCliente").text($("input[name=cliente]").val().replaceAll(' ','').replaceAll("(",'').replaceAll(")",'').replaceAll('-',''));
 });
 
 $("select[name=delivery]").change(function () {
@@ -3424,7 +3425,19 @@ function SendToClient() {
     document.getElementById("totalCompra").innerText +
     "$" + " / " +   String(parseFloat($("#tasaDia").val()) * parseFloat(document.getElementById("totalCompra").innerText)) + "Bs" +
     "\n\n" +
-    "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"
+    "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"+
+    "¿Cómo desea pagar?" + 
+    "\n\n"+
+
+    "Aceptamos:"+
+    "\n\n"+
+    "Banesco bolívares"+
+    "\n\n"+
+    "Pago móvil"+
+    "\n\n"+
+    "Efectivo dólares"+
+    "PayPal"
+    
     ;
 
   document
@@ -3432,7 +3445,7 @@ function SendToClient() {
     .setAttribute(
       "href",
       "http://wa.me/" +
-        $("input[name=cliente]").val() +
+        $("input[name=cliente]").val().replaceAll(' ','').replaceAll("(",'').replaceAll(")",'').replaceAll('-','') +
         "?" +
         "text=" +
         encodeURIComponent(auxval)
@@ -3464,7 +3477,7 @@ function SendToDelivery() {
     document.getElementById("linkMapa").innerText +
     "\n\n" +
     "Contacto del cliente:\n\n" +
-    $("input[name=cliente]").val();
+    $("input[name=cliente]").val().replaceAll(' ','').replaceAll("(",'').replaceAll(")",'').replaceAll('-','');
 
   document
     .getElementById("enlaceDelivery")
