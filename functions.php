@@ -3416,15 +3416,46 @@ function SendToClient() {
   // Give our textarea a value of whatever inside the div of id=containerid
   document.getElementById("comboslista").innerText;
   textarea.value = document.getElementById("comboslista").innerText;
+  var valorTotal = document.getElementById("totalCompra").innerText;
 
-  var auxval =
+  
+    if  ($("#tipoPago").val()=="PayPal"){
+
+      var auxval =
+    "Su pedido es:\n\n" +
+    textarea.value +
+    "\n\n" +
+    "Por un total de: " + 
+       valorTotal + "$"  + 
+    "\n " + 
+    "Comisión de PayPal:" + String((0.054 * parseFloat(valorTotal))+0.3)+
+    "\n\n"
+   +"Total con la comisión de PayPal: " + String((1.054 * parseFloat(valorTotal))+0.3) 
+   +"\n\n" +
+    "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"+
+        
+     "\n\n" +
+    "¿Cómo desea pagar?" + 
+    "\n\n"+
+
+    "Aceptamos:"+
+    "\n"+
+    "Banesco bolívares"+
+    "\n"+
+    "Pago móvil"+
+    "\n"+
+    "Efectivo dólares"+
+    "\n"+
+    "PayPal"
+    }
+    else {
+      var auxval =
     "Su pedido es:\n\n" +
     textarea.value +
     "\n\n" +
     "Por un total de: " +
-    
-    document.getElementById("totalCompra").innerText +
-    "$" + " / " +   String(parseFloat($("#tasaDia").val()) * parseFloat(document.getElementById("totalCompra").innerText)) + "Bs" +
+      valorTotal +
+    "$" + " / " +   String(parseFloat($("#tasaDia").val()) * parseFloat(valorTotal)) + "Bs" +
     "\n\n" +
     "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"+
     
@@ -3442,6 +3473,9 @@ function SendToClient() {
     "Efectivo dólares"+
     "\n"+
     "PayPal"
+
+    }
+    
     
     ;
 
