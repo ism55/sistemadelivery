@@ -3425,17 +3425,18 @@ function SendToClient() {
     document.getElementById("totalCompra").innerText +
     "$" + " / " +   String(parseFloat($("#tasaDia").val()) * parseFloat(document.getElementById("totalCompra").innerText)) + "Bs" +
     "\n\n" +
-    "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"+
+    "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"+ "\n\n" +
     "¿Cómo desea pagar?" + 
     "\n\n"+
 
     "Aceptamos:"+
-    "\n\n"+
+    "\n"+
     "Banesco bolívares"+
-    "\n\n"+
+    "\n"+
     "Pago móvil"+
-    "\n\n"+
+    "\n"+
     "Efectivo dólares"+
+    "\n"+
     "PayPal"
     
     ;
