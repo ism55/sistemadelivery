@@ -3561,10 +3561,15 @@ function SendToDelivery() {
 }
 
 function imprSelec(X) {
+  var fecha = new Date();
+  var now = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
   var orden = document.getElementById(X);
   var ventimp = window.open(" ", "popimpr");
+  ventimp.document.write(now);
   ventimp.document.write(orden.innerHTML);
+ 
   ventimp.document.close();
+  
   ventimp.print();
   ventimp.close();
 }
