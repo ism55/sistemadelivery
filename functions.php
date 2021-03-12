@@ -3562,12 +3562,22 @@ function SendToDelivery() {
 
 function imprSelec(X) {
   var fecha = new Date();
-  var now = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+  var now = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear() + "  Hora= "+ fecha.getHours()+" : "+ fecha.getMinutes();
   var orden = document.getElementById(X);
   var ventimp = window.open(" ", "popimpr");
-  ventimp.document.write(now);
-  ventimp.document.write(orden.innerHTML);
- 
+  ventimp.document.write(now );
+  ventimp.document.write("<br>");
+  ventimp.document.write("<br>");
+  ventimp.document.write(" Pedido:  \n\n"+orden.innerHTML);
+  ventimp.document.write("<br>");
+  ventimp.document.write("<br>");
+  ventimp.document.write("Total= "+document.getElementById("totalCompra").innerHTML + " $ ");
+  ventimp.document.write("<br>");
+  ventimp.document.write("<br>");
+  ventimp.document.write("Zona= "+ document.getElementById("nombreZona").innerText);
+  ventimp.document.write("<br>");
+  ventimp.document.write("<br>");
+  ventimp.document.write("Teléfono= "+ $("input[name=cliente]").val().replaceAll(' ','').replaceAll("(",'').replaceAll(")",'').replaceAll('-',''));
   ventimp.document.close();
   
   ventimp.print();

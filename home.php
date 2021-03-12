@@ -180,7 +180,7 @@ if ($restasa) {
 						<option value="">Ninguno</option>
 						<option value="Transferencia">Transferencia Banesco o Pago móvil</option>
 						<option value="Efectivo">Efectivo</option>
-						<option value="Ambos">Ambos</option>
+						<option value="Ambos">Mixto</option>
 						<option value="PayPal">Paypal</option>
 						
 
