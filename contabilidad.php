@@ -38,6 +38,7 @@ date_default_timezone_set('America/Caracas');
   <title>Chino Caracas Delivery</title>
 
   <link rel="canonical" href="./estilos.css">
+  <link rel="icon" href=".\img\logo.png" type="image/png" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -533,8 +534,8 @@ date_default_timezone_set('America/Caracas');
         foreach ($conex->query("SELECT WEEK('$hoy')") as $prueba) {
         }
 
-        echo $prueba["WEEK('$hoy')"];
-        echo " ";
+        //echo $prueba["WEEK('$hoy')"];
+        //echo " ";
 
         foreach ($obtener as $repartidores) {
           echo '<tr scope="row">';
