@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include('delivery.php');
 
@@ -12,11 +12,11 @@ if ($resultado) {
 }
 
 $cons = "SELECT * FROM repartidores";
-$obtener= $conex->query($cons);
+$obtener = $conex->query($cons);
 
 
-$conszonas = "SELECT * FROM zonas";
-$obtenerzonas= $conex->query($conszonas);
+$conszonas = "SELECT * FROM zonas ORDER BY `zonas`.`destino` ASC";
+$obtenerzonas = $conex->query($conszonas);
 
 if ($obtenerzonas) {
 	//echo "Query correcto";
@@ -41,6 +41,7 @@ if ($restasa) {
 
 <!doctype html>
 <html lang="es">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -48,15 +49,15 @@ if ($restasa) {
 	<meta name="author" content="Neurona Servicios">
 	<meta name="generator" content="v01.00.00">
 	<meta name="viewport" content="initial-scale=1">
-	<title>Chinodelivery</title>
+	<title>Chino Caracas Delivery</title>
 	<link rel="icon" href=".\img\logo.png" type="image/png" />
 	<link rel="canonical" href="./estilos.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<style>
 		.bd-placeholder-img {
 			font-size: 1.125rem;
@@ -75,21 +76,22 @@ if ($restasa) {
 	</style>
 	<!-- Custom styles for this template -->
 	<link href="./estilos.css" rel="stylesheet">
-	
+
 
 </head>
-<body class="text-center">
+
+<body class="text-center" style=" margin-left: 50px; margin-right: 50px;">
 
 
 
 
-	
+
 	<header class="masthead mb-auto">
 		<div class="inner">
 
 			<img src="./img/logo.png" width="100em" height="100em" class="masthead-brand">
 			<nav class="nav nav-masthead justify-content-center">
-				<a class="nav-link active" href="./home.php">COMPRAS</a>
+				<a class="nav-link active" href="./">COMPRAS</a>
 				<a class="nav-link" href="./contabilidad.php">CONTABILIDAD</a>
 				<a class="nav-link" href="./menu.php">PRODUCTOS</a>
 			</nav>
@@ -104,113 +106,150 @@ if ($restasa) {
 	</div>
 	<form class="form" action="registrar_tasa.php" method="POST" onsubmit="alert('Registrando tasa')">
 		<div class="w-25">
-			<label><h4>Tasa del día</h4></label>
-			<input id="tasaDia" class="form-control" type="number" name="registrotasa" min="0" placeholder="Bs" 
-			<?php foreach ( $restasa as $row_tasa){ ?>
-
-				value=<?php echo "'".$row_tasa['tasa']."'"?>
-				
-
-				
-
-			<?php } ?>
-			
-			>
+			<label>
+				<h4>Tasa del día</h4>
+			</label>
+			<input id="tasaDia" class="form-control" type="number" name="registrotasa" min="0" placeholder="Bs" <?php foreach ($restasa as $row_tasa) { ?> value=<?php echo "'" . $row_tasa['tasa'] . "'" ?> <?php } ?>>
 			<button type="submit" class="btn btn-sm btn-success btn-block">Registrar Tasa</button>
 
 		</div>
 	</form>
-	<form class="form" id="formulario" onsubmit="imprSelec('comboslista');var option =  $('option:selected', '#inputSector'); var name = $('option:selected', '#inputSector')[0].innerHTML; $('option:selected', '#inputSector').val(name);$.post('registrar.php', $('#formulario').serialize());">
+	<form class="form" id="formulario" onsubmit="imprSelec('comboslista');$.post('registrar.php', $('#formulario').serialize() +'&' +'nombreSector='+ $('option:selected', '#inputSector')[0].innerHTML + '&' + 'valorSector='+  $('option:selected', '#inputSector').val() + '');">
 
 		<main>
-			
+
 			<section>
 				<div style="float:left; min-height: 50vh;" class="w-50 p-3">
-					<label for="inputCliente" class="" style="float:left"><br><h6>Número de teléfono cliente</h6></label>
-					<input type="tel" id="inputCliente" class="form-control" placeholder="Número de teléfono cliente"  autofocus name="cliente" required>
+					<label for="inputCliente" class="" style="padding-right:30px">
+						<hr style="border-color: white;">
+						<h6>Número de teléfono cliente</h6>
+						<input type="tel" id="inputCliente" class="form-control" placeholder="Número de teléfono cliente" autofocus name="cliente" style="width:250px" required>
 
-					
+					</label>
 
-					<label for="inputDeli" class="" style="float:left"><br><h6>Número de teléfono delivery</h6></label>
-					<select name="delivery" class="form-control" id="inputDeli">
-						<option value="0">Ninguno</option>
 
-						<?php foreach ( $obtener as $opciones){ ?>
 
-							<option value=<?php echo "'".$opciones['telefono']."'"?>>
-								<?php echo $opciones['nombre'].": ".$opciones['telefono']?>
+					<label for="inputDeli" class="">
+						<hr style="border-color: white;">
+						<h6>Número de teléfono delivery</h6>
+						<select name="delivery" class="form-control" id="inputDeli" style="width:250px">
+							<option value="0">Ninguno</option>
 
-							</option>
+							<?php foreach ($obtener as $opciones) { ?>
 
-						<?php } ?>
+								<option value=<?php echo "'" . $opciones['telefono'] . "'" ?>>
+									<?php echo $opciones['nombre'] . ": " . $opciones['telefono'] ?>
 
-					</select>
-					
+								</option>
 
-					<label for="inputSector" class="" style="float:left"><br><h6>Zona del envío</h6></label>
-					
-					<select name="sector" class="form-control" id="inputSector">
-						<option value="0" name="Gratis">Gratis</option>
+							<?php } ?>
 
-						<?php foreach ( $obtenerzonas as $row_zona){ ?>
+						</select>
+					</label>
 
-							<option name=<?php echo "'".$row_zona['destino']."'"?> value=<?php echo "'".$row_zona['precio']."'"?>>
-								<?php echo $row_zona['destino']?>
 
-							</option>
+					<div id="sectorEnvio">
 
-						<?php } ?>
+						<label for="inputSector" class="" style="float:left">
+							<hr style="border-color: white;">
+							<h6>Zona del envío</h6>
+						</label>
 
-					</select>
+						<select name="sector" class="form-control" id="inputSector">
+							<option value="0" name="Gratis">Gratis</option>
 
-					<label for="inputzona" class="" style="float:left"><br><h6>Ubicación (Google Maps) / Dirección</h6></label>
-					<input type="text" id="inputzona" class="form-control" placeholder="Ubicación"  name="zona" required>
-					
-					<label for="inputzonaextra" class="" style="float:left"><br><h6>Referencia de zona de envio</h6></label>
-					<input type="text" id="inputzonaextra" class="form-control" placeholder="Referencia de zona de envio"  autofocus name="zonaextra" required>
+							<?php foreach ($obtenerzonas as $row_zona) { ?>
 
-					   
+								<option name=<?php echo "'" . $row_zona['destino'] . "'" ?> value=<?php echo "'" . $row_zona['precio'] . "'" ?>>
+									<?php echo $row_zona['destino'] ?>
+
+								</option>
+
+							<?php } ?>
+
+						</select>
+
+					</div>
+					<div id='zonaPersonalizada'>
+						<input type='text' class='form-control' placeholder='Zona personalizada' autofocus name='generico' id='generico'>
+						<input type='number' min='0' step='.01' class='form-control' placeholder='Monto personalizado' autofocus name='generico' id='genericoValor'>
+					</div>
+					<div class="form-check">
+						<input type="checkbox" class="form-check-input" id="boton" name="boton">
+						<label class="form-check-label" for="boton">¿Zona genérica?</label>
+					</div>
+
+
+
+					<label for="inputzona" class="" style="float:left">
+						<hr style="border-color: white;">
+						<h6>Ubicación (Google Maps) / Dirección</h6>
+					</label>
+					<input type="text" id="inputzona" class="form-control" placeholder="Ubicación" name="zona" required>
+
+
+					<label for="inputzonaextra" class="" style="float:left">
+						<hr style="border-color: white;">
+						<h6>Referencia de zona de envio</h6>
+					</label>
+					<textarea id="inputzonaextra" class="form-control" placeholder="Referencia de zona de envio" autofocus name="zonaextra" cols="100" rows="1"></textarea>
+
 
 					<!--  ################################################################# -->
 					<!--                    FORMAS DE PAGO                 -->
 					<!--  ################################################################# -->
 
-					<label for="tipoPago" class="" style="float:left"><br><h6>Forma de pago</h6></label>
-					<select id="tipoPago" name="formaRadio" class="form-control">
-						<option value="">Ninguno</option>
-						<option value="Transferencia">Transferencia Banesco o Pago móvil</option>
-						<option value="Efectivo">Efectivo</option>
-						<option value="Ambos">Mixto</option>
-						<option value="PayPal">Paypal</option>
-						
+					<label for="tipoPago" class="" style="padding-right:10px">
+						<hr style="border-color: white;">
+						<h6>Forma de pago</h6>
 
-					</select>
-					
-					<label for="inputbolivares" class="" style="float:left"><br><h6>Bolívares</h6></label>
-					<input type="number" min="0" step='.01' value="0" id="inputbolivares" class="form-control" placeholder="USD"  name="bolivares" step='.01' required>
-
-					<label for="inputdolares" class="" style="float:left"><br><h6>Dólares</h6></label>
-					<input type="number" min="0" step='.01' value ="0" id="inputdolares" class="form-control" placeholder="USD"  name="dolares" step='.01' required>
-
-					<label for="tipoPago" class="" style="float:left"><br><h6>Descuento especial</h6></label>
-					<select id="descuento" name="selectDescuento" class="form-control">
-						<option value="1" name="0%">Ninguno</option>
-						<option value="0.95" name="5%">5%</option>
-						<option value="0.90" name="10%">10%</option>
-						<option value="0.85" name="15%">15%</option>
-						<option value="0.80" name="20%">20%</option>
-						
-
-					</select>
-
-					
-
-					<input type="number" value="0" min="0" id="inputotal" class="form-control" name="inputotal"  step='.01' hidden>
+						<select id="tipoPago" name="formaRadio" class="form-control" style="width:120px">
+							<option value="">Ninguno</option>
+							<option value="Transferencia">Transferencia Banesco o Pago móvil</option>
+							<option value="Efectivo">Efectivo</option>
+							<option value="Ambos">Mixto</option>
+							<option value="PayPal">Paypal</option>
 
 
-					<br>
+						</select>
+					</label>
+					<label for="inputbolivares" class="" style=" padding-right:10px">
+						<hr style="border-color: white;">
+						<h6>Bolívares</h6>
+
+						<input type="number" min="0" value="0" id="inputbolivares" class="form-control" placeholder="USD" name="bolivares" step='.01' style="width:120px" required>
+					</label>
+					<label for="inputdolares" class="" style=" padding-right:10px">
+						<hr style="border-color: white;">
+						<h6>Dólares</h6>
+
+						<input type="number" min="0" value="0" id="inputdolares" class="form-control" placeholder="USD" name="dolares" step='.01' style="width:120px" required>
+					</label>
+
+					<label for="tipoPago" class="">
+						<hr style=" border-color: white;">
+						<h6>Descuento</h6>
+						<select id="descuento" name="selectDescuento" class="form-control" style="width:100px">
+							<option value="1" name="0%">Ninguno</option>
+							<option value="0.95" name="5%">5%</option>
+							<option value="0.90" name="10%">10%</option>
+							<option value="0.85" name="15%">15%</option>
+							<option value="0.80" name="20%">20%</option>
+
+
+						</select>
+
+
+
+						<input type="number" value="0" min="0" id="inputotal" class="form-control" name="inputotal" step='.01' hidden>
+					</label>
+
+
+
+					<hr style="border-color: white;">
+
+
 					<h5>CULMINAR PEDIDO</h5>
-					<br>
 					<div class="container">
 						<!--  ################################################################# -->
 						<!--                    IMPRIMIR ORDEN                  -->
@@ -227,243 +266,434 @@ if ($restasa) {
 							<button type="submit" id="cargar" class="btn btn-sm btn-warning btn-block">Cargar a Base de Datos</button>
 						</div>
 
-					</div> 
+					</div>
 				</div>
 
 				<div style="float:left; min-height:50vh" class="w-50 p-3">
-					
+
 					<!--  ################################################################# -->
 					<!--                    RECIBO DE COMPRA          -->
 					<!--  ################################################################# -->
 					<div class="">
-						
+
 
 						<div class="card border-dark mb-3 " style="max-width: 30rem;">
-							<a href='./home.php'><button type='button' class='btn btn-sm btn-warning btn-block'><h4>REFRESCAR PÁGINA</h4></button></a>
+							<a href='./'><button type='button' class='btn btn-sm btn-warning btn-block'>
+									<h4>REFRESCAR PÁGINA</h4>
+								</button></a>
 							<div class="card-header text-dark">
-								<h5 class="card-title">Datos del pedido</h5></div>
-								<div class="card-body text-dark">
+								<h5 class="card-title">Datos del pedido</h5>
+							</div>
+							<div class="card-body text-dark">
 
 
 
-									<div class="container-fluid" id="factura" style="text-align: justify;">
-										<div class="row">
-											<div class="col">
-												<span>Número del cliente: </span>
-											</div>
-											<div class="col">
-												<span id="numCliente"></span><br>
-											</div>
+								<div class="container-fluid" id="factura" style="text-align: justify;">
+									<div class="row">
+										<div class="col">
+											<span>Número del cliente: </span>
 										</div>
-
-										<div class="row">
-											<div class="col">
-												<span>Número del repartidor: </span>
-											</div>
-											<div class="col">
-												<span id="numRepartidor"></span><br>
-											</div>
+										<div class="col">
+											<span id="numCliente"></span><br>
 										</div>
-
-										<div class="row">
-											<div class="col">
-												<span>Zona: </span>
-											</div>
-											<div class="col">
-												<span id="nombreZona"></span><br>
-											</div>
-										</div>
-										
-										<div class="row">
-											<div class="col">
-												<span>Ubicación: </span>
-											</div>
-											<div class="col">
-												<span id="linkMapa"></span><br>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col">
-												<span>Ubicación datos extras: </span>
-											</div>
-											<div class="col">
-												<span id="zonaextra"></span><br>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col">
-												<span>Forma de pago: </span>
-											</div>
-											<div class="col">
-												<span id="formaPago"></span><br>
-											</div>
-										</div>
-
-
-										<div class="row">
-											<div class="col">
-												<span>Pedido: </span>
-											</div>
-											<div class="col">
-												<div id="comboslista">
-													<div class="row"><div id="listaCombo1"></div></div>
-													<div class="row"><div id="listaCombo2"></div></div>
-													<div class="row"><div id="listaCombo3"></div></div>
-													<div class="row"><div id="listaCombo4"></div></div>
-													<div class="row"><div id="listaCombo5"></div></div>
-													<div class="row"><div id="listaCombo6"></div></div>
-													<div class="row"><div id="listaCombo7"></div></div>
-													<div class="row"><div id="listaCombo1duo"></div></div>
-													<div class="row"><div id="listaCombo2duo"></div></div>
-													<div class="row"><div id="listaCombo3duo"></div></div>
-													<div class="row"><div id="listaCombo4duo"></div></div>
-													<div class="row"><div id="listaCombo5duo"></div></div>
-													<div class="row"><div id="listaCombo6duo"></div></div>
-													<div class="row"><div id="listaCombo7duo"></div></div>
-													<div class="row"><div id="listakombo1"></div></div>
-													<div class="row"><div id="listakombo2"></div></div>
-													<div class="row"><div id="listakombo3"></div></div>
-													<div class="row"><div id="listakombo4"></div></div>
-													<div class="row"><div id="listakombo5"></div></div>
-													<div class="row"><div id="listakombo6"></div></div>
-													<div class="row"><div id="listakombo7"></div></div>
-													<div class="row"><div id="listakombo8"></div></div>
-													<div class="row"><div id="listavegetariano"></div></div>
-													<div class="row"><div id="listapollo"></div></div>
-													<div class="row"><div id="listajamon"></div></div>
-													<div class="row"><div id="listacerdo"></div></div>
-													<div class="row"><div id="listaespecial"></div></div>
-													<div class="row"><div id="listacamarones"></div></div>
-													<div class="row"><div id="listakowloon"></div></div>
-													<div class="row"><div id="listapolloycamarones"></div></div>
-													<div class="row"><div id="listalmvegetariano"></div></div>
-													<div class="row"><div id="listalmpollo"></div></div>
-													<div class="row"><div id="listalmcerdo"></div></div>
-													<div class="row"><div id="listalmespecial"></div></div>
-													<div class="row"><div id="listalmcamarones"></div></div>
-													<div class="row"><div id="listalmpolloycamarones"></div></div>
-													<div class="row"><div id="listalmkowloon"></div></div>
-													<div class="row"><div id="listalmcarne"></div></div>
-													<div class="row"><div id="listapagridulce"></div></div>
-													<div class="row"><div id="listapsoya"></div></div>
-													<div class="row"><div id="listapcurry"></div></div>
-													<div class="row"><div id="listapostras"></div></div>
-													<div class="row"><div id="listapajonjoli"></div></div>
-													<div class="row"><div id="listapasado"></div></div>
-													<div class="row"><div id="listacostras"></div></div>
-													<div class="row"><div id="listaccurry"></div></div>
-													<div class="row"><div id="listacbrocoli"></div></div>
-													<div class="row"><div id="listacvegetales"></div></div>
-													<div class="row"><div id="listacostilla"></div></div>
-													<div class="row"><div id="listacerdoa"></div></div>
-													<div class="row"><div id="listacerdosyp"></div></div>
-													<div class="row"><div id="listacerdocurry"></div></div>
-													<div class="row"><div id="listacerdoostra"></div></div>
-													<div class="row"><div id="listalumpias"></div></div>
-													<div class="row"><div id="listaracionlumpias"></div></div>
-													<div class="row"><div id="listawantonf"></div></div>
-													<div class="row"><div id="listafideoss"></div></div>
-													<div class="row"><div id="listafuyong"></div></div>
-													<div class="row"><div id="listacostillaunidad"></div></div>
-													<div class="row"><div id="listarefresco2"></div></div>
-													<div class="row"><div id="listarefrescol"></div></div>
-													<div class="row"><div id="listarefresco1"></div></div>
-													<div class="row"><div id="listalipton"></div></div>
-													<div class="row"><div id="listaagua6"></div></div>
-													<div class="row"><div id="listapanc"></div></div>
-													<div class="row"><div id="listasopaw"></div></div>
-													<div class="row"><div id="listaswantonmien"></div></div>
-													<div class="row"><div id="listacsvegetales"></div></div>
-													<div class="row"><div id="listacspollo"></div></div>
-													<div class="row"><div id="listacscerdo"></div></div>
-													<div class="row"><div id="listacscarne"></div></div>
-													<div class="row"><div id="listacscamarones"></div></div>
-													<div class="row"><div id="listacspolloyc"></div></div>
-													<div class="row"><div id="listacsjamon"></div></div>
-													<div class="row"><div id="listacsespecial"></div></div>
-													<div class="row"><div id="listacskowloon"></div></div>
-													<div class="row"><div id="listacomboclasico1"></div></div>
-													<div class="row"><div id="listacomboclasico2"></div></div>
-													<div class="row"><div id="listacombosuper1"></div></div>
-													<div class="row"><div id="listacombosuper2"></div></div>
-													<div class="row"><div id="listacombosuper3"></div></div>
-													<div class="row"><div id="listacmvegetariano"></div></div>
-													<div class="row"><div id="listacmpollo"></div></div>
-													<div class="row"><div id="listacmcerdo"></div></div>
-													<div class="row"><div id="listacmespecial"></div></div>
-													<div class="row"><div id="listacmcamarones"></div></div>
-													<div class="row"><div id="listacmpolloycamarones"></div></div>
-													<div class="row"><div id="listacmkowloon"></div></div>
-													<div class="row"><div id="listacmcarne"></div></div>
-													<div class="row"><div id="listaitem1"></div></div>
-													<div class="row"><div id="listaitem2"></div></div>
-													<div class="row"><div id="listaitem3"></div></div>
-													<div class="row"><div id="listaitem4"></div></div>
-													<div class="row"><div id="listaitem5"></div></div>													
-												</div><br>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col">
-												<span>Subtotal: </span>
-											</div>
-											<div class="col">
-												<span id="subtotalCompra"></span><br>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col">
-												<span>Costo del Delivery: </span>
-											</div>
-											<div class="col">
-												<span id="pagoDelivery"></span><br>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col">
-												<span>Total: </span>
-											</div>
-											<div class="col">
-												<span id="totalCompra"></span><br>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col">
-												<span>Pago en Bs: </span>
-											</div>
-											<div class="col">
-												<span id="pagoBs"></span><br>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col">
-												<span>Pago en USD: </span>
-											</div>
-											<div class="col">
-												<span id="pagoUSD"></span><br>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col">
-												<span>Cambio: </span>
-											</div>
-											<div class="col">
-												<span id="pagoFaltante"></span><br>
-											</div>
-										</div>
-										
 									</div>
-									<a href="#" class="card-link text-info" onClick='CopyToClipboard("factura")'>Copiar texto</a>
-									<a href="#"  target="_blank" id="enlaceCliente" class="card-link text-info" onClick='SendToClient()'>Enviar a Cliente</a>
-									<a href="#"  target="_blank" id="enlaceDelivery" class="card-link text-info" onClick='SendToDelivery()'>Enviar a Repartidor</a>
-									<a href="#"  target="_blank" id="enlaceCliente2" class="card-link text-info" onClick='SendToClient2()'>Cambio Cliente</a>
+
+									<div class="row">
+										<div class="col">
+											<span>Número del repartidor: </span>
+										</div>
+										<div class="col">
+											<span id="numRepartidor"></span><br>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col">
+											<span>Zona: </span>
+										</div>
+										<div class="col">
+											<span id="nombreZona"></span><br>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col">
+											<span>Ubicación: </span>
+										</div>
+										<div class="col">
+											<span id="linkMapa"></span><br>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<span>Ubicación datos extras: </span>
+										</div>
+										<div class="col">
+											<span id="zonaextra"></span><br>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col">
+											<span>Forma de pago: </span>
+										</div>
+										<div class="col">
+											<span id="formaPago"></span><br>
+										</div>
+									</div>
+
+
+									<div class="row">
+										<div class="col">
+											<span>Pedido: </span>
+										</div>
+										<div class="col">
+											<div id="comboslista">
+												<div class="row">
+													<div id="listaCombo1"></div>
+												</div>
+												<div class="row">
+													<div id="listaCombo2"></div>
+												</div>
+												<div class="row">
+													<div id="listaCombo3"></div>
+												</div>
+												<div class="row">
+													<div id="listaCombo4"></div>
+												</div>
+												<div class="row">
+													<div id="listaCombo5"></div>
+												</div>
+												<div class="row">
+													<div id="listaCombo6"></div>
+												</div>
+												<div class="row">
+													<div id="listaCombo7"></div>
+												</div>
+												<div class="row">
+													<div id="listaCombo1duo"></div>
+												</div>
+												<div class="row">
+													<div id="listaCombo2duo"></div>
+												</div>
+												<div class="row">
+													<div id="listaCombo3duo"></div>
+												</div>
+												<div class="row">
+													<div id="listaCombo4duo"></div>
+												</div>
+												<div class="row">
+													<div id="listaCombo5duo"></div>
+												</div>
+												<div class="row">
+													<div id="listaCombo6duo"></div>
+												</div>
+												<div class="row">
+													<div id="listaCombo7duo"></div>
+												</div>
+												<div class="row">
+													<div id="listakombo1"></div>
+												</div>
+												<div class="row">
+													<div id="listakombo2"></div>
+												</div>
+												<div class="row">
+													<div id="listakombo3"></div>
+												</div>
+												<div class="row">
+													<div id="listakombo4"></div>
+												</div>
+												<div class="row">
+													<div id="listakombo5"></div>
+												</div>
+												<div class="row">
+													<div id="listakombo6"></div>
+												</div>
+												<div class="row">
+													<div id="listakombo7"></div>
+												</div>
+												<div class="row">
+													<div id="listakombo8"></div>
+												</div>
+												<div class="row">
+													<div id="listavegetariano"></div>
+												</div>
+												<div class="row">
+													<div id="listapollo"></div>
+												</div>
+												<div class="row">
+													<div id="listajamon"></div>
+												</div>
+												<div class="row">
+													<div id="listacerdo"></div>
+												</div>
+												<div class="row">
+													<div id="listaespecial"></div>
+												</div>
+												<div class="row">
+													<div id="listacamarones"></div>
+												</div>
+												<div class="row">
+													<div id="listakowloon"></div>
+												</div>
+												<div class="row">
+													<div id="listapolloycamarones"></div>
+												</div>
+												<div class="row">
+													<div id="listalmvegetariano"></div>
+												</div>
+												<div class="row">
+													<div id="listalmpollo"></div>
+												</div>
+												<div class="row">
+													<div id="listalmcerdo"></div>
+												</div>
+												<div class="row">
+													<div id="listalmespecial"></div>
+												</div>
+												<div class="row">
+													<div id="listalmcamarones"></div>
+												</div>
+												<div class="row">
+													<div id="listalmpolloycamarones"></div>
+												</div>
+												<div class="row">
+													<div id="listalmkowloon"></div>
+												</div>
+												<div class="row">
+													<div id="listalmcarne"></div>
+												</div>
+												<div class="row">
+													<div id="listapagridulce"></div>
+												</div>
+												<div class="row">
+													<div id="listapsoya"></div>
+												</div>
+												<div class="row">
+													<div id="listapcurry"></div>
+												</div>
+												<div class="row">
+													<div id="listapostras"></div>
+												</div>
+												<div class="row">
+													<div id="listapajonjoli"></div>
+												</div>
+												<div class="row">
+													<div id="listapasado"></div>
+												</div>
+												<div class="row">
+													<div id="listacostras"></div>
+												</div>
+												<div class="row">
+													<div id="listaccurry"></div>
+												</div>
+												<div class="row">
+													<div id="listacbrocoli"></div>
+												</div>
+												<div class="row">
+													<div id="listacvegetales"></div>
+												</div>
+												<div class="row">
+													<div id="listacostilla"></div>
+												</div>
+												<div class="row">
+													<div id="listacerdoa"></div>
+												</div>
+												<div class="row">
+													<div id="listacerdosyp"></div>
+												</div>
+												<div class="row">
+													<div id="listacerdocurry"></div>
+												</div>
+												<div class="row">
+													<div id="listacerdoostra"></div>
+												</div>
+												<div class="row">
+													<div id="listalumpias"></div>
+												</div>
+												<div class="row">
+													<div id="listaracionlumpias"></div>
+												</div>
+												<div class="row">
+													<div id="listawantonf"></div>
+												</div>
+												<div class="row">
+													<div id="listafideoss"></div>
+												</div>
+												<div class="row">
+													<div id="listafuyong"></div>
+												</div>
+												<div class="row">
+													<div id="listacostillaunidad"></div>
+												</div>
+												<div class="row">
+													<div id="listarefresco2"></div>
+												</div>
+												<div class="row">
+													<div id="listarefrescol"></div>
+												</div>
+												<div class="row">
+													<div id="listarefresco1"></div>
+												</div>
+												<div class="row">
+													<div id="listalipton"></div>
+												</div>
+												<div class="row">
+													<div id="listaagua6"></div>
+												</div>
+												<div class="row">
+													<div id="listapanc"></div>
+												</div>
+												<div class="row">
+													<div id="listasopaw"></div>
+												</div>
+												<div class="row">
+													<div id="listaswantonmien"></div>
+												</div>
+												<div class="row">
+													<div id="listacsvegetales"></div>
+												</div>
+												<div class="row">
+													<div id="listacspollo"></div>
+												</div>
+												<div class="row">
+													<div id="listacscerdo"></div>
+												</div>
+												<div class="row">
+													<div id="listacscarne"></div>
+												</div>
+												<div class="row">
+													<div id="listacscamarones"></div>
+												</div>
+												<div class="row">
+													<div id="listacspolloyc"></div>
+												</div>
+												<div class="row">
+													<div id="listacsjamon"></div>
+												</div>
+												<div class="row">
+													<div id="listacsespecial"></div>
+												</div>
+												<div class="row">
+													<div id="listacskowloon"></div>
+												</div>
+												<div class="row">
+													<div id="listacomboclasico1"></div>
+												</div>
+												<div class="row">
+													<div id="listacomboclasico2"></div>
+												</div>
+												<div class="row">
+													<div id="listacombosuper1"></div>
+												</div>
+												<div class="row">
+													<div id="listacombosuper2"></div>
+												</div>
+												<div class="row">
+													<div id="listacombosuper3"></div>
+												</div>
+												<div class="row">
+													<div id="listacmvegetariano"></div>
+												</div>
+												<div class="row">
+													<div id="listacmpollo"></div>
+												</div>
+												<div class="row">
+													<div id="listacmcerdo"></div>
+												</div>
+												<div class="row">
+													<div id="listacmespecial"></div>
+												</div>
+												<div class="row">
+													<div id="listacmcamarones"></div>
+												</div>
+												<div class="row">
+													<div id="listacmpolloycamarones"></div>
+												</div>
+												<div class="row">
+													<div id="listacmkowloon"></div>
+												</div>
+												<div class="row">
+													<div id="listacmcarne"></div>
+												</div>
+												<div class="row">
+													<div id="listaitem1"></div>
+												</div>
+												<div class="row">
+													<div id="listaitem2"></div>
+												</div>
+												<div class="row">
+													<div id="listaitem3"></div>
+												</div>
+												<div class="row">
+													<div id="listaitem4"></div>
+												</div>
+												<div class="row">
+													<div id="listaitem5"></div>
+												</div>
+											</div><br>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<span>Subtotal: </span>
+										</div>
+										<div class="col">
+											<span id="subtotalCompra"></span><br>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<span>Costo del Delivery: </span>
+										</div>
+										<div class="col">
+											<span id="pagoDelivery"></span><br>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<span>Total: </span>
+										</div>
+										<div class="col">
+											<span id="totalCompra"></span><br>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<span>Pago en Bs: </span>
+										</div>
+										<div class="col">
+											<span id="pagoBs"></span><br>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<span>Pago en USD: </span>
+										</div>
+										<div class="col">
+											<span id="pagoUSD"></span><br>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col">
+											<span>Cambio: </span>
+										</div>
+										<div class="col">
+											<span id="pagoFaltante"></span><br>
+										</div>
+									</div>
+
 								</div>
+								<a href="#" class="card-link text-info" onClick='CopyToClipboard("factura")'>Copiar texto</a>
+								<a href="#" target="_blank" id="enlaceCliente" class="card-link text-info" onClick='SendToClient()'>Enviar a Cliente</a>
+								<a href="#" target="_blank" id="enlaceDelivery" class="card-link text-info" onClick='SendToDelivery()'>Enviar a Repartidor</a>
+								<a href="#" target="_blank" id="enlaceCliente2" class="card-link text-info" onClick='SendToClient2()'>Cambio Cliente</a>
 							</div>
 						</div>
-
 					</div>
+
+				</div>
 
 				</div>
 
@@ -488,7 +718,7 @@ if ($restasa) {
 							<div class="card">
 								<div class="card-header text-dark">
 									<button type=button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-									Mega Combos
+										Mega Combos
 									</button>
 								</div>
 								<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
@@ -503,11 +733,11 @@ if ($restasa) {
 													<label for="btn_combo1mas" class="col-form-label"> Mega Combo 1</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_combo1mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Del</label>
+													<label class="col-form-label">Del</label>
 													<button type="button" id="btn_combo1menos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
@@ -530,7 +760,7 @@ if ($restasa) {
 													<label for="btn_combo2mas" class="col-form-label">Mega Combo 2</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_combo2mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -556,7 +786,7 @@ if ($restasa) {
 													<label for="btn_combo3mas" class="col-form-label"> Mega Combo 3</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_combo3mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -581,7 +811,7 @@ if ($restasa) {
 													<label for="btn_combo4mas" class="col-form-label"> Mega Combo 4</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_combo4mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -607,7 +837,7 @@ if ($restasa) {
 													<label for="btn_combo5mas" class="col-form-label"> Mega Combo 5</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_combo5mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -632,7 +862,7 @@ if ($restasa) {
 													<label for="btn_combo6mas" class="col-form-label"> Mega Combo 6</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_combo6mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -657,7 +887,7 @@ if ($restasa) {
 													<label for="btn_combo7mas" class="col-form-label"> Mega Combo 7</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_combo7mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -675,7 +905,7 @@ if ($restasa) {
 											</div>
 
 										</div>
-									</div>  
+									</div>
 								</div>
 							</div>
 						</div>
@@ -687,8 +917,8 @@ if ($restasa) {
 							<div class="card">
 								<div class="card-header text-dark">
 									<button type=button class="btn btn-link" data-toggle="collapse" data-target="#collapseduo" aria-expanded="true" aria-controls="collapseduo">
-									Combos Duos
-									</button>	
+										Combos Duos
+									</button>
 								</div>
 								<div id="collapseduo" class="collapse" aria-labelledby="headingduo" data-parent="#accordion">
 									<div class="card-body text-dark">
@@ -699,14 +929,14 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_combo1duomas" class="col-form-label">  Combo Duo 1</label>
+													<label for="btn_combo1duomas" class="col-form-label"> Combo Duo 1</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_combo1duomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Del</label>
+													<label class="col-form-label">Del</label>
 													<button type="button" id="btn_combo1duomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
@@ -729,7 +959,7 @@ if ($restasa) {
 													<label for="btn_combo2duomas" class="col-form-label"> Combo Duo 2</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_combo2duomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -752,10 +982,10 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_combo3duomas" class="col-form-label">  Combo Duo 3</label>
+													<label for="btn_combo3duomas" class="col-form-label"> Combo Duo 3</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_combo3duomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -780,7 +1010,7 @@ if ($restasa) {
 													<label for="btn_combo4duomas" class="col-form-label"> Combo Duo 4</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_combo4duomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -806,7 +1036,7 @@ if ($restasa) {
 													<label for="btn_combo5duomas" class="col-form-label"> Combo Duo 5</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_combo5duomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -829,10 +1059,10 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_combo6duomas" class="col-form-label">  Combo Duo 6</label>
+													<label for="btn_combo6duomas" class="col-form-label"> Combo Duo 6</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_combo6duomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -857,7 +1087,7 @@ if ($restasa) {
 													<label for="btn_combo7duomas" class="col-form-label"> Combo Duo 7</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_combo7duomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -874,7 +1104,7 @@ if ($restasa) {
 												</div>
 											</div>
 
-										</div>  
+										</div>
 									</div>
 								</div>
 							</div>
@@ -887,8 +1117,8 @@ if ($restasa) {
 							<div class="card">
 								<div class="card-header text-dark">
 									<button type=button class="btn btn-link" data-toggle="collapse" data-target="#collapsekombo" aria-expanded="true" aria-controls="collapsekombo">
-									Kombos
-									</button>	
+										Kombos
+									</button>
 								</div>
 								<div id="collapsekombo" class="collapse" aria-labelledby="headingkombo" data-parent="#accordion">
 									<div class="card-body text-dark">
@@ -899,14 +1129,14 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_kombo1mas" class="col-form-label">  Kombo 1</label>
+													<label for="btn_kombo1mas" class="col-form-label"> Kombo 1</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_kombo1mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Del</label>
+													<label class="col-form-label">Del</label>
 													<button type="button" id="btn_kombo1menos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
@@ -929,7 +1159,7 @@ if ($restasa) {
 													<label for="btn_kombo2mas" class="col-form-label"> kombo 2</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_kombo2mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -952,10 +1182,10 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_kombo3mas" class="col-form-label">  kombo 3</label>
+													<label for="btn_kombo3mas" class="col-form-label"> kombo 3</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_kombo3mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -980,7 +1210,7 @@ if ($restasa) {
 													<label for="btn_kombo4mas" class="col-form-label"> kombo 4</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_kombo4mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1005,7 +1235,7 @@ if ($restasa) {
 													<label for="btn_kombo5mas" class="col-form-label"> kombo 5</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_kombo5mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1031,7 +1261,7 @@ if ($restasa) {
 													<label for="btn_kombo6mas" class="col-form-label"> kombo 6</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_kombo6mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1056,7 +1286,7 @@ if ($restasa) {
 													<label for="btn_kombo7mas" class="col-form-label"> kombo 7</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_kombo7mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1080,7 +1310,7 @@ if ($restasa) {
 													<label for="btn_kombo8mas" class="col-form-label"> kombo 8</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_kombo8mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1096,7 +1326,7 @@ if ($restasa) {
 													<input type="number" min="0" step='.01' value="0" name="totalkombo8" id="totalkombo8" class=" form-control" readonly>
 												</div>
 											</div>
-										</div>  
+										</div>
 									</div>
 								</div>
 							</div>
@@ -1111,7 +1341,7 @@ if ($restasa) {
 									<button type=button class="btn btn-link" data-toggle="collapse" data-target="#collapsearroz" aria-expanded="true" aria-controls="collapsearroz">
 										Arroz frito
 									</button>
-									
+
 								</div>
 								<div id="collapsearroz" class="collapse" aria-labelledby="headingarroz" data-parent="#accordion">
 									<div class="card-body text-dark">
@@ -1125,11 +1355,11 @@ if ($restasa) {
 													<label for="btn_vegetarianomas" class="col-form-label"> Arroz frito vegetariano</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_vegetarianomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Del</label>
+													<label class="col-form-label">Del</label>
 													<button type="button" id="btn_vegetarianomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
@@ -1152,7 +1382,7 @@ if ($restasa) {
 													<label for="btn_pollomas" class="col-form-label"> Arroz frito con pollo</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_pollomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1175,10 +1405,10 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_jamonmas" class="col-form-label">  Arroz frito con jamón</label>
+													<label for="btn_jamonmas" class="col-form-label"> Arroz frito con jamón</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_jamonmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1203,7 +1433,7 @@ if ($restasa) {
 													<label for="btn_cerdomas" class="col-form-label"> Arroz frito con cerdo</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_cerdomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1228,7 +1458,7 @@ if ($restasa) {
 													<label for="btn_especialmas" class="col-form-label"> Arroz frito especial</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_especialmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1254,7 +1484,7 @@ if ($restasa) {
 													<label for="btn_camaronesmas" class="col-form-label"> Arroz frito con camarones</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_camaronesmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1280,7 +1510,7 @@ if ($restasa) {
 													<label for="btn_kowloonmas" class="col-form-label"> Arroz frito con kowloon</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_kowloonmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1305,7 +1535,7 @@ if ($restasa) {
 													<label for="btn_polloycamaronesmas" class="col-form-label"> Arroz frito con pollo y camarones</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_polloycamaronesmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1321,7 +1551,7 @@ if ($restasa) {
 													<input type="number" min="0" step='.01' value="0" name="totalpolloycamarones" id="totalpolloycamarones" class=" form-control" readonly>
 												</div>
 											</div>
-										</div>  
+										</div>
 									</div>
 								</div>
 							</div>
@@ -1342,7 +1572,7 @@ if ($restasa) {
 							<!--  ################################################################# -->
 							<div class="card">
 								<div class="card-header text-dark">
-									<button type=button class="btn btn-link" data-toggle="collapse" data-target="#collapselom" aria-expanded="true" aria-controls="collapselom">		
+									<button type=button class="btn btn-link" data-toggle="collapse" data-target="#collapselom" aria-expanded="true" aria-controls="collapselom">
 										LomMien
 									</button>
 								</div>
@@ -1358,11 +1588,11 @@ if ($restasa) {
 													<label for="btn_lmvegetarianomas" class="col-form-label"> LomMien vegetariano</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_lmvegetarianomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Del</label>
+													<label class="col-form-label">Del</label>
 													<button type="button" id="btn_lmvegetarianomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
@@ -1385,7 +1615,7 @@ if ($restasa) {
 													<label for="btn_lmpollomas" class="col-form-label"> LomMien con pollo</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_lmpollomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1412,7 +1642,7 @@ if ($restasa) {
 													<label for="btn_lmcerdomas" class="col-form-label"> LomMien con cerdo</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_lmcerdomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1437,7 +1667,7 @@ if ($restasa) {
 													<label for="btn_lmespecialmas" class="col-form-label"> LomMien especial</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_lmespecialmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1463,7 +1693,7 @@ if ($restasa) {
 													<label for="btn_lmcamaronesmas" class="col-form-label"> LomMien con camarones</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_lmcamaronesmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1488,7 +1718,7 @@ if ($restasa) {
 													<label for="btn_lmpolloycamaronesmas" class="col-form-label"> LomMien con pollo y camarones</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_lmpolloycamaronesmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1513,7 +1743,7 @@ if ($restasa) {
 													<label for="btn_lmcarnemas" class="col-form-label"> LomMien con carne</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_lmcarnemas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1538,7 +1768,7 @@ if ($restasa) {
 													<label for="btn_lmkowloonmas" class="col-form-label"> LomMien con kowloon</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_lmkowloonmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1555,7 +1785,7 @@ if ($restasa) {
 												</div>
 											</div>
 
-										</div>  
+										</div>
 									</div>
 								</div>
 							</div>
@@ -1568,10 +1798,10 @@ if ($restasa) {
 							<!--  ################################################################# -->
 							<div class="card">
 								<div class="card-header text-dark">
-									<button type=button class="btn btn-link" data-toggle="collapse" data-target="#collapsepollo" aria-expanded="true" aria-controls="collapsepollo">		
+									<button type=button class="btn btn-link" data-toggle="collapse" data-target="#collapsepollo" aria-expanded="true" aria-controls="collapsepollo">
 										Pollo
 									</button>
-									
+
 								</div>
 								<div id="collapsepollo" class="collapse" aria-labelledby="headingpollo" data-parent="#accordion2">
 									<div class="card-body text-dark">
@@ -1585,11 +1815,11 @@ if ($restasa) {
 													<label for="btn_pagridulcemas" class="col-form-label"> Pollo agridulce</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_pagridulcemas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Del</label>
+													<label class="col-form-label">Del</label>
 													<button type="button" id="btn_pagridulcemenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
@@ -1612,7 +1842,7 @@ if ($restasa) {
 													<label for="btn_psoyamas" class="col-form-label"> Pollo con soya</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_psoyamas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1639,7 +1869,7 @@ if ($restasa) {
 													<label for="btn_pcurrymas" class="col-form-label"> Pollo con curry</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_pcurrymas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1664,7 +1894,7 @@ if ($restasa) {
 													<label for="btn_postrasmas" class="col-form-label"> Pollo con ostras</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_postrasmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1690,7 +1920,7 @@ if ($restasa) {
 													<label for="btn_pajonjolimas" class="col-form-label"> Pollo con ajonjolí y miel </label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_pajonjolimas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1715,7 +1945,7 @@ if ($restasa) {
 													<label for="btn_pasadomas" class="col-form-label"> Pollo con asado cantonés </label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_pasadomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1732,7 +1962,7 @@ if ($restasa) {
 												</div>
 											</div>
 
-										</div>  
+										</div>
 									</div>
 								</div>
 							</div>
@@ -1744,8 +1974,8 @@ if ($restasa) {
 							<!--  ################################################################# -->
 							<div class="card">
 								<div class="card-header text-dark">
-									<button type=button class="btn btn-link" data-toggle="collapse" data-target="#collapsecarne" aria-expanded="true" aria-controls="collapsecarne">		
-											Carne
+									<button type=button class="btn btn-link" data-toggle="collapse" data-target="#collapsecarne" aria-expanded="true" aria-controls="collapsecarne">
+										Carne
 									</button>
 								</div>
 								<div id="collapsecarne" class="collapse" aria-labelledby="headingcarne" data-parent="#accordion2">
@@ -1760,11 +1990,11 @@ if ($restasa) {
 													<label for="btn_costrasmas" class="col-form-label"> Carne con ostras</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_costrasmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Del</label>
+													<label class="col-form-label">Del</label>
 													<button type="button" id="btn_costrasmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
@@ -1787,7 +2017,7 @@ if ($restasa) {
 													<label for="btn_ccurrymas" class="col-form-label"> Carne con curry</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_ccurrymas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1814,7 +2044,7 @@ if ($restasa) {
 													<label for="btn_cbrocolimas" class="col-form-label"> Carne con brócoli </label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_cbrocolimas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1839,7 +2069,7 @@ if ($restasa) {
 													<label for="btn_cvegetalesmas" class="col-form-label"> Carne con vegetales chinos</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_cvegetalesmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1855,7 +2085,7 @@ if ($restasa) {
 													<input type="number" min="0" step='.01' value="0" name="totalcvegetales" id="totalcvegetales" class=" form-control" readonly>
 												</div>
 											</div>
-										</div>  
+										</div>
 									</div>
 								</div>
 							</div>
@@ -1867,8 +2097,8 @@ if ($restasa) {
 							<!--  ################################################################# -->
 							<div class="card">
 								<div class="card-header text-dark">
-									<button type=button class="btn btn-link" data-toggle="collapse" data-target="#collapsecerdo" aria-expanded="true" aria-controls="collapsecerdo">		
-											Cerdo
+									<button type=button class="btn btn-link" data-toggle="collapse" data-target="#collapsecerdo" aria-expanded="true" aria-controls="collapsecerdo">
+										Cerdo
 									</button>
 								</div>
 								<div id="collapsecerdo" class="collapse" aria-labelledby="headingcerdo" data-parent="#accordion2">
@@ -1883,11 +2113,11 @@ if ($restasa) {
 													<label for="btn_costillamas" class="col-form-label">Ración de costilla</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_costillamas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Del</label>
+													<label class="col-form-label">Del</label>
 													<button type="button" id="btn_costillamenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
@@ -1910,7 +2140,7 @@ if ($restasa) {
 													<label for="btn_cerdoamas" class="col-form-label"> Cerdo asado</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_cerdoamas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1928,7 +2158,7 @@ if ($restasa) {
 											</div>
 
 
-											<!--  ################################################################# --> 
+											<!--  ################################################################# -->
 											<!--                   Cerdo con sal y pimienta             -->
 											<!--  ################################################################# -->
 											<hr>
@@ -1937,7 +2167,7 @@ if ($restasa) {
 													<label for="btn_cerdosypmas" class="col-form-label"> Cerdo con sal y pimienta</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_cerdosypmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1953,7 +2183,7 @@ if ($restasa) {
 													<input type="number" min="0" step='.01' value="0" name="totalcerdosyp" id="totalcerdosyp" class=" form-control" readonly>
 												</div>
 											</div>
-											<!--  ################################################################# --> 
+											<!--  ################################################################# -->
 											<!--                   Cerdo con curry             -->
 											<!--  ################################################################# -->
 											<hr>
@@ -1962,7 +2192,7 @@ if ($restasa) {
 													<label for="btn_cerdocurrymas" class="col-form-label"> Cerdo con curry</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_cerdocurrymas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -1987,7 +2217,7 @@ if ($restasa) {
 													<label for="btn_cerdoostramas" class="col-form-label"> Cerdo con ostra</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_cerdoostramas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -2004,7 +2234,7 @@ if ($restasa) {
 												</div>
 											</div>
 
-										</div>  
+										</div>
 									</div>
 								</div>
 							</div>
@@ -2037,11 +2267,11 @@ if ($restasa) {
 													<label for="btn_lumpiasmas" class="col-form-label"> Lúmpia</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_lumpiasmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Del</label>
+													<label class="col-form-label">Del</label>
 													<button type="button" id="btn_lumpiasmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
@@ -2056,18 +2286,18 @@ if ($restasa) {
 											<!--  ################################################################# -->
 											<!--                Lúmpias                   -->
 											<!--  ################################################################# -->
-											
+
 											<hr>
 											<div class="row form-group">
 												<div class="col">
 													<label for="btn_racionlumpiasmas" class="col-form-label">Ración Lúmpias</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_racionlumpiasmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Del</label>
+													<label class="col-form-label">Del</label>
 													<button type="button" id="btn_racionlumpiasmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
@@ -2090,7 +2320,7 @@ if ($restasa) {
 													<label for="btn_wantonfmas" class="col-form-label"> Wantón frito</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_wantonfmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -2117,7 +2347,7 @@ if ($restasa) {
 													<label for="btn_fideossmas" class="col-form-label"> Fideos singapur</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_fideossmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -2142,7 +2372,7 @@ if ($restasa) {
 													<label for="btn_fuyongmas" class="col-form-label"> Fu yong</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_fuyongmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -2168,7 +2398,7 @@ if ($restasa) {
 													<label for="btn_pancmas" class="col-form-label"> Pan chino 4 unidades </label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_pancmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -2194,7 +2424,7 @@ if ($restasa) {
 													<label for="btn_costillaunidadmas" class="col-form-label"> Costilla unidad</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_costillaunidadmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -2210,7 +2440,7 @@ if ($restasa) {
 													<input type="number" min="0" step='.01' value="0" name="totalcostillaunidad" id="totalcostillaunidad" class=" form-control" readonly>
 												</div>
 											</div>
-										</div>  
+										</div>
 									</div>
 								</div>
 							</div>
@@ -2237,11 +2467,11 @@ if ($restasa) {
 													<label for="btn_sopawmas" class="col-form-label">Sopa wantón</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_sopawmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Del</label>
+													<label class="col-form-label">Del</label>
 													<button type="button" id="btn_sopawmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
@@ -2264,7 +2494,7 @@ if ($restasa) {
 													<label for="btn_swantonmienmas" class="col-form-label"> Sopa wantón mien</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_swantonmienmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -2280,7 +2510,7 @@ if ($restasa) {
 													<input type="number" min="0" step='.01' value="0" name="totalswantonmien" id="totalswantonmien" class=" form-control" readonly>
 												</div>
 											</div>
-										</div>  
+										</div>
 									</div>
 								</div>
 							</div>
@@ -2307,11 +2537,11 @@ if ($restasa) {
 													<label for="btn_csvegetalesmas" class="col-form-label">Chop Suey de vegetales</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_csvegetalesmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Del</label>
+													<label class="col-form-label">Del</label>
 													<button type="button" id="btn_csvegetalesmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
@@ -2334,7 +2564,7 @@ if ($restasa) {
 													<label for="btn_cspollomas" class="col-form-label"> Chop Suey de pollo</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_cspollomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -2352,7 +2582,7 @@ if ($restasa) {
 											</div>
 
 
-											<!--  ################################################################# --> 
+											<!--  ################################################################# -->
 											<!--                   Chop suey de cerdo             -->
 											<!--  ################################################################# -->
 											<hr>
@@ -2361,7 +2591,7 @@ if ($restasa) {
 													<label for="btn_cscerdomas" class="col-form-label"> Chop Suey de cerdo</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_cscerdomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -2377,7 +2607,7 @@ if ($restasa) {
 													<input type="number" min="0" step='.01' value="0" name="totalcscerdo" id="totalcscerdo" class=" form-control" readonly>
 												</div>
 											</div>
-											<!--  ################################################################# --> 
+											<!--  ################################################################# -->
 											<!--                   Chop suey de carne            -->
 											<!--  ################################################################# -->
 											<hr>
@@ -2386,7 +2616,7 @@ if ($restasa) {
 													<label for="btn_cscarnemas" class="col-form-label"> Chop Suey de carne</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_cscarnemas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -2402,7 +2632,7 @@ if ($restasa) {
 													<input type="number" min="0" step='.01' value="0" name="totalcscarne" id="totalcscarne" class=" form-control" readonly>
 												</div>
 											</div>
-											<!--  ################################################################# --> 
+											<!--  ################################################################# -->
 											<!--                   Chop suey de camarones            -->
 											<!--  ################################################################# -->
 											<hr>
@@ -2411,7 +2641,7 @@ if ($restasa) {
 													<label for="btn_cscamaronesmas" class="col-form-label"> Chop Suey de camarones</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_cscamaronesmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -2427,7 +2657,7 @@ if ($restasa) {
 													<input type="number" min="0" step='.01' value="0" name="totalcscamarones" id="totalcscamarones" class=" form-control" readonly>
 												</div>
 											</div>
-											<!--  ################################################################# --> 
+											<!--  ################################################################# -->
 											<!--             Chop suey de pollo y camarones            -->
 											<!--  ################################################################# -->
 											<hr>
@@ -2436,7 +2666,7 @@ if ($restasa) {
 													<label for="btn_cspolloycmas" class="col-form-label"> Chop Suey de pollo y camarones</label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_cspolloycmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -2452,7 +2682,7 @@ if ($restasa) {
 													<input type="number" min="0" step='.01' value="0" name="totalcspolloyc" id="totalcspolloyc" class=" form-control" readonly>
 												</div>
 											</div>
-											<!--  ################################################################# --> 
+											<!--  ################################################################# -->
 											<!--             Chop suey de Jamón            -->
 											<!--  ################################################################# -->
 											<hr>
@@ -2461,7 +2691,7 @@ if ($restasa) {
 													<label for="btn_csjamonmas" class="col-form-label"> Chop Suey de jamón </label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_csjamonmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -2477,8 +2707,8 @@ if ($restasa) {
 													<input type="number" min="0" step='.01' value="0" name="totalcsjamon" id="totalcsjamon" class=" form-control" readonly>
 												</div>
 											</div>
-											
-											<!--  ################################################################# --> 
+
+											<!--  ################################################################# -->
 											<!--             Chop sueye especial            -->
 											<!--  ################################################################# -->
 											<hr>
@@ -2487,7 +2717,7 @@ if ($restasa) {
 													<label for="btn_csespecialmas" class="col-form-label"> Chop Suey especial </label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_csespecialmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -2504,7 +2734,7 @@ if ($restasa) {
 												</div>
 											</div>
 
-											<!--  ################################################################# --> 
+											<!--  ################################################################# -->
 											<!--             Chop suey kowloon            -->
 											<!--  ################################################################# -->
 											<hr>
@@ -2513,7 +2743,7 @@ if ($restasa) {
 													<label for="btn_cskowloonmas" class="col-form-label"> Chop Suey kowloon </label>
 												</div>
 												<div class="col">
-													<label  class="col-form-label">Add</label>
+													<label class="col-form-label">Add</label>
 													<button type="button" id="btn_cskowloonmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
@@ -2529,7 +2759,7 @@ if ($restasa) {
 													<input type="number" min="0" step='.01' value="0" name="totalcskowloon" id="totalcskowloon" class=" form-control" readonly>
 												</div>
 											</div>
-										</div>    
+										</div>
 									</div>
 								</div>
 							</div>
@@ -2542,11 +2772,11 @@ if ($restasa) {
 								<div class="card-header text-dark">
 									<button type=button class="btn btn-link" data-toggle="collapse" data-target="#collapseclasico" aria-expanded="true" aria-controls="collapseclasico">
 										Combos clásicos
-									</button>	
+									</button>
 								</div>
 								<div id="collapseclasico" class="collapse" aria-labelledby="headingclasico" data-parent="#accordion3">
 									<div class="card-body text-dark">
-										<!--  ################################################################# --> 
+										<!--  ################################################################# -->
 										<!--             combo clasico 1           -->
 										<!--  ################################################################# -->
 										<hr>
@@ -2555,7 +2785,7 @@ if ($restasa) {
 												<label for="btn_comboclasico1mas" class="col-form-label"> Combo clásico 1</label>
 											</div>
 											<div class="col">
-												<label  class="col-form-label">Add</label>
+												<label class="col-form-label">Add</label>
 												<button type="button" id="btn_comboclasico1mas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
@@ -2571,7 +2801,7 @@ if ($restasa) {
 												<input type="number" min="0" step='.01' value="0" name="totalcomboclasico1" id="totalcomboclasico1" class=" form-control" readonly>
 											</div>
 										</div>
-										<!--  ################################################################# --> 
+										<!--  ################################################################# -->
 										<!--             combo clasico 2           -->
 										<!--  ################################################################# -->
 										<hr>
@@ -2580,7 +2810,7 @@ if ($restasa) {
 												<label for="btn_comboclasico2mas" class="col-form-label"> Combo clásico 2</label>
 											</div>
 											<div class="col">
-												<label  class="col-form-label">Add</label>
+												<label class="col-form-label">Add</label>
 												<button type="button" id="btn_comboclasico2mas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
@@ -2597,14 +2827,14 @@ if ($restasa) {
 											</div>
 										</div>
 
-									</div>  
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="container-fluid">
 				<div id="accordion4">
 					<div class="row w-100 p-3">
@@ -2615,12 +2845,12 @@ if ($restasa) {
 							<div class="card">
 								<div class="card-header text-dark">
 									<button type=button class="btn btn-link" data-toggle="collapse" data-target="#collapsesuper" aria-expanded="true" aria-controls="collapsesuper">
-										Combos Súper 
+										Combos Súper
 									</button>
 								</div>
 								<div id="collapsesuper" class="collapse" aria-labelledby="headingsuper" data-parent="#accordion4">
 									<div class="card-body text-dark">
-										<!--  ################################################################# --> 
+										<!--  ################################################################# -->
 										<!--                   Combos super 1           -->
 										<!--  ################################################################# -->
 										<hr>
@@ -2629,7 +2859,7 @@ if ($restasa) {
 												<label for="btn_combosuper1mas" class="col-form-label"> Combo súper 1</label>
 											</div>
 											<div class="col">
-												<label  class="col-form-label">Add</label>
+												<label class="col-form-label">Add</label>
 												<button type="button" id="btn_combosuper1mas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
@@ -2645,7 +2875,7 @@ if ($restasa) {
 												<input type="number" min="0" step='.01' value="0" name="totalcombosuper1" id="totalcombosuper1" class=" form-control" readonly>
 											</div>
 										</div>
-										<!--  ################################################################# --> 
+										<!--  ################################################################# -->
 										<!--                   Combos super 2           -->
 										<!--  ################################################################# -->
 										<hr>
@@ -2654,7 +2884,7 @@ if ($restasa) {
 												<label for="btn_combosuper2mas" class="col-form-label"> Combo súper 2</label>
 											</div>
 											<div class="col">
-												<label  class="col-form-label">Add</label>
+												<label class="col-form-label">Add</label>
 												<button type="button" id="btn_combosuper2mas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
@@ -2670,7 +2900,7 @@ if ($restasa) {
 												<input type="number" min="0" step='.01' value="0" name="totalcombosuper2" id="totalcombosuper2" class=" form-control" readonly>
 											</div>
 										</div>
-										<!--  ################################################################# --> 
+										<!--  ################################################################# -->
 										<!--                   Combos super 3           -->
 										<!--  ################################################################# -->
 										<hr>
@@ -2679,7 +2909,7 @@ if ($restasa) {
 												<label for="btn_combosuper3mas" class="col-form-label"> Combo súper 3</label>
 											</div>
 											<div class="col">
-												<label  class="col-form-label">Add</label>
+												<label class="col-form-label">Add</label>
 												<button type="button" id="btn_combosuper3mas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
@@ -2696,8 +2926,8 @@ if ($restasa) {
 											</div>
 										</div>
 
-									</div> 
-								</div> 
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="col">
@@ -2707,13 +2937,13 @@ if ($restasa) {
 							<div class="card">
 								<div class="card-header text-dark">
 									<button type=button class="btn btn-link" data-toggle="collapse" data-target="#collapsechow" aria-expanded="true" aria-controls="collapsechow">
-										Chow Mein 
+										Chow Mein
 									</button>
-									 
+
 								</div>
-								<div id="collapsechow" class="collapse" aria-labelledby="headingchow" data-parent="#accordion4">	
+								<div id="collapsechow" class="collapse" aria-labelledby="headingchow" data-parent="#accordion4">
 									<div class="card-body text-dark">
-										<!--  ################################################################# --> 
+										<!--  ################################################################# -->
 										<!--                   chow mein  vegetariano       -->
 										<!--  ################################################################# -->
 										<hr>
@@ -2722,7 +2952,7 @@ if ($restasa) {
 												<label for="btn_cmvegetarianomas" class="col-form-label"> Chow mein vegetariano</label>
 											</div>
 											<div class="col">
-												<label  class="col-form-label">Add</label>
+												<label class="col-form-label">Add</label>
 												<button type="button" id="btn_cmvegetarianomas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
@@ -2738,7 +2968,7 @@ if ($restasa) {
 												<input type="number" min="0" step='.01' value="0" name="totalcmvegetariano" id="totalcmvegetariano" class=" form-control" readonly>
 											</div>
 										</div>
-										<!--  ################################################################# --> 
+										<!--  ################################################################# -->
 										<!--                   Chow mein pollo          -->
 										<!--  ################################################################# -->
 										<hr>
@@ -2747,7 +2977,7 @@ if ($restasa) {
 												<label for="btn_cmpollomas" class="col-form-label"> Chow mein pollo </label>
 											</div>
 											<div class="col">
-												<label  class="col-form-label">Add</label>
+												<label class="col-form-label">Add</label>
 												<button type="button" id="btn_cmpollomas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
@@ -2763,7 +2993,7 @@ if ($restasa) {
 												<input type="number" min="0" step='.01' value="0" name="totalcmpollo" id="totalcmpollo" class=" form-control" readonly>
 											</div>
 										</div>
-										<!--  ################################################################# --> 
+										<!--  ################################################################# -->
 										<!--                   Chow mein cerdo           -->
 										<!--  ################################################################# -->
 										<hr>
@@ -2772,7 +3002,7 @@ if ($restasa) {
 												<label for="btn_cmcerdomas" class="col-form-label"> Chow mein cerdo </label>
 											</div>
 											<div class="col">
-												<label  class="col-form-label">Add</label>
+												<label class="col-form-label">Add</label>
 												<button type="button" id="btn_cmcerdomas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
@@ -2788,7 +3018,7 @@ if ($restasa) {
 												<input type="number" min="0" step='.01' value="0" name="totalcmcerdo" id="totalcmcerdo" class=" form-control" readonly>
 											</div>
 										</div>
-										<!--  ################################################################# --> 
+										<!--  ################################################################# -->
 										<!--                   Chow mein especial           -->
 										<!--  ################################################################# -->
 										<hr>
@@ -2797,7 +3027,7 @@ if ($restasa) {
 												<label for="btn_cmespecialmas" class="col-form-label"> Chow mein especial </label>
 											</div>
 											<div class="col">
-												<label  class="col-form-label">Add</label>
+												<label class="col-form-label">Add</label>
 												<button type="button" id="btn_cmespecialmas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
@@ -2813,7 +3043,7 @@ if ($restasa) {
 												<input type="number" min="0" step='.01' value="0" name="totalcmespecial" id="totalcmespecial" class=" form-control" readonly>
 											</div>
 										</div>
-										<!--  ################################################################# --> 
+										<!--  ################################################################# -->
 										<!--                   Chow mein camarones           -->
 										<!--  ################################################################# -->
 										<hr>
@@ -2822,7 +3052,7 @@ if ($restasa) {
 												<label for="btn_cmcamaronesmas" class="col-form-label"> Chow mein camarones </label>
 											</div>
 											<div class="col">
-												<label  class="col-form-label">Add</label>
+												<label class="col-form-label">Add</label>
 												<button type="button" id="btn_cmcamaronesmas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
@@ -2838,7 +3068,7 @@ if ($restasa) {
 												<input type="number" min="0" step='.01' value="0" name="totalcmcamarones" id="totalcmcamarones" class=" form-control" readonly>
 											</div>
 										</div>
-										<!--  ################################################################# --> 
+										<!--  ################################################################# -->
 										<!--                   Chow mein kowloon           -->
 										<!--  ################################################################# -->
 										<hr>
@@ -2847,7 +3077,7 @@ if ($restasa) {
 												<label for="btn_cmkowloonmas" class="col-form-label"> Chow mein kowloon </label>
 											</div>
 											<div class="col">
-												<label  class="col-form-label">Add</label>
+												<label class="col-form-label">Add</label>
 												<button type="button" id="btn_cmkowloonmas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
@@ -2863,7 +3093,7 @@ if ($restasa) {
 												<input type="number" min="0" step='.01' value="0" name="totalcmkowloon" id="totalcmkowloon" class=" form-control" readonly>
 											</div>
 										</div>
-										<!--  ################################################################# --> 
+										<!--  ################################################################# -->
 										<!--                   Chow mein carne           -->
 										<!--  ################################################################# -->
 										<hr>
@@ -2872,7 +3102,7 @@ if ($restasa) {
 												<label for="btn_cmcarnemas" class="col-form-label"> Chow mein carne </label>
 											</div>
 											<div class="col">
-												<label  class="col-form-label">Add</label>
+												<label class="col-form-label">Add</label>
 												<button type="button" id="btn_cmcarnemas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
@@ -2888,7 +3118,7 @@ if ($restasa) {
 												<input type="number" min="0" step='.01' value="0" name="totalcmcarne" id="totalcmcarne" class=" form-control" readonly>
 											</div>
 										</div>
-										<!--  ################################################################# --> 
+										<!--  ################################################################# -->
 										<!--                   Chow mein pollo y camarones          -->
 										<!--  ################################################################# -->
 										<hr>
@@ -2897,7 +3127,7 @@ if ($restasa) {
 												<label for="btn_cmpolloycamaronesmas" class="col-form-label"> Chow mein pollo y camarones </label>
 											</div>
 											<div class="col">
-												<label  class="col-form-label">Add</label>
+												<label class="col-form-label">Add</label>
 												<button type="button" id="btn_cmpolloycamaronesmas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
@@ -2915,11 +3145,11 @@ if ($restasa) {
 										</div>
 
 
-									</div> 
-								</div>	
+									</div>
+								</div>
 							</div>
 						</div>
-						
+
 						<div class="col">
 							<!--  ################################################################# -->
 							<!--                bebidas             -->
@@ -2932,7 +3162,7 @@ if ($restasa) {
 								</div>
 								<div id="collapsebebidas" class="collapse" aria-labelledby="headingbebidas" data-parent="#accordion4">
 									<div class="card-body text-dark">
-										
+
 
 										<!--  ################################################################# -->
 										<!--               Refresco 1.5lt                 -->
@@ -2943,7 +3173,7 @@ if ($restasa) {
 												<label for="btn_refresco2mas" class="col-form-label"> Refresco 1.5 lts </label>
 											</div>
 											<div class="col">
-												<label  class="col-form-label">Add</label>
+												<label class="col-form-label">Add</label>
 												<button type="button" id="btn_refresco2mas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
@@ -2968,7 +3198,7 @@ if ($restasa) {
 												<label for="btn_refresco1mas" class="col-form-label"> Refresco 1 lts </label>
 											</div>
 											<div class="col">
-												<label  class="col-form-label">Add</label>
+												<label class="col-form-label">Add</label>
 												<button type="button" id="btn_refresco1mas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
@@ -2993,7 +3223,7 @@ if ($restasa) {
 												<label for="btn_liptonmas" class="col-form-label"> Liptón 1.5 Lts (Durazno, limón, verde) </label>
 											</div>
 											<div class="col">
-												<label  class="col-form-label">Add</label>
+												<label class="col-form-label">Add</label>
 												<button type="button" id="btn_liptonmas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
@@ -3018,7 +3248,7 @@ if ($restasa) {
 												<label for="btn_refrescolmas" class="col-form-label"> Refresco lata </label>
 											</div>
 											<div class="col">
-												<label  class="col-form-label">Add</label>
+												<label class="col-form-label">Add</label>
 												<button type="button" id="btn_refrescolmas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
@@ -3043,7 +3273,7 @@ if ($restasa) {
 												<label for="btn_agua6mas" class="col-form-label"> Agua 600 ml </label>
 											</div>
 											<div class="col">
-												<label  class="col-form-label">Add</label>
+												<label class="col-form-label">Add</label>
 												<button type="button" id="btn_agua6mas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
@@ -3064,7 +3294,7 @@ if ($restasa) {
 								</div>
 							</div>
 						</div>
-									
+
 						<div class="col">
 							<!--  ################################################################# -->
 							<!--                bebidas             -->
@@ -3074,7 +3304,7 @@ if ($restasa) {
 									COMBO PERSONALIZADO
 								</div>
 								<div class="card-body text-dark">
-									
+
 
 									<!--  ################################################################# -->
 									<!--               ITEM 1                 -->
@@ -3082,28 +3312,28 @@ if ($restasa) {
 									<hr>
 									<div class="row form-group">
 										<div class="col">
-										<label for="item1" class="col-form-label">Item</label>
-										<input type="text" name="item1" id="item1" class=" form-control" placeholder="Item 1">
+											<label for="item1" class="col-form-label">Item</label>
+											<input type="text" name="item1" id="item1" class=" form-control" placeholder="Item 1">
 										</div>
-										
+
 										<div class="col">
 											<label for="totalitem1" class="col-form-label">Subtotal</label>
-											<input type="number" min="0" step='.01' value="0" name="totalitem1" id="totalitem1" class=" form-control" >
+											<input type="number" min="0" step='.01' value="0" name="totalitem1" id="totalitem1" class=" form-control">
 										</div>
-											</div>
+									</div>
 									<!--  ################################################################# -->
 									<!--               ITEM 2                -->
 									<!--  ################################################################# -->
 									<hr>
 									<div class="row form-group">
 										<div class="col">
-										<label for="item1" class="col-form-label">Item</label>
-										<input type="text" name="item2" id="item2" class=" form-control" placeholder="Item 2">
+											<label for="item1" class="col-form-label">Item</label>
+											<input type="text" name="item2" id="item2" class=" form-control" placeholder="Item 2">
 										</div>
 
-											<div class="col">
+										<div class="col">
 											<label for="totalitem2" class="col-form-label">Subtotal</label>
-											<input type="number" min="0" step='.01' value="0" name="totalitem2" id="totalitem2" class=" form-control" >
+											<input type="number" min="0" step='.01' value="0" name="totalitem2" id="totalitem2" class=" form-control">
 										</div>
 									</div>
 									<!--  ################################################################# -->
@@ -3112,13 +3342,13 @@ if ($restasa) {
 									<hr>
 									<div class="row form-group">
 										<div class="col">
-										<label for="item1" class="col-form-label">Item</label>
-										<input type="text" name="item3" id="item3" class=" form-control" placeholder="Item 3">
+											<label for="item1" class="col-form-label">Item</label>
+											<input type="text" name="item3" id="item3" class=" form-control" placeholder="Item 3">
 										</div>
-										
+
 										<div class="col">
 											<label for="totalitem3" class="col-form-label">Subtotal</label>
-											<input type="number" min="0" step='.01' value="0" name="totalitem3" id="totalitem3" class=" form-control" >
+											<input type="number" min="0" step='.01' value="0" name="totalitem3" id="totalitem3" class=" form-control">
 										</div>
 									</div>
 									<!--  ################################################################# -->
@@ -3127,13 +3357,13 @@ if ($restasa) {
 									<hr>
 									<div class="row form-group">
 										<div class="col">
-										<label for="item4" class="col-form-label">Item</label>
-										<input type="text" name="item4" id="item4" class=" form-control" placeholder="Item 4">
+											<label for="item4" class="col-form-label">Item</label>
+											<input type="text" name="item4" id="item4" class=" form-control" placeholder="Item 4">
 										</div>
-										
+
 										<div class="col">
 											<label for="totalitem4" class="col-form-label">Subtotal</label>
-											<input type="number" min="0" step='.01' value="0" name="totalitem4" id="totalitem4" class=" form-control" >
+											<input type="number" min="0" step='.01' value="0" name="totalitem4" id="totalitem4" class=" form-control">
 										</div>
 									</div>
 									<!--  ################################################################# -->
@@ -3142,44 +3372,40 @@ if ($restasa) {
 									<hr>
 									<div class="row form-group">
 										<div class="col">
-										<label for="item5" class="col-form-label">Item</label>
-										<input type="text" name="item5" id="item5" class=" form-control" placeholder="Item 5">
+											<label for="item5" class="col-form-label">Item</label>
+											<input type="text" name="item5" id="item5" class=" form-control" placeholder="Item 5">
 										</div>
-										
+
 										<div class="col">
 											<label for="totalitem5" class="col-form-label">Subtotal</label>
-											<input type="number" min="0" step='.01' value="0" name="totalitem5" id="totalitem5" class=" form-control" >
+											<input type="number" min="0" step='.01' value="0" name="totalitem5" id="totalitem5" class=" form-control">
 										</div>
 									</div>
-									
-								</div>  
+
+								</div>
 							</div>
 						</div>
-						
+
 					</div>
 				</div>
-					
-			</section>
+
+		</section>
 
 
 
 
 
-		</form>
+	</form>
 
-		
-
-
-		<footer class="mastfoot mt-auto">
-			<div class="inner">
-				<p>Desarrollado por <a href="https://www.instagram.com/neurona.servicios">Neurona Servicios</a></p>
-			</div>
-		</footer>
-		
+	<footer class="mastfoot mt-auto">
+		<div class="inner">
+			<p>Desarrollado por <a href="https://www.instagram.com/neurona.servicios">Neurona Servicios</a></p>
+		</div>
+	</footer>
 
 
-		<?php include('functions.php'); ?>
-	</body>
-	</html>
 
+	<?php include('functions.php'); ?>
+</body>
 
+</html>

@@ -193,13 +193,14 @@ ON DUPLICATE KEY UPDATE `precio` = VALUES(`precio`)";
 
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Sistema de Gestion de Ventas por Delivery">
   <meta name="author" content="Neurona Servicios">
   <meta name="generator" content="v01.00.00">
-  <title>Chinodelivery</title>
+  <title>Chino Caracas Delivery</title>
 
   <link rel="canonical" href="./estilos.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -227,6 +228,7 @@ ON DUPLICATE KEY UPDATE `precio` = VALUES(`precio`)";
 
 
 </head>
+
 <body class="text-center">
 
 
@@ -237,7 +239,7 @@ ON DUPLICATE KEY UPDATE `precio` = VALUES(`precio`)";
       <div class="inner">
         <img src="./img/logo.png" width="100em" height="100em" class="masthead-brand">
         <nav class="nav nav-masthead justify-content-center">
-          <a class="nav-link" href="./home.php">COMPRAS</a>
+          <a class="nav-link" href="./">COMPRAS</a>
           <a class="nav-link" href="./contabilidad.php">CONTABILIDAD</a>
           <a class="nav-link active" href="./menu.php">PRODUCTOS</a>
         </nav>
@@ -245,31 +247,32 @@ ON DUPLICATE KEY UPDATE `precio` = VALUES(`precio`)";
     </header>
     <div class="row w-100 p-3">
       <div class="col">
-       <h1 class="cover-heading">Lista de platos y precios</h1>
-       <p class="lead">Aquí puede observar y actualizar el precio de los productos</p>
-     </div>
-   </div>
-   <main role="main" class="inner cover">
-
-    <?php 
-
-    if (mysqli_query($conex, $sql)) {
-
-      echo "Registro con éxito.<a href='.\menu.php'><button type='button' class='btn btn-sm btn-success btn-block'><h3>REGRESAR</h3></button></a>";
-    } else {
-      echo "Error: " . $sql . "<br>" . mysqli_error($conex);
-    }
-    mysqli_close($conex);
-    ?>
-
-  </main>
-
-  <footer class="mastfoot mt-auto">
-    <div class="inner">
-      <p>Desarrollado por <a href="https://www.instagram.com/neurona.servicios">Neurona Servicios</a></p>
+        <h1 class="cover-heading">Lista de platos y precios</h1>
+        <p class="lead">Aquí puede observar y actualizar el precio de los productos</p>
+      </div>
     </div>
-  </footer>
-</div>
+    <main role="main" class="inner cover">
+
+      <?php
+
+      if (mysqli_query($conex, $sql)) {
+
+        echo "Registro con éxito.<a href='.\menu.php'><button type='button' class='btn btn-sm btn-success btn-block'><h3>REGRESAR</h3></button></a>";
+      } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conex);
+      }
+      mysqli_close($conex);
+      ?>
+
+    </main>
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <p>Desarrollado por <a href="https://www.instagram.com/neurona.servicios">Neurona Servicios</a></p>
+      </div>
+    </footer>
+  </div>
 
 </body>
+
 </html>

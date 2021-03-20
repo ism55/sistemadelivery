@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include('delivery.php');
 
@@ -10,7 +10,7 @@ $resmenu  = $conex->query($consmenu);
 
 
 if ($resmenu) {
-//      echo "<script>alert('Query correcto')</script>";
+  //      echo "<script>alert('Query correcto')</script>";
 
 } else {
   echo "Error: " . $resmenu . "<br>" . mysqli_error($conex);
@@ -21,13 +21,14 @@ if ($resmenu) {
 
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Sistema de Gestion de Ventas por Delivery">
   <meta name="author" content="Neurona Servicios">
   <meta name="generator" content="v01.00.00">
-  <title>Chinodelivery</title>
+  <title>Chino Caracas Delivery</title>
 
   <link rel="canonical" href="./estilos.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -42,35 +43,38 @@ if ($resmenu) {
 
 
   </head>
-  <body class="text-center">
+
+<body class="text-center">
 
 
 
 
-    <div class="container">
-      <header class="masthead mb-auto">
-        <div class="inner">
-          <img src="./img/logo.png" width="100em" height="100em" class="masthead-brand">
-          <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link" href="./home.php">COMPRAS</a>
-            <a class="nav-link" href="./contabilidad.php">CONTABILIDAD</a>
-            <a class="nav-link active" href="./menu.php">PRODUCTOS</a>
-          </nav>
-        </div>
-      </header>
-      <div class="row w-100 p-3">
-        <div class="col">
-         <h1 class="cover-heading">Lista de platos y precios</h1>
-         <p class="lead">Aquí puede observar y actualizar el precio de los productos</p>
-       </div>
-     </div>
-     <main role="main" class="inner cover">
+  <div class="container">
+    <header class="masthead mb-auto">
+      <div class="inner">
+        <img src="./img/logo.png" width="100em" height="100em" class="masthead-brand">
+        <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link" href="./">COMPRAS</a>
+          <a class="nav-link" href="./contabilidad.php">CONTABILIDAD</a>
+          <a class="nav-link active" href="./menu.php">PRODUCTOS</a>
+        </nav>
+      </div>
+    </header>
+    <div class="row w-100 p-3">
+      <div class="col">
+        <h1 class="cover-heading">Lista de platos y precios</h1>
+        <p class="lead">Aquí puede observar y actualizar el precio de los productos</p>
+      </div>
+    </div>
+    <main role="main" class="inner cover">
 
       <form class="form" id="actualizaPrecios" onsubmit="alert('Actualizando precios')" action="registrar_menu.php" method="POST">
 
-        <button type="submit" class="btn btn-sm btn-warning btn-block"><h2>ACTUALIZAR PRECIOS</h2></button>
+        <button type="submit" class="btn btn-sm btn-warning btn-block">
+          <h2>ACTUALIZAR PRECIOS</h2>
+        </button>
         <table class="table table-dark table-striped table-hover">
-          
+
           <thead>
             <tr>
 
@@ -82,30 +86,28 @@ if ($resmenu) {
           </thead>
 
 
-          <?php foreach ($resmenu as $row_menu){ // aca puedes hacer la consulta e iterarla con each. ?>
-            
-            
-            <?php 
+          <?php foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con each. 
+          ?>
+
+
+          <?php
 
             echo '<tr scope="row">';
-            
-            $plato =$row_menu['plato'];
+
+            $plato = $row_menu['plato'];
             $precio = $row_menu['precio'];
-            $id =$row_menu['id'];
+            $id = $row_menu['id'];
 
-            echo "<td>".$plato."</td>" ;
-            echo "<td><input type='number' value='$precio' min='0' step='.01' id='$id' name='$id'></input></td>" ;
-              //echo "<td>".$id."</td>" ;
+            echo "<td>" . $plato . "</td>";
+            echo "<td><input type='number' value='$precio' min='0' step='.01' id='$id' name='$id'></input></td>";
+            //echo "<td>".$id."</td>" ;
             echo '</tr>';
-            
-
-
           }
-          
+
           ?>
         </table>
 
-        
+
       </form>
 
 
@@ -120,6 +122,5 @@ if ($resmenu) {
   </div>
 
 </body>
+
 </html>
-
-

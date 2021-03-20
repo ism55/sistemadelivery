@@ -2,10 +2,10 @@
 -- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 07-03-2021 a las 08:32:09
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.11
+-- Host: 127.0.0.1
+-- Generation Time: Mar 20, 2021 at 07:47 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `delivery_db`
+-- Database: `delivery_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `compras`
+-- Table structure for table `compras`
 --
 
 CREATE TABLE `compras` (
@@ -37,47 +37,48 @@ CREATE TABLE `compras` (
   `bs` decimal(25,2) NOT NULL,
   `usd` decimal(25,2) NOT NULL,
   `total` decimal(25,2) NOT NULL,
-  `fecha_hora` timestamp NOT NULL DEFAULT current_timestamp()
+  `fecha_hora` timestamp NOT NULL DEFAULT current_timestamp(),
+  `zonaComision` decimal(25,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `compras`
+-- Dumping data for table `compras`
 --
 
-INSERT INTO `compras` (`id`, `numcliente`, `numrepartidor`, `direccion`, `zona`, `formapago`, `bs`, `usd`, `total`, `fecha_hora`) VALUES
-(2, '04241234567', '04241234567', 'Panteon Av', '', 'Transferencia', '0.00', '0.00', '0.00', '2020-12-13 03:30:26'),
-(3, '+584241795707', '+584262137759', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '', 'Transferencia', '0.00', '0.00', '0.00', '2020-12-13 03:30:26'),
-(4, '+584269843538', '+584262137759', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '', 'Ambos', '0.00', '0.00', '0.00', '2020-12-13 03:30:26'),
-(5, '+584242038292', '+584262137759', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '', 'Transferencia', '0.00', '0.00', '0.00', '2020-12-13 03:30:26'),
-(7, '04241234567', '04241234567', 'Panteon Av', '', 'Transferencia', '0.00', '0.00', '0.00', '2020-12-13 03:30:26'),
-(8, '04241234567', '04241234567', 'Panteon Av', '', 'Efectivo', '0.00', '0.00', '0.00', '2020-12-13 03:30:26'),
-(10, '04241234567', '04241234567', 'Panteon Av', '', 'Ambos', '0.00', '0.00', '0.00', '2020-12-13 03:30:26'),
-(11, '04241234567', '04241234567', 'Panteon Av', '', 'Efectivo', '0.00', '0.00', '0.00', '2020-12-13 03:30:26'),
-(12, '04241234567', '04241234567', 'Panteon Av', '', 'Ambos', '0.00', '0.00', '0.00', '2020-12-13 03:30:26'),
-(13, '04241234567', '04241234567', 'Panteon Av', '', 'Transferencia', '0.00', '0.00', '0.00', '2020-12-13 03:32:46'),
-(14, '04241234567', '04241234567', 'Panteon Av', '', 'Ambos', '0.00', '0.00', '0.00', '2020-12-13 03:38:25'),
-(15, '04241234567', '04241234567', 'Panteon Av', '', 'Ambos', '0.00', '0.00', '0.00', '2020-12-13 04:29:03'),
-(16, '04241234567', '04241234567', 'Panteon Av', '', 'Efectivo', '0.00', '0.00', '0.00', '2020-12-13 04:59:30'),
-(17, '04241234567', '04241234567', 'Panteon Av', '', 'Efectivo', '0.00', '0.00', '0.00', '2020-12-13 05:02:22'),
-(18, '04241234567', '04241234567', 'Panteon Av', '', 'Efectivo', '0.00', '0.00', '0.00', '2020-12-13 05:38:31'),
-(19, '04241234567', '04241234567', 'Panteon Av', '', 'Transferencia', '0.00', '0.00', '0.00', '2020-12-13 05:39:29'),
-(20, '04241234567', '04241234567', 'Panteon Av', '', 'Transferencia', '0.00', '0.00', '0.00', '2020-12-13 06:32:03'),
-(21, '04241234567', '04241234567', 'Panteon Av', '', 'Transferencia', '0.00', '0.00', '0.00', '2020-12-13 06:40:28'),
-(22, '04241234567', '+584129333126', 'Panteon Av', '5', 'Transferencia', '1305927.00', '29.00', '30.00', '2021-03-07 05:00:17'),
-(23, '04241234567', '+584241116724', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '3', 'Transferencia', '746244.00', '26.00', '26.00', '2021-03-07 05:05:05'),
-(24, '04241234567', '0', 'Panteon Av', '0', '', '0.00', '0.00', '0.00', '2021-03-07 05:05:37'),
-(25, '04241234567', '0', 'Panteon Av', '0', '', '0.00', '0.00', '0.00', '2021-03-07 05:05:59'),
-(26, '04241234567', '0', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '5', 'Transferencia', '186561.00', '18.00', '18.00', '2021-03-07 05:27:57'),
-(27, '04241234567', '+584127003702', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '\r\n								Coche\r\n							', 'Ambos', '186561.00', '16.70', '16.80', '2021-03-07 05:31:23'),
-(28, '+584241795707', '+584143382339', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '\r\n								Colinas de la salle\r\n							', 'Efectivo', '0.00', '56.00', '56.00', '2021-03-07 05:43:48'),
-(29, '+584241795707', '+584143382339', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '\r\n								Alto Hatillo\r\n							', 'Efectivo', '5596830.00', '90.00', '93.00', '2021-03-07 05:46:36'),
-(30, '+584241795707', '+584129333126', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '\r\n								Agua Salud\r\n							', 'Efectivo', '1865610.00', '15.00', '16.00', '2021-03-07 06:45:05'),
-(31, '+584241795707', '+584241795707', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '\r\n								Alto Hatillo\r\n							', '', '5130427.50', '15.00', '17.75', '2021-03-07 07:03:24');
+INSERT INTO `compras` (`id`, `numcliente`, `numrepartidor`, `direccion`, `zona`, `formapago`, `bs`, `usd`, `total`, `fecha_hora`, `zonaComision`) VALUES
+(2, '04241234567', '04241234567', 'Panteon Av', '', 'Transferencia', '0.00', '0.00', '0.00', '2020-12-13 03:30:26', '0.00'),
+(3, '+584241795707', '+584262137759', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '', 'Transferencia', '0.00', '0.00', '0.00', '2020-12-13 03:30:26', '0.00'),
+(4, '+584269843538', '+584262137759', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '', 'Ambos', '0.00', '0.00', '0.00', '2020-12-13 03:30:26', '0.00'),
+(5, '+584242038292', '+584262137759', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '', 'Transferencia', '0.00', '0.00', '0.00', '2020-12-13 03:30:26', '0.00'),
+(7, '04241234567', '04241234567', 'Panteon Av', '', 'Transferencia', '0.00', '0.00', '0.00', '2020-12-13 03:30:26', '0.00'),
+(8, '04241234567', '04241234567', 'Panteon Av', '', 'Efectivo', '0.00', '0.00', '0.00', '2020-12-13 03:30:26', '0.00'),
+(10, '04241234567', '04241234567', 'Panteon Av', '', 'Ambos', '0.00', '0.00', '0.00', '2020-12-13 03:30:26', '0.00'),
+(11, '04241234567', '04241234567', 'Panteon Av', '', 'Efectivo', '0.00', '0.00', '0.00', '2020-12-13 03:30:26', '0.00'),
+(12, '04241234567', '04241234567', 'Panteon Av', '', 'Ambos', '0.00', '0.00', '0.00', '2020-12-13 03:30:26', '0.00'),
+(13, '04241234567', '04241234567', 'Panteon Av', '', 'Transferencia', '0.00', '0.00', '0.00', '2020-12-13 03:32:46', '0.00'),
+(14, '04241234567', '04241234567', 'Panteon Av', '', 'Ambos', '0.00', '0.00', '0.00', '2020-12-13 03:38:25', '0.00'),
+(15, '04241234567', '04241234567', 'Panteon Av', '', 'Ambos', '0.00', '0.00', '0.00', '2020-12-13 04:29:03', '0.00'),
+(16, '04241234567', '04241234567', 'Panteon Av', '', 'Efectivo', '0.00', '0.00', '0.00', '2020-12-13 04:59:30', '0.00'),
+(17, '04241234567', '04241234567', 'Panteon Av', '', 'Efectivo', '0.00', '0.00', '0.00', '2020-12-13 05:02:22', '0.00'),
+(18, '04241234567', '04241234567', 'Panteon Av', '', 'Efectivo', '0.00', '0.00', '0.00', '2020-12-13 05:38:31', '0.00'),
+(19, '04241234567', '04241234567', 'Panteon Av', '', 'Transferencia', '0.00', '0.00', '0.00', '2020-12-13 05:39:29', '0.00'),
+(20, '04241234567', '04241234567', 'Panteon Av', '', 'Transferencia', '0.00', '0.00', '0.00', '2020-12-13 06:32:03', '0.00'),
+(21, '04241234567', '04241234567', 'Panteon Av', '', 'Transferencia', '0.00', '0.00', '0.00', '2020-12-13 06:40:28', '0.00'),
+(22, '04241234567', '+584129333126', 'Panteon Av', '5', 'Transferencia', '1305927.00', '29.00', '30.00', '2021-03-07 05:00:17', '0.00'),
+(23, '04241234567', '+584241116724', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '3', 'Transferencia', '746244.00', '26.00', '26.00', '2021-03-07 05:05:05', '0.00'),
+(24, '04241234567', '0', 'Panteon Av', '0', '', '0.00', '0.00', '0.00', '2021-03-07 05:05:37', '0.00'),
+(25, '04241234567', '0', 'Panteon Av', '0', '', '0.00', '0.00', '0.00', '2021-03-07 05:05:59', '0.00'),
+(26, '04241234567', '0', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '5', 'Transferencia', '186561.00', '18.00', '18.00', '2021-03-07 05:27:57', '0.00'),
+(27, '04241234567', '+584127003702', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '\r\n								Coche\r\n							', 'Ambos', '186561.00', '16.70', '16.80', '2021-03-07 05:31:23', '0.00'),
+(28, '+584241795707', '+584143382339', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '\r\n								Colinas de la salle\r\n							', 'Efectivo', '0.00', '56.00', '56.00', '2021-03-07 05:43:48', '0.00'),
+(29, '+584241795707', '+584143382339', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '\r\n								Alto Hatillo\r\n							', 'Efectivo', '5596830.00', '90.00', '93.00', '2021-03-07 05:46:36', '0.00'),
+(30, '+584241795707', '+584129333126', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '\r\n								Agua Salud\r\n							', 'Efectivo', '1865610.00', '15.00', '16.00', '2021-03-07 06:45:05', '0.00'),
+(31, '+584241795707', '+584241795707', 'https://goo.gl/maps/hucD4VrEXJvWdy457', '\r\n								Alto Hatillo\r\n							', '', '5130427.50', '15.00', '17.75', '2021-03-07 07:03:24', '0.00');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `menus`
+-- Table structure for table `menus`
 --
 
 CREATE TABLE `menus` (
@@ -87,7 +88,7 @@ CREATE TABLE `menus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `menus`
+-- Dumping data for table `menus`
 --
 
 INSERT INTO `menus` (`plato`, `precio`, `id`) VALUES
@@ -184,7 +185,7 @@ INSERT INTO `menus` (`plato`, `precio`, `id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `repartidores`
+-- Table structure for table `repartidores`
 --
 
 CREATE TABLE `repartidores` (
@@ -194,7 +195,7 @@ CREATE TABLE `repartidores` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `repartidores`
+-- Dumping data for table `repartidores`
 --
 
 INSERT INTO `repartidores` (`nombre`, `telefono`, `id`) VALUES
@@ -206,20 +207,12 @@ INSERT INTO `repartidores` (`nombre`, `telefono`, `id`) VALUES
 ('Jesus Romero', '+584143382339', 10),
 ('Felix Machado', '+584166292862', 11),
 ('Darling Duran', '+584242832881', 12),
-('Jesus Infante', '+584129333126', 13),
-('Javier Serpa', '+584242317545', 14),
-('Alan Serpa', '+584241754271', 15),
-('Braulio Labrador', '+584127003702', 16),
-('Alejandro Romero', '+584241116724', 17),
-('Jesus Romero', '+584143382339', 18),
-('Felix Machado', '+584166292862', 19),
-('Darling Duran', '+584242832881', 20),
 ('TEST', '+584241795707', 21);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tasadeldia`
+-- Table structure for table `tasadeldia`
 --
 
 CREATE TABLE `tasadeldia` (
@@ -229,7 +222,7 @@ CREATE TABLE `tasadeldia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `tasadeldia`
+-- Dumping data for table `tasadeldia`
 --
 
 INSERT INTO `tasadeldia` (`tasa`, `fecha_hora`, `id`) VALUES
@@ -254,7 +247,7 @@ INSERT INTO `tasadeldia` (`tasa`, `fecha_hora`, `id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -264,7 +257,7 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `user`, `pass`) VALUES
@@ -280,197 +273,198 @@ INSERT INTO `usuarios` (`id`, `user`, `pass`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `zonas`
+-- Table structure for table `zonas`
 --
 
 CREATE TABLE `zonas` (
   `destino` varchar(100) NOT NULL,
   `precio` int(11) NOT NULL,
-  `id` int(20) NOT NULL
+  `id` int(20) NOT NULL,
+  `Delivery` decimal(25,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `zonas`
+-- Dumping data for table `zonas`
 --
 
-INSERT INTO `zonas` (`destino`, `precio`, `id`) VALUES
-('Agua Salud', 4, 1),
-('Alto Hatillo', 5, 2),
-('Av. Cuartel de Catia (Vía Principal)', 4, 3),
-('Av. Panteón (Después de puente FFAA)', 3, 4),
-('Av. Sucre de Catia (Estación Gato Negro)', 4, 5),
-('Av. Urdaneta (Después de puente FFAA)', 3, 6),
-('Baruta (Pueblo)', 4, 7),
-('Bellas Artes', 3, 8),
-('Bello monte Norte (Recreo)', 2, 9),
-('Boleíta Norte', 3, 10),
-('Campo Alegre', 1, 11),
-('Capitolio', 3, 12),
-('CCCT', 1, 13),
-('Chuao', 2, 14),
-('Coche', 4, 15),
-('Colinas de bello monte', 3, 16),
-('Colinas de la california', 3, 17),
-('Colinas de la salle', 4, 18),
-('Colinas de la Tahona', 5, 19),
-('Colinas de los Ruices', 3, 20),
-('Colinas de Tamanaco', 4, 21),
-('Concresa', 3, 22),
-('Country Club', 1, 23),
-('Cumbres de Curumo', 4, 24),
-('El bosque', 1, 25),
-('El cafetal', 3, 26),
-('El Cigarral', 5, 27),
-('El Hatillo (Pueblo)', 5, 28),
-('El Marqués', 3, 29),
-('El paraiso', 3, 30),
-('El peñón', 5, 31),
-('El placer', 5, 32),
-('El poliedro', 5, 33),
-('Alta Florida', 3, 34),
-('Altagracia', 3, 35),
-('Altamira Norte', 2, 36),
-('Altamira Sur', 1, 37),
-('Alto Prado', 4, 38),
-('Antimano (Plaza)', 4, 39),
-('Av. Fuerzas Armadas Sur (Roca Tarpeya, San Luis)', 3, 40),
-('Av. Victoria', 3, 41),
-('Bella Vista', 4, 42),
-('Bello Campo', 0, 43),
-('Boleíta Sur', 3, 44),
-('Buena vista', 3, 45),
-('Campo Claro', 2, 46),
-('Caricuao', 5, 47),
-('Catia (Plaza Sucre)', 4, 48),
-('Caurimare', 3, 49),
-('Cementerio', 3, 50),
-('Cerro Verde (Parte Alta)', 5, 51),
-('Cerro Verde (Parte baja)', 4, 52),
-('Chacaito', 1, 53),
-('Chacao (Casco central)', 0, 54),
-('Chulavista', 2, 55),
-('Círculo Militar (IPSFA, Los próceres)', 3, 56),
-('Ciudad Universitaria', 3, 57),
-('Colinas de la Trinidad', 5, 58),
-('Colinas de Santa Mónica', 4, 59),
-('Colinas de Vista Alegre', 4, 60),
-('El algodonal', 4, 61),
-('El llanito', 4, 62),
-('El naranjal', 4, 63),
-('El rosal', 1, 64),
-('El valle (Jardines)', 4, 65),
-('Guaicaipuro', 3, 66),
-('Guaicay', 5, 67),
-('Junquito', 10, 68),
-('La california', 3, 69),
-('La campiña', 2, 70),
-('La candelaria', 3, 71),
-('La concordia', 3, 72),
-('La esmeralda', 5, 73),
-('La hoyada', 3, 74),
-('La pastora', 3, 75),
-('La paz', 4, 76),
-('La Trindidad', 5, 77),
-('La yaguara', 4, 78),
-('Las mercedes', 1, 79),
-('Las minas de Baruta', 5, 80),
-('Lomas de la trinidad', 5, 81),
-('Lomas de prados del este', 4, 82),
-('Los campitos', 3, 83),
-('Los caobos', 3, 84),
-('Los chorros', 3, 85),
-('Los cortijos', 2, 86),
-('Los palos grandes (Hasta la 4ta transversal)', 1, 87),
-('Los ruices', 2, 88),
-('Los simbolos', 3, 89),
-('Macaracuay', 4, 90),
-('Montecristo', 3, 91),
-('Palo verde', 4, 92),
-('Petare', 4, 93),
-('Prado de maría', 3, 94),
-('Sabana Grande', 2, 95),
-('San Agustin', 3, 96),
-('El silencio (Plaza O\'Leary)', 3, 97),
-('El valle', 3, 98),
-('Fuerte Tiuna', 4, 99),
-('Horizonte', 4, 100),
-('Hospital Vargas (San José)', 3, 101),
-('La Alameda', 4, 102),
-('La bonita', 5, 103),
-('La boyera', 5, 104),
-('La carlota (Urbanización)', 2, 105),
-('La castellana', 1, 106),
-('La castellana (Norte)', 2, 107),
-('La ciudadela', 3, 108),
-('La floresta', 1, 109),
-('La florida (Hasta el CC la Florida)', 2, 110),
-('La guairita', 5, 111),
-('La lagunita', 5, 112),
-('La Tahona', 5, 113),
-('La urbina', 4, 114),
-('Las acacias', 5, 115),
-('Las flores de catia', 4, 116),
-('Las palmas', 2, 117),
-('Lomas de bello monte', 3, 118),
-('Lomas de chuao', 3, 119),
-('Lomas de la lagunita', 6, 120),
-('Lomas de las mercedes', 2, 121),
-('Lomas del avila', 4, 122),
-('Lomas del mirador', 4, 123),
-('Lomas del sol', 5, 124),
-('Los chaguaramos', 3, 125),
-('Los dos caminos', 2, 126),
-('Los guayabitos', 6, 127),
-('Los naranjos de las mercedes', 6, 128),
-('Los naranjos del cafetal', 4, 129),
-('Los palos grandes (Después de la 4ta transversal)', 2, 130),
-('Los pomelos', 4, 131),
-('Los rosales, Plaza tiuna', 3, 132),
-('Los samanes', 4, 133),
-('Manzanares', 4, 134),
-('Mariperez', 3, 135),
-('Montalban 1,2,3', 4, 136),
-('Parque caiza', 6, 137),
-('Parque central', 3, 138),
-('Perez bonalde', 4, 139),
-('Piedra azul', 5, 140),
-('Plaza Venezuela', 2, 141),
-('Prado del este', 3, 142),
-('Propatria', 5, 143),
-('Puente hierro', 3, 144),
-('Quinta crespo', 3, 145),
-('San Ignacio', 1, 146),
-('San roman', 3, 147),
-('Santa Cecilia', 2, 148),
-('Santa Mónica', 3, 149),
-('Santa Paula', 3, 150),
-('Santa Rosalía', 3, 151),
-('Santa Sofía', 3, 152),
-('Simón Rodríguez, Sarría', 3, 153),
-('Urbanización Miranda', 4, 154),
-('Valle abajo', 3, 155),
-('Valle arriba', 2, 156),
-('Vista alegre', 4, 157),
-('San bernardino', 3, 158),
-('San Juam, Capuchinos', 4, 159),
-('San Martin, Maternidad, Bloque de armas', 4, 160),
-('Santa Eduviges', 2, 161),
-('Santa Fe', 3, 162),
-('Santa Inés', 3, 163),
-('Santa Marta', 2, 164),
-('Santa Rosa de Lima', 3, 165),
-('Sebucán', 3, 166),
-('Solar del hatillo', 5, 167),
-('Terrazas de club hípico', 4, 168),
-('Terrazas del avila', 4, 169),
-('Vizcaya', 4, 170);
+INSERT INTO `zonas` (`destino`, `precio`, `id`, `Delivery`) VALUES
+('Agua Salud', 4, 1, '5.00'),
+('Alto Hatillo', 5, 2, '6.00'),
+('Av. Cuartel de Catia (Vía Principal)', 4, 3, '5.00'),
+('Av. Panteón (Después de puente FFAA)', 3, 4, '4.00'),
+('Av. Sucre de Catia (Estación Gato Negro)', 4, 5, '5.00'),
+('Av. Urdaneta (Después de puente FFAA)', 3, 6, '4.00'),
+('Baruta (Pueblo)', 4, 7, '5.00'),
+('Bellas Artes', 3, 8, '3.00'),
+('Bello monte Norte (Recreo)', 2, 9, '3.00'),
+('Boleíta Norte', 3, 10, '3.00'),
+('Campo Alegre', 1, 11, '2.00'),
+('Capitolio', 3, 12, '4.00'),
+('CCCT', 1, 13, '2.00'),
+('Chuao', 2, 14, '3.00'),
+('Coche', 4, 15, '5.00'),
+('Colinas de bello monte', 3, 16, '4.00'),
+('Colinas de la california', 3, 17, '4.00'),
+('Colinas de la salle', 4, 18, '4.00'),
+('Colinas de la Tahona', 5, 19, '6.00'),
+('Colinas de los Ruices', 3, 20, '4.00'),
+('Colinas de Tamanaco', 4, 21, '5.00'),
+('Concresa', 3, 22, '4.00'),
+('Country Club', 1, 23, '2.00'),
+('Cumbres de Curumo', 4, 24, '5.00'),
+('El bosque', 1, 25, '2.00'),
+('El cafetal', 3, 26, '4.00'),
+('El Cigarral', 5, 27, '6.00'),
+('El Hatillo (Pueblo)', 5, 28, '6.00'),
+('El Marqués', 3, 29, '4.00'),
+('El paraiso', 3, 30, '4.00'),
+('El peñón', 5, 31, '5.00'),
+('El placer', 5, 32, '6.00'),
+('El poliedro', 5, 33, '6.00'),
+('Alta Florida', 3, 34, '3.00'),
+('Altagracia', 3, 35, '4.00'),
+('Altamira Norte', 2, 36, '2.00'),
+('Altamira Sur', 1, 37, '2.00'),
+('Alto Prado', 4, 38, '4.00'),
+('Antimano (Plaza)', 4, 39, '5.00'),
+('Av. Fuerzas Armadas Sur (Roca Tarpeya, San Luis)', 3, 40, '4.00'),
+('Av. Victoria', 3, 41, '4.00'),
+('Bella Vista', 4, 42, '5.00'),
+('Bello Campo', 0, 43, '2.00'),
+('Boleíta Sur', 3, 44, '3.00'),
+('Buena vista', 3, 45, '4.00'),
+('Campo Claro', 2, 46, '2.00'),
+('Caricuao', 5, 47, '6.00'),
+('Catia (Plaza Sucre)', 4, 48, '5.00'),
+('Caurimare', 3, 49, '4.00'),
+('Cementerio', 3, 50, '4.00'),
+('Cerro Verde (Parte Alta)', 5, 51, '5.00'),
+('Cerro Verde (Parte baja)', 4, 52, '5.00'),
+('Chacaito', 1, 53, '2.00'),
+('Chacao (Casco central)', 0, 54, '2.00'),
+('Chulavista', 2, 55, '3.00'),
+('Círculo Militar (IPSFA, Los próceres)', 3, 56, '3.00'),
+('Ciudad Universitaria', 3, 57, '3.00'),
+('Colinas de la Trinidad', 5, 58, '5.00'),
+('Colinas de Santa Mónica', 4, 59, '4.00'),
+('Colinas de Vista Alegre', 4, 60, '5.00'),
+('El algodonal', 4, 61, '5.00'),
+('El llanito', 4, 62, '5.00'),
+('El naranjal', 4, 63, '4.00'),
+('El rosal', 1, 64, '2.00'),
+('El valle (Jardines)', 4, 65, '5.00'),
+('Guaicaipuro', 3, 66, '3.00'),
+('Guaicay', 5, 67, '6.00'),
+('Junquito', 10, 68, '10.00'),
+('La california', 3, 69, '4.00'),
+('La campiña', 2, 70, '2.00'),
+('La candelaria', 3, 71, '3.00'),
+('La concordia', 3, 72, '4.00'),
+('La esmeralda', 5, 73, '6.00'),
+('La hoyada', 3, 74, '4.00'),
+('La pastora', 3, 75, '4.00'),
+('La paz', 4, 76, '5.00'),
+('La Trindidad', 5, 77, '5.00'),
+('La yaguara', 4, 78, '6.00'),
+('Las mercedes', 1, 79, '2.00'),
+('Las minas de Baruta', 5, 80, '6.00'),
+('Lomas de la trinidad', 5, 81, '6.00'),
+('Lomas de prados del este', 4, 82, '5.00'),
+('Los campitos', 3, 83, '4.00'),
+('Los caobos', 3, 84, '3.00'),
+('Los chorros', 3, 85, '3.00'),
+('Los cortijos', 2, 86, '3.00'),
+('Los palos grandes (Hasta la 4ta transversal)', 1, 87, '2.00'),
+('Los ruices', 2, 88, '3.00'),
+('Los simbolos', 3, 89, '3.00'),
+('Macaracuay', 4, 90, '5.00'),
+('Montecristo', 3, 91, '4.00'),
+('Palo verde', 4, 92, '5.00'),
+('Petare', 4, 93, '5.00'),
+('Prado de maría', 3, 94, '3.00'),
+('Sabana Grande', 2, 95, '2.00'),
+('San Agustin', 3, 96, '3.00'),
+('El silencio (Plaza O\'Leary)', 3, 97, '4.00'),
+('El valle', 3, 98, '4.00'),
+('Fuerte Tiuna', 4, 99, '5.00'),
+('Horizonte', 4, 100, '4.00'),
+('Hospital Vargas (San José)', 3, 101, '4.00'),
+('La Alameda', 4, 102, '4.00'),
+('La bonita', 5, 103, '6.00'),
+('La boyera', 5, 104, '6.00'),
+('La carlota (Urbanización)', 2, 105, '2.00'),
+('La castellana', 1, 106, '2.00'),
+('La castellana (Norte)', 2, 107, '2.00'),
+('La ciudadela', 3, 108, '3.00'),
+('La floresta', 1, 109, '2.00'),
+('La florida (Hasta el CC la Florida)', 2, 110, '3.00'),
+('La guairita', 5, 111, '6.00'),
+('La lagunita', 5, 112, '6.00'),
+('La Tahona', 5, 113, '6.00'),
+('La urbina', 4, 114, '5.00'),
+('Las acacias', 3, 115, '3.00'),
+('Las flores de catia', 4, 116, '5.00'),
+('Las palmas', 2, 117, '3.00'),
+('Lomas de bello monte', 3, 118, '4.00'),
+('Lomas de chuao', 3, 119, '3.00'),
+('Lomas de la lagunita', 6, 120, '7.00'),
+('Lomas de las mercedes', 2, 121, '3.00'),
+('Lomas del avila', 4, 122, '5.00'),
+('Lomas del mirador', 4, 123, '4.00'),
+('Lomas del sol', 5, 124, '6.00'),
+('Los chaguaramos', 3, 125, '3.00'),
+('Los dos caminos', 2, 126, '2.00'),
+('Los guayabitos', 6, 127, '7.00'),
+('Los naranjos de las mercedes', 3, 128, '4.00'),
+('Los naranjos del cafetal', 4, 129, '5.00'),
+('Los palos grandes (Después de la 4ta transversal)', 2, 130, '2.00'),
+('Los pomelos', 4, 131, '5.00'),
+('Los rosales, Plaza tiuna', 3, 132, '3.00'),
+('Los samanes', 4, 133, '5.00'),
+('Manzanares', 4, 134, '5.00'),
+('Mariperez', 3, 135, '3.00'),
+('Montalban 1,2,3', 4, 136, '5.00'),
+('Parque caiza', 6, 137, '7.00'),
+('Parque central', 3, 138, '3.00'),
+('Perez bonalde', 4, 139, '5.00'),
+('Piedra azul', 5, 140, '5.00'),
+('Plaza Venezuela', 2, 141, '3.00'),
+('Prado del este', 3, 142, '4.00'),
+('Propatria', 5, 143, '5.00'),
+('Puente hierro', 3, 144, '4.00'),
+('Quinta crespo', 3, 145, '4.00'),
+('San Ignacio', 1, 146, '2.00'),
+('San roman', 3, 147, '4.00'),
+('Santa Cecilia', 2, 148, '2.00'),
+('Santa Mónica', 3, 149, '3.00'),
+('Santa Paula', 3, 150, '4.00'),
+('Santa Rosalía', 3, 151, '4.00'),
+('Santa Sofía', 3, 152, '4.00'),
+('Simón Rodríguez, Sarría', 3, 153, '3.00'),
+('Urbanización Miranda', 4, 154, '5.00'),
+('Valle abajo', 3, 155, '3.00'),
+('Valle arriba', 2, 156, '3.00'),
+('Vista alegre', 4, 157, '5.00'),
+('San bernardino', 3, 158, '3.00'),
+('San Juan, Capuchinos', 4, 159, '5.00'),
+('San Martin, Maternidad, Bloque de armas', 4, 160, '5.00'),
+('Santa Eduviges', 2, 161, '2.00'),
+('Santa Fe', 3, 162, '4.00'),
+('Santa Inés', 3, 163, '4.00'),
+('Santa Marta', 2, 164, '3.00'),
+('Santa Rosa de Lima', 3, 165, '4.00'),
+('Sebucán', 3, 166, '3.00'),
+('Solar del hatillo', 5, 167, '6.00'),
+('Terrazas de club hípico', 4, 168, '5.00'),
+('Terrazas del avila', 4, 169, '5.00'),
+('Vizcaya', 4, 170, '4.00');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `compras`
+-- Indexes for table `compras`
 --
 ALTER TABLE `compras`
   ADD PRIMARY KEY (`id`),
@@ -478,71 +472,71 @@ ALTER TABLE `compras`
   ADD KEY `formapago_2` (`formapago`);
 
 --
--- Indices de la tabla `menus`
+-- Indexes for table `menus`
 --
 ALTER TABLE `menus`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `repartidores`
+-- Indexes for table `repartidores`
 --
 ALTER TABLE `repartidores`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `tasadeldia`
+-- Indexes for table `tasadeldia`
 --
 ALTER TABLE `tasadeldia`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `zonas`
+-- Indexes for table `zonas`
 --
 ALTER TABLE `zonas`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `compras`
+-- AUTO_INCREMENT for table `compras`
 --
 ALTER TABLE `compras`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT de la tabla `menus`
+-- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=694;
 
 --
--- AUTO_INCREMENT de la tabla `repartidores`
+-- AUTO_INCREMENT for table `repartidores`
 --
 ALTER TABLE `repartidores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT de la tabla `tasadeldia`
+-- AUTO_INCREMENT for table `tasadeldia`
 --
 ALTER TABLE `tasadeldia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de la tabla `zonas`
+-- AUTO_INCREMENT for table `zonas`
 --
 ALTER TABLE `zonas`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
