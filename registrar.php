@@ -40,8 +40,8 @@ if ($generico != '' || $genericoValor != '') {
 	}
 }
 
-
-$sql = "INSERT INTO compras VALUES ('$id'+1,'$cliente', '$delivery','$direccion','$zona','$formapago','$bs','$usd','$total',CURRENT_TIMESTAMP,'$zonaComision')";
+$timestamp = date("Y-m-d H:i:s");
+$sql = "INSERT INTO compras VALUES ('$id'+1,'$cliente', '$delivery','$direccion','$zona','$formapago','$bs','$usd','$total','$timestamp','$zonaComision')";
 
 if (mysqli_query($conex, $sql)) {
 	echo "<script language='javascript'>alert('Registro Correcto')</script>";

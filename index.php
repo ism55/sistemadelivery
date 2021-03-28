@@ -73,6 +73,17 @@ if ($restasa) {
 				font-size: 3.5rem;
 			}
 		}
+
+
+		.col>input {
+			width: 50px;
+		}
+
+		.form-group div.col {
+			padding-left: 0px !important;
+			padding-right: 0px !important;
+			text-align: left;
+		}
 	</style>
 	<!-- Custom styles for this template -->
 	<link href="./estilos.css" rel="stylesheet">
@@ -80,7 +91,7 @@ if ($restasa) {
 
 </head>
 
-<body class="text-center" style=" margin-left: 50px; margin-right: 50px;">
+<body class="text-center" style="font-size:9px">
 
 
 
