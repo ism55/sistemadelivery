@@ -76,14 +76,22 @@ if ($restasa) {
 
 
 		.col>input {
-			width: 50px;
-		}
+      width: 45px;
+      height: 25px;
+      padding: 0px 0px 0px 5px;
 
-		.form-group div.col {
-			padding-left: 0px !important;
-			padding-right: 0px !important;
-			text-align: left;
-		}
+    }
+
+    .form-group div.col {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+      text-align: left;
+    }
+
+    .form-group .col button.btn {
+      padding: 0px 5px 0px 5px !important;
+      width: 30px;
+    }
 	</style>
 	<!-- Custom styles for this template -->
 	<link href="./estilos.css" rel="stylesheet">
@@ -1518,7 +1526,7 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_kowloonmas" class="col-form-label"> Arroz frito con kowloon</label>
+													<label for="btn_kowloonmas" class="col-form-label"> Arroz frito kowloon</label>
 												</div>
 												<div class="col">
 													<label class="col-form-label">Add</label>
@@ -1584,7 +1592,7 @@ if ($restasa) {
 							<div class="card">
 								<div class="card-header text-dark">
 									<button type=button class="btn btn-link" data-toggle="collapse" data-target="#collapselom" aria-expanded="true" aria-controls="collapselom">
-										LomMien
+										Lo mien
 									</button>
 								</div>
 								<div id="collapselom" class="collapse" aria-labelledby="headinglom" data-parent="#accordion2">
@@ -1596,7 +1604,7 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_lmvegetarianomas" class="col-form-label"> LomMien vegetariano</label>
+													<label for="btn_lmvegetarianomas" class="col-form-label"> Lo mien vegetariano</label>
 												</div>
 												<div class="col">
 													<label class="col-form-label">Add</label>
@@ -1623,7 +1631,7 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_lmpollomas" class="col-form-label"> LomMien con pollo</label>
+													<label for="btn_lmpollomas" class="col-form-label"> Lo mien con pollo</label>
 												</div>
 												<div class="col">
 													<label class="col-form-label">Add</label>
@@ -1650,7 +1658,7 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_lmcerdomas" class="col-form-label"> LomMien con cerdo</label>
+													<label for="btn_lmcerdomas" class="col-form-label"> Lo mien con cerdo</label>
 												</div>
 												<div class="col">
 													<label class="col-form-label">Add</label>
@@ -1675,7 +1683,7 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_lmespecialmas" class="col-form-label"> LomMien especial</label>
+													<label for="btn_lmespecialmas" class="col-form-label"> Lo mien especial</label>
 												</div>
 												<div class="col">
 													<label class="col-form-label">Add</label>
@@ -1701,7 +1709,7 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_lmcamaronesmas" class="col-form-label"> LomMien con camarones</label>
+													<label for="btn_lmcamaronesmas" class="col-form-label"> Lo mien con camarones</label>
 												</div>
 												<div class="col">
 													<label class="col-form-label">Add</label>
@@ -1726,7 +1734,7 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_lmpolloycamaronesmas" class="col-form-label"> LomMien con pollo y camarones</label>
+													<label for="btn_lmpolloycamaronesmas" class="col-form-label"> Lo mien con pollo y camarones</label>
 												</div>
 												<div class="col">
 													<label class="col-form-label">Add</label>
@@ -1751,7 +1759,7 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_lmcarnemas" class="col-form-label"> LomMien con carne</label>
+													<label for="btn_lmcarnemas" class="col-form-label"> Lo mien con carne</label>
 												</div>
 												<div class="col">
 													<label class="col-form-label">Add</label>
@@ -1776,7 +1784,7 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_lmkowloonmas" class="col-form-label"> LomMien con kowloon</label>
+													<label for="btn_lmkowloonmas" class="col-form-label"> Lo mien kowloon</label>
 												</div>
 												<div class="col">
 													<label class="col-form-label">Add</label>
@@ -1902,7 +1910,7 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_postrasmas" class="col-form-label"> Pollo con ostras</label>
+													<label for="btn_postrasmas" class="col-form-label"> Pollo en salsa de ostras</label>
 												</div>
 												<div class="col">
 													<label class="col-form-label">Add</label>
@@ -1953,7 +1961,7 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_pasadomas" class="col-form-label"> Pollo con asado cantonés </label>
+													<label for="btn_pasadomas" class="col-form-label"> Pollo asado cantonés </label>
 												</div>
 												<div class="col">
 													<label class="col-form-label">Add</label>
@@ -1998,7 +2006,7 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_costrasmas" class="col-form-label"> Carne con ostras</label>
+													<label for="btn_costrasmas" class="col-form-label"> Carne con salsa de ostras</label>
 												</div>
 												<div class="col">
 													<label class="col-form-label">Add</label>
@@ -2225,7 +2233,7 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_cerdoostramas" class="col-form-label"> Cerdo con ostra</label>
+													<label for="btn_cerdoostramas" class="col-form-label"> Cerdo con salsa de ostra</label>
 												</div>
 												<div class="col">
 													<label class="col-form-label">Add</label>
@@ -2275,7 +2283,7 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_lumpiasmas" class="col-form-label"> Lúmpia</label>
+													<label for="btn_lumpiasmas" class="col-form-label"> Lúmpia (unidad)</label>
 												</div>
 												<div class="col">
 													<label class="col-form-label">Add</label>
@@ -2502,7 +2510,7 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_swantonmienmas" class="col-form-label"> Sopa wantón mien</label>
+													<label for="btn_swantonmienmas" class="col-form-label">Wantón mien</label>
 												</div>
 												<div class="col">
 													<label class="col-form-label">Add</label>

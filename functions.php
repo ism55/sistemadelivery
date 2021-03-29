@@ -1154,7 +1154,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=kowloon]").val() > 0) {
-      $("#listakowloon").text("x" + contkowloon + " Arroz frito con kowloon");
+      $("#listakowloon").text("x" + contkowloon + " Arroz frito kowloon");
     }
   });
 
@@ -1169,7 +1169,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=kowloon]").val() > 0) {
-      $("#listakowloon").text("x" + contkowloon + "Arroz frito con kowloon");
+      $("#listakowloon").text("x" + contkowloon + "Arroz frito  kowloon");
     } else {
       $("#listakowloon").text("");
     }
@@ -1229,7 +1229,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
 
     if ($("input[name=lmvegetariano]").val() > 0) {
       $("#listalmvegetariano").text(
-        "x" + contlmvegetariano + "  LomMien vegetariano"
+        "x" + contlmvegetariano + "Lo mien vegetariano"
       );
     }
   });
@@ -1248,7 +1248,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
 
     if ($("input[name=lmvegetariano]").val() > 0) {
       $("#listalmvegetariano").text(
-        "x" + contlmvegetariano + "  LomMien vegetariano"
+        "x" + contlmvegetariano + "  Lo mien vegetariano"
       );
     } else {
       $("#listalmvegetariano").text("");
@@ -1267,7 +1267,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=lmpollo]").val() > 0) {
-      $("#listalmpollo").text("x" + contlmpollo + " LomMien con pollo");
+      $("#listalmpollo").text("x" + contlmpollo + " Lo mien con pollo");
     }
   });
 
@@ -1282,7 +1282,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=lmpollo]").val() > 0) {
-      $("#listalmpollo").text("x" + contlmpollo + "  LomMien con pollo");
+      $("#listalmpollo").text("x" + contlmpollo + "  Lo mien con pollo");
     } else {
       $("#listalmpollo").text("");
     }
@@ -1300,7 +1300,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=lmcerdo]").val() > 0) {
-      $("#listalmcerdo").text("x" + contlmcerdo + "  LomMien con cerdo");
+      $("#listalmcerdo").text("x" + contlmcerdo + "  Lo mien con cerdo");
     }
   });
 
@@ -1315,7 +1315,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=lmcerdo]").val() > 0) {
-      $("#listalmcerdo").text("x" + contlmcerdo + "  LomMien con cerdo");
+      $("#listalmcerdo").text("x" + contlmcerdo + "  Lo mien con cerdo");
     } else {
       $("#listalmcerdo").text("");
     }
@@ -1333,7 +1333,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=lmespecial]").val() > 0) {
-      $("#listalmespecial").text("x" + contlmespecial + "  LomMien especial");
+      $("#listalmespecial").text("x" + contlmespecial + "  Lo mien especial");
     }
   });
 
@@ -1348,7 +1348,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=lmespecial]").val() > 0) {
-      $("#listalmespecial").text("x" + contlmespecial + " LomMien especial");
+      $("#listalmespecial").text("x" + contlmespecial + " Lo mien especial");
     } else {
       $("#listalmespecial").text("");
     }
@@ -1366,7 +1366,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
 
     if ($("input[name=lmcamarones]").val() > 0) {
       $("#listalmcamarones").text(
-        "x" + contlmcamarones + " LomMien con camarones"
+        "x" + contlmcamarones + " Lo mien con camarones"
       );
     }
   });
@@ -1383,7 +1383,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
 
     if ($("input[name=lmcamarones]").val() > 0) {
       $("#listalmcamarones").text(
-        "x" + contlmcamarones + " LomMien con camarones"
+        "x" + contlmcamarones + " Lo mien con camarones"
       );
     } else {
       $("#listalmcamarones").text("");
@@ -1401,7 +1401,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=lmkowloon]").val() > 0) {
-      $("#listalmkowloon").text("x" + contlmkowloon + " LomMien con kowloon");
+      $("#listalmkowloon").text("x" + contlmkowloon + " Lo mien kowloon");
     }
   });
 
@@ -1416,7 +1416,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=lmkowloon]").val() > 0) {
-      $("#listalmkowloon").text("x" + contlmkowloon + " LomMien con kowloon");
+      $("#listalmkowloon").text("x" + contlmkowloon + " Lo mien kowloon");
     } else {
       $("#listalmkowloon").text("");
     }
@@ -1433,7 +1433,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=lmcarne]").val() > 0) {
-      $("#listalmcarne").text("x" + contlmcarne + " LomMien con carne");
+      $("#listalmcarne").text("x" + contlmcarne + " Lo mien con carne");
     }
   });
 
@@ -1448,7 +1448,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=lmcarne]").val() > 0) {
-      $("#listalmcarne").text("x" + contlmcarne + " LomMien con carne");
+      $("#listalmcarne").text("x" + contlmcarne + " Lo mien con carne");
     } else {
       $("#listalmcarne").text("");
     }
@@ -1468,7 +1468,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
 
     if ($("input[name=lmpolloycamarones]").val() > 0) {
       $("#listalmpolloycamarones").text(
-        "x" + contlmpolloycamarones + " LomMien con pollo y camarones"
+        "x" + contlmpolloycamarones + " Lo mien con pollo y camarones"
       );
     }
   });
@@ -1487,7 +1487,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
 
     if ($("input[name=lmpolloycamarones]").val() > 0) {
       $("#listalmpolloycamarones").text(
-        "x" + contlmpolloycamarones + " LomMien con pollo y camarones"
+        "x" + contlmpolloycamarones + " Lo mien con pollo y camarones"
       );
     } else {
       $("#listalmpolloycamarones").text("");
@@ -1604,7 +1604,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=postras]").val() > 0) {
-      $("#listapostras").text("x" + contpostras + " Pollo con ostras");
+      $("#listapostras").text("x" + contpostras + " Pollo en salsa de ostras");
     }
   });
 
@@ -1619,7 +1619,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=postras]").val() > 0) {
-      $("#listapostras").text("x" + contpostras + " Pollo con ostras");
+      $("#listapostras").text("x" + contpostras + " Pollo en salsa de ostras");
     } else {
       $("#listapostras").text("");
     }
@@ -1672,7 +1672,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=pasado]").val() > 0) {
-      $("#listapasado").text("x" + contpasado + " Pollo con asado cantonés");
+      $("#listapasado").text("x" + contpasado + " Pollo asado cantonés");
     }
   });
 
@@ -1687,7 +1687,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=pasado]").val() > 0) {
-      $("#listapasado").text("x" + contpasado + " Pollo con asado cantonés");
+      $("#listapasado").text("x" + contpasado + " Pollo asado cantonés");
     } else {
       $("#listapasado").text("");
     }
@@ -1705,7 +1705,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=costras]").val() > 0) {
-      $("#listacostras").text("x" + contcostras + " Carne con ostras");
+      $("#listacostras").text("x" + contcostras + " Carne con salsa de ostras");
     }
   });
 
@@ -1720,7 +1720,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=costras]").val() > 0) {
-      $("#listacostras").text("x" + contcostras + " Carne con ostras");
+      $("#listacostras").text("x" + contcostras + " Carne con salsa de ostras");
     } else {
       $("#listacostras").text("");
     }
@@ -1969,7 +1969,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=cerdoostra]").val() > 0) {
-      $("#listacerdoostra").text("x" + contcerdoostra + " Cerdo con ostra");
+      $("#listacerdoostra").text("x" + contcerdoostra + " Cerdo con salsa de ostra");
     }
   });
 
@@ -1984,7 +1984,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=cerdoostra]").val() > 0) {
-      $("#listacerdoostra").text("x" + contcerdoostra + " Cerdo con ostra");
+      $("#listacerdoostra").text("x" + contcerdoostra + " Cerdo con salsa de ostra");
     } else {
       $("#listacerdoostra").text("");
     }
@@ -2001,7 +2001,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=lumpias]").val() > 0) {
-      $("#listalumpias").text("x" + contlumpias + " Lumpia");
+      $("#listalumpias").text("x" + contlumpias + " Lumpia (unidad)");
     }
   });
 
@@ -2016,7 +2016,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=lumpias]").val() > 0) {
-      $("#listalumpias").text("x" + contlumpias + " lumpia");
+      $("#listalumpias").text("x" + contlumpias + " lumpia (unidad)");
     } else {
       $("#listalumpias").text("");
     }
@@ -2437,7 +2437,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=swantonmien]").val() > 0) {
-      $("#listaswantonmien").text("x" + contswantonmien + " Sopa wantón mien ");
+      $("#listaswantonmien").text("x" + contswantonmien + " Wantón mien ");
     }
   });
 
@@ -2452,7 +2452,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=swantonmien]").val() > 0) {
-      $("#listaswantonmien").text("x" + contswantonmien + " Sopa wantón mien");
+      $("#listaswantonmien").text("x" + contswantonmien + " Wantón mien");
     } else {
       $("#listaswantonmien").text("");
     }
@@ -3480,32 +3480,82 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
         "Su pedido es:\n\n" +
         textarea.value +
         "\n\n" +
+        "El sub-total es: "
+        +$("#subtotalCompra").text()+"\n\n"+
+
+        "El costo del delivery es: "+ $("#pagoDelivery").text() +"$"+
+        "\n\n" +
+
         "Por un total de: " +
-        valorTotal + "$" +
-        "\n " +
+        valorTotal + "$" 
+        +"\n\n"+
+        
         "Comisión de PayPal:" + String((0.054 * parseFloat(valorTotal)) + 0.3) +
         "\n\n" +
         "Total con la comisión de PayPal: " + String((1.054 * parseFloat(valorTotal)) + 0.3) +
         "\n\n" +
-        "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs" +
+        "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs" 
+    }
+    else if ($("#tipoPago").val() == "Efectivo") {
 
-        "\n\n" +
-        "¿Cómo desea pagar?" +
-        "\n\n" +
+var auxval =
+  "Su pedido es:\n\n" +
+  textarea.value +
+  "\n\n" +
+        "El sub-total es: "
+        +$("#subtotalCompra").text()+"\n\n"+
 
-        "Aceptamos:" +
-        "\n" +
-        "Banesco bolívares" +
-        "\n" +
-        "Pago móvil" +
-        "\n" +
-        "Efectivo dólares" +
-        "\n" +
-        "PayPal"
-    } else {
+        "El costo del delivery es: "+ $("#pagoDelivery").text() +"$"+
+        "\n\n" +
+  "Por un total de: " +
+  valorTotal + "$" +
+  "\n " +
+
+  "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs" 
+} 
+
+else if ($("#tipoPago").val() == "Ambos") {
+
+var auxval =
+  "Su pedido es:\n\n" +
+  textarea.value +
+  "\n\n" + 
+        "El sub-total es: "
+        +$("#subtotalCompra").text()+"\n\n"+
+
+        "El costo del delivery es: "+ $("#pagoDelivery").text() +"$"+
+        "\n\n" +
+  "Por un total de: " +
+  valorTotal + "$" +
+  "\n " +
+  "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"
+} 
+else if ($("#tipoPago").val() == "Transferencia") {
+
+var auxval =
+  "Su pedido es:\n\n" +
+  textarea.value +
+  "\n\n" + 
+        "El sub-total es: "
+        +$("#subtotalCompra").text()+"\n\n"+
+
+        "El costo del delivery es: "+ $("#pagoDelivery").text() +"$"+
+        "\n\n" +
+  "Por un total de: " +
+  valorTotal + "$" +
+  "\n " +
+  "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"
+} 
+
+    else {
       var auxval =
         "Su pedido es:\n\n" +
         textarea.value +
+        "\n\n" +
+        "El sub-total es: "
+        +$("#subtotalCompra").text()+"\n\n"+
+
+        "El costo del delivery es: "+ $("#pagoDelivery").text() +"$"+
         "\n\n" +
         "Por un total de: " +
         valorTotal +
