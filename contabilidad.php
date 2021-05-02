@@ -531,7 +531,7 @@ date_default_timezone_set('America/Caracas');
         <?php
 
         $hoy = date("Y-m-d H:i:s");
-        foreach ($conex->query("SELECT WEEK('$hoy')") as $prueba) {
+        foreach ($conex->query("SELECT WEEK('$hoy',5)") as $prueba) {
         }
 
         //echo $prueba["WEEK('$hoy')"];
@@ -543,9 +543,9 @@ date_default_timezone_set('America/Caracas');
           //echo $repartidores['nombre'];
           foreach ($comprasPorFecha as $row) {  // aca puedes hacer la consulta e iterarla con each.
             $cadena = $row['fecha_hora'];
-            foreach ($conex->query("SELECT WEEK('$cadena')") as $semana) {
+            foreach ($conex->query("SELECT WEEK('$cadena',5)") as $semana) {
 
-              if ($prueba["WEEK('$hoy')"] ==  $semana["WEEK('$cadena')"]) {
+              if ($prueba["WEEK('$hoy',5)"] ==  $semana["WEEK('$cadena',5)"]) {
 
                 if ($row['numrepartidor'] === $repartidores['telefono']) {
 

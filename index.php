@@ -76,22 +76,22 @@ if ($restasa) {
 
 
 		.col>input {
-      width: 45px;
-      height: 25px;
-      padding: 0px 0px 0px 5px;
+			width: 45px;
+			height: 25px;
+			padding: 0px 0px 0px 5px;
 
-    }
+		}
 
-    .form-group div.col {
-      padding-left: 0px !important;
-      padding-right: 0px !important;
-      text-align: left;
-    }
+		.form-group div.col {
+			padding-left: 0px !important;
+			padding-right: 0px !important;
+			text-align: left;
+		}
 
-    .form-group .col button.btn {
-      padding: 0px 5px 0px 5px !important;
-      width: 30px;
-    }
+		.form-group .col button.btn {
+			padding: 0px 5px 0px 5px !important;
+			width: 30px;
+		}
 	</style>
 	<!-- Custom styles for this template -->
 	<link href="./estilos.css" rel="stylesheet">
@@ -1351,7 +1351,7 @@ if ($restasa) {
 							</div>
 						</div>
 
-	
+
 
 					</div>
 
@@ -1887,7 +1887,7 @@ if ($restasa) {
 							</div>
 						</div>
 
-					
+
 					</div>
 				</div>
 			</div>
@@ -2413,7 +2413,7 @@ if ($restasa) {
 								</div>
 							</div>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
@@ -2878,7 +2878,7 @@ if ($restasa) {
 							</div>
 						</div>
 
-						
+
 
 					</div>
 				</div>
@@ -3257,7 +3257,7 @@ if ($restasa) {
 									</div>
 								</div>
 							</div>
-						</div>		
+						</div>
 						<div class="col">
 							<!--  ################################################################# -->
 							<!--                 Combos clasicos             -->
@@ -3338,92 +3338,97 @@ if ($restasa) {
 							<!--  ################################################################# -->
 							<div class="card">
 								<div class="card-header text-dark">
-									COMBO PERSONALIZADO
+
+									<button type=button class="btn btn-link" data-toggle="collapse" data-target="#collapsecombo" aria-expanded="true" aria-controls="collapsecombo">
+										COMBO PERSONALIZADO
+									</button>
 								</div>
-								<div class="card-body text-dark">
+								<div id="collapsecombo" class="collapse" aria-labelledby="headingcombo" data-parent="#accordion4">
+									<div class="card-body text-dark">
 
-									<!--  ################################################################# -->
-									<!--               ITEM 1                 -->
-									<!--  ################################################################# -->
-									<hr>
-									<div class="row form-group">
-										<div class="col">
-											<label for="item1" class="col-form-label">Item</label>
-											<input type="text" name="item1" id="item1" class=" form-control" placeholder="Item 1">
+										<!--  ################################################################# -->
+										<!--               ITEM 1                 -->
+										<!--  ################################################################# -->
+										<hr>
+										<div class="row form-group">
+											<div class="col">
+												<label for="item1" class="col-form-label">Item</label>
+												<input type="text" name="item1" id="item1" class=" form-control" placeholder="Item 1" style="width:15em !important;">
+											</div>
+
+											<div class="col">
+												<label for="totalitem1" class="col-form-label">Subtotal</label>
+												<input type="number" min="0" step='.01' value="0" name="totalitem1" id="totalitem1" class=" form-control" style="width:15em !important;">
+											</div>
+										</div>
+										<!--  ################################################################# -->
+										<!--               ITEM 2                -->
+										<!--  ################################################################# -->
+										<hr>
+										<div class="row form-group">
+											<div class="col">
+												<label for="item1" class="col-form-label">Item</label>
+												<input type="text" name="item2" id="item2" class=" form-control" placeholder="Item 2" style="width:15em !important;">
+											</div>
+
+											<div class="col">
+												<label for="totalitem2" class="col-form-label">Subtotal</label>
+												<input type="number" min="0" step='.01' value="0" name="totalitem2" id="totalitem2" class=" form-control" style="width:15em !important;">
+											</div>
+										</div>
+										<!--  ################################################################# -->
+										<!--         ITEM 3              		-->
+										<!--  ################################################################# -->
+										<hr>
+										<div class="row form-group">
+											<div class="col">
+												<label for="item1" class="col-form-label">Item</label>
+												<input type="text" name="item3" id="item3" class=" form-control" placeholder="Item 3" style="width:15em !important;">
+											</div>
+
+											<div class="col">
+												<label for="totalitem3" class="col-form-label">Subtotal</label>
+												<input type="number" min="0" step='.01' value="0" name="totalitem3" id="totalitem3" class=" form-control" style="width:15em !important;">
+											</div>
+										</div>
+										<!--  ################################################################# -->
+										<!--               ITEM 4                -->
+										<!--  ################################################################# -->
+										<hr>
+										<div class="row form-group">
+											<div class="col">
+												<label for="item4" class="col-form-label">Item</label>
+												<input type="text" name="item4" id="item4" class=" form-control" placeholder="Item 4" style="width:15em !important;">
+											</div>
+
+											<div class="col">
+												<label for="totalitem4" class="col-form-label">Subtotal</label>
+												<input type="number" min="0" step='.01' value="0" name="totalitem4" id="totalitem4" class=" form-control" style="width:15em !important;">
+											</div>
+										</div>
+										<!--  ################################################################# -->
+										<!--              ITEM 5                 -->
+										<!--  ################################################################# -->
+										<hr>
+										<div class="row form-group">
+											<div class="col">
+												<label for="item5" class="col-form-label">Item</label>
+												<input type="text" name="item5" id="item5" class=" form-control" placeholder="Item 5" style="width:15em !important;">
+											</div>
+
+											<div class="col">
+												<label for="totalitem5" class="col-form-label">Subtotal</label>
+												<input type="number" min="0" step='.01' value="0" name="totalitem5" id="totalitem5" class=" form-control" style="width:15em !important;">
+											</div>
 										</div>
 
-										<div class="col">
-											<label for="totalitem1" class="col-form-label">Subtotal</label>
-											<input type="number" min="0" step='.01' value="0" name="totalitem1" id="totalitem1" class=" form-control">
-										</div>
 									</div>
-									<!--  ################################################################# -->
-									<!--               ITEM 2                -->
-									<!--  ################################################################# -->
-									<hr>
-									<div class="row form-group">
-										<div class="col">
-											<label for="item1" class="col-form-label">Item</label>
-											<input type="text" name="item2" id="item2" class=" form-control" placeholder="Item 2">
-										</div>
-
-										<div class="col">
-											<label for="totalitem2" class="col-form-label">Subtotal</label>
-											<input type="number" min="0" step='.01' value="0" name="totalitem2" id="totalitem2" class=" form-control">
-										</div>
-									</div>
-									<!--  ################################################################# -->
-									<!--         ITEM 3              		-->
-									<!--  ################################################################# -->
-									<hr>
-									<div class="row form-group">
-										<div class="col">
-											<label for="item1" class="col-form-label">Item</label>
-											<input type="text" name="item3" id="item3" class=" form-control" placeholder="Item 3">
-										</div>
-
-										<div class="col">
-											<label for="totalitem3" class="col-form-label">Subtotal</label>
-											<input type="number" min="0" step='.01' value="0" name="totalitem3" id="totalitem3" class=" form-control">
-										</div>
-									</div>
-									<!--  ################################################################# -->
-									<!--               ITEM 4                -->
-									<!--  ################################################################# -->
-									<hr>
-									<div class="row form-group">
-										<div class="col">
-											<label for="item4" class="col-form-label">Item</label>
-											<input type="text" name="item4" id="item4" class=" form-control" placeholder="Item 4">
-										</div>
-
-										<div class="col">
-											<label for="totalitem4" class="col-form-label">Subtotal</label>
-											<input type="number" min="0" step='.01' value="0" name="totalitem4" id="totalitem4" class=" form-control">
-										</div>
-									</div>
-									<!--  ################################################################# -->
-									<!--              ITEM 5                 -->
-									<!--  ################################################################# -->
-									<hr>
-									<div class="row form-group">
-										<div class="col">
-											<label for="item5" class="col-form-label">Item</label>
-											<input type="text" name="item5" id="item5" class=" form-control" placeholder="Item 5">
-										</div>
-
-										<div class="col">
-											<label for="totalitem5" class="col-form-label">Subtotal</label>
-											<input type="number" min="0" step='.01' value="0" name="totalitem5" id="totalitem5" class=" form-control">
-										</div>
-									</div>
-
 								</div>
 							</div>
 						</div>
 
 
-					
+
 					</div>
 				</div>
 			</div>

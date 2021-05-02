@@ -3480,82 +3480,76 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
         "Su pedido es:\n\n" +
         textarea.value +
         "\n\n" +
-        "El sub-total es: "
-        +$("#subtotalCompra").text()+"\n\n"+
+        "El sub-total es: " +
+        $("#subtotalCompra").text() + "\n\n" +
 
-        "El costo del delivery es: "+ $("#pagoDelivery").text() +"$"+
+        "El costo del delivery es: " + $("#pagoDelivery").text() + "$" +
         "\n\n" +
 
         "Por un total de: " +
-        valorTotal + "$" 
-        +"\n\n"+
-        
+        valorTotal + "$" +
+        "\n\n" +
+
         "Comisión de PayPal:" + String((0.054 * parseFloat(valorTotal)) + 0.3) +
         "\n\n" +
         "Total con la comisión de PayPal: " + String((1.054 * parseFloat(valorTotal)) + 0.3) +
         "\n\n" +
-        "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs" 
-    }
-    else if ($("#tipoPago").val() == "Efectivo") {
+        "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"
+    } else if ($("#tipoPago").val() == "Efectivo") {
 
-var auxval =
-  "Su pedido es:\n\n" +
-  textarea.value +
-  "\n\n" +
-        "El sub-total es: "
-        +$("#subtotalCompra").text()+"\n\n"+
-
-        "El costo del delivery es: "+ $("#pagoDelivery").text() +"$"+
-        "\n\n" +
-  "Por un total de: " +
-  valorTotal + "$" +
-  "\n " +
-
-  "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs" 
-} 
-
-else if ($("#tipoPago").val() == "Ambos") {
-
-var auxval =
-  "Su pedido es:\n\n" +
-  textarea.value +
-  "\n\n" + 
-        "El sub-total es: "
-        +$("#subtotalCompra").text()+"\n\n"+
-
-        "El costo del delivery es: "+ $("#pagoDelivery").text() +"$"+
-        "\n\n" +
-  "Por un total de: " +
-  valorTotal + "$" +
-  "\n " +
-  "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"
-} 
-else if ($("#tipoPago").val() == "Transferencia") {
-
-var auxval =
-  "Su pedido es:\n\n" +
-  textarea.value +
-  "\n\n" + 
-        "El sub-total es: "
-        +$("#subtotalCompra").text()+"\n\n"+
-
-        "El costo del delivery es: "+ $("#pagoDelivery").text() +"$"+
-        "\n\n" +
-  "Por un total de: " +
-  valorTotal + "$" +
-  "\n " +
-  "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"
-} 
-
-    else {
       var auxval =
         "Su pedido es:\n\n" +
         textarea.value +
         "\n\n" +
-        "El sub-total es: "
-        +$("#subtotalCompra").text()+"\n\n"+
+        "El sub-total es: " +
+        $("#subtotalCompra").text() + "\n\n" +
 
-        "El costo del delivery es: "+ $("#pagoDelivery").text() +"$"+
+        "El costo del delivery es: " + $("#pagoDelivery").text() + "$" +
+        "\n\n" +
+        "Por un total de: " +
+        valorTotal + "$" +
+        "\n " +
+
+        "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"
+    } else if ($("#tipoPago").val() == "Ambos") {
+
+      var auxval =
+        "Su pedido es:\n\n" +
+        textarea.value +
+        "\n\n" +
+        "El sub-total es: " +
+        $("#subtotalCompra").text() + "\n\n" +
+
+        "El costo del delivery es: " + $("#pagoDelivery").text() + "$" +
+        "\n\n" +
+        "Por un total de: " +
+        valorTotal + "$" +
+        "\n " +
+        "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"
+    } else if ($("#tipoPago").val() == "Transferencia") {
+
+      var auxval =
+        "Su pedido es:\n\n" +
+        textarea.value +
+        "\n\n" +
+        "El sub-total es: " +
+        $("#subtotalCompra").text() + "\n\n" +
+
+        "El costo del delivery es: " + $("#pagoDelivery").text() + "$" +
+        "\n\n" +
+        "Por un total de: " +
+        valorTotal + "$" +
+        "\n " +
+        "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"
+    } else {
+      var auxval =
+        "Su pedido es:\n\n" +
+        textarea.value +
+        "\n\n" +
+        "El sub-total es: " +
+        $("#subtotalCompra").text() + "\n\n" +
+
+        "El costo del delivery es: " + $("#pagoDelivery").text() + "$" +
         "\n\n" +
         "Por un total de: " +
         valorTotal +
@@ -3692,6 +3686,9 @@ var auxval =
     ventimp.document.write("<br>");
     ventimp.document.write("<br>");
     ventimp.document.write("Teléfono: " + $("input[name=cliente]").val().replaceAll(' ', '').replaceAll("(", '').replaceAll(")", '').replaceAll('-', ''));
+    ventimp.document.write("<br>");
+    ventimp.document.write("<br>");
+    ventimp.document.write("El cambio del cliente es: " + $("#pagoFaltante").text())
     ventimp.document.close();
 
     ventimp.print();
