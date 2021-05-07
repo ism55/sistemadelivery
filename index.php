@@ -244,6 +244,12 @@ if ($restasa) {
 
 						<input type="number" min="0" value="0" id="inputdolares" class="form-control" placeholder="USD" name="dolares" step='.01' style="width:120px" required>
 					</label>
+					<label for="inputrecibir" class="" style=" padding-right:10px">
+						<hr style="border-color: white;">
+						<h6>Recibir</h6>
+
+						<input type="number" min="0" value="0" id="inputrecibir" class="form-control" placeholder="USD" name="recibir" step='.01' style="width:120px" required>
+					</label>
 
 					<label for="tipoPago" class="">
 						<hr style=" border-color: white;">
@@ -691,6 +697,14 @@ if ($restasa) {
 										</div>
 										<div class="col">
 											<span id="pagoUSD"></span><br>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<span>Recibir: </span>
+										</div>
+										<div class="col">
+											<span id="recibir"></span><br>
 										</div>
 									</div>
 
@@ -3183,7 +3197,7 @@ if ($restasa) {
 											<hr>
 											<div class="row form-group">
 												<div class="col">
-													<label for="btn_cerdosypmas" class="col-form-label"> Cerdo con sal y pimienta</label>
+													<label for="btn_cerdosypmas" class="col-form-label"> Costillas con sal y pimienta</label>
 												</div>
 												<div class="col">
 													<label class="col-form-label">Add</label>

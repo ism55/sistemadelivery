@@ -1905,7 +1905,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=cerdosyp]").val() > 0) {
-      $("#listacerdosyp").text("x" + contcerdosyp + " Cerdo con sal y pimienta");
+      $("#listacerdosyp").text("x" + contcerdosyp + " Costillas con sal y pimienta");
     }
   });
 
@@ -1920,7 +1920,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $(subtotalCompra).text(sumarTodo());
 
     if ($("input[name=cerdosyp]").val() > 0) {
-      $("#listacerdosyp").text("x" + contcerdosyp + " Cerdo con sal y pimienta");
+      $("#listacerdosyp").text("x" + contcerdosyp + " Costillas con sal y pimienta");
     } else {
       $("#listacerdosyp").text("");
     }
@@ -3290,6 +3290,8 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $("#zonaextra").text($("#inputzonaextra").val());
   });
 
+
+
   $("input[name=bolivares]").change(function() {
 
     var auxbs = parseFloat($("input[name=bolivares]").val()) * parseFloat($("#tasaDia").val());
@@ -3434,6 +3436,11 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
       (totalFaltante * parseFloat($("#tasaDia").val(), 10)).toFixed(2) +
       "Bs"
     );
+
+
+
+   
+    $("#recibir").text($("#inputrecibir").val());
 
 
 
@@ -3650,7 +3657,9 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
 
       +
       "Tipo de pago:" + $("#tipoPago").val()
-
+      +
+        "\n\n"+
+      "Recibir: "+ document.getElementById("recibir").innerText + "$"
     ;
 
     document
@@ -3662,6 +3671,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
         "?" +
         "text=" +
         encodeURIComponent(auxval)
+      
       );
 
     //+56979184554?text=Hola%20quiero%20contactarlo
@@ -3689,6 +3699,9 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     ventimp.document.write("<br>");
     ventimp.document.write("<br>");
     ventimp.document.write("El cambio del cliente es: " + $("#pagoFaltante").text())
+    ventimp.document.write("<br>");
+    ventimp.document.write("<br>");
+    ventimp.document.write("Recibir: " + document.getElementById("recibir").innerText + " $ ");
     ventimp.document.close();
 
     ventimp.print();
