@@ -75,7 +75,7 @@ date_default_timezone_set('America/Caracas');
   <div class="container">
     <header class="masthead mb-auto">
       <div class="inner">
-        <img src="./img/logo.png" width="100em" height="100em" class="masthead-brand">
+        <a href="./"><img src="./img/logo.png" width="100em" height="100em" class="masthead-brand"></a>
         <nav class="nav nav-masthead justify-content-center">
           <a class="nav-link" href="./">COMPRAS</a>
           <a class="nav-link active" href="./contabilidad.php">CONTABILIDAD</a>
@@ -114,6 +114,7 @@ date_default_timezone_set('America/Caracas');
         $suma_diaria_efectivo = 0;
         $suma_diaria_transfer = 0;
         $suma_diaria_ambos = 0;
+        $suma_diaria_paypal = 0;
         ?>
 
 
@@ -135,6 +136,10 @@ date_default_timezone_set('America/Caracas');
 
             if ($row['formapago'] === "Ambos") {
               $suma_diaria_ambos = $suma_diaria_ambos + $row['total'] + $row['total'];
+            }
+
+            if ($row['formapago'] === "PayPal") {
+              $suma_diaria_paypal = $suma_diaria_paypal + $row['total'] + $row['total'];
             }
 
             echo "<td>" . $row['numcliente'] . "</td>";
@@ -343,7 +348,7 @@ date_default_timezone_set('America/Caracas');
           echo '<tr scope="row">';
           if ($timestamp["month"] === $fecha_actual["month"]) {
 
-            if ($row['formapago'] === "Ambos") {
+            if ($row['formapago'] === "Transferencia") {
               $suma_diaria_usd = $suma_diaria_usd + $row['usd'];
               $suma_diaria_bs = $suma_diaria_bs + $row['bs'];
             }
@@ -620,13 +625,19 @@ date_default_timezone_set('America/Caracas');
         ?>
       </table>
     </main>
-
+    <a href="./excel.php">
+      <button type='button' class='btn btn-sm btn-success btn-block'>
+        <h3>DESCARGAR HISTÓRICO MENSUAL</h3>
+      </button>
+    </a>
     <footer class="mastfoot mt-auto">
       <div class="inner">
         <p>Desarrollado por <a href="https://www.instagram.com/neurona.servicios">Neurona Servicios</a></p>
       </div>
     </footer>
   </div>
+
+
 
 
 

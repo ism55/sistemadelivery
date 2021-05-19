@@ -53,7 +53,7 @@ if ($resmenu) {
   <div class="container">
     <header class="masthead mb-auto">
       <div class="inner">
-        <img src="./img/logo.png" width="100em" height="100em" class="masthead-brand">
+        <a href="./"><img src="./img/logo.png" width="100em" height="100em" class="masthead-brand"></a>
         <nav class="nav nav-masthead justify-content-center">
           <a class="nav-link" href="./">COMPRAS</a>
           <a class="nav-link" href="./contabilidad.php">CONTABILIDAD</a>

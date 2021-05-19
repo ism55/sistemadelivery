@@ -30,6 +30,7 @@ $zona = ltrim($zona);
 if ($generico != '' || $genericoValor != '') {
 	$direccion = $generico;
 	$zonaComision = $genericoValor;
+	$zona = "Custom";
 } else {
 	foreach ($conex->query(' SELECT * FROM `zonas`') as $fila) {
 
@@ -39,6 +40,8 @@ if ($generico != '' || $genericoValor != '') {
 		}
 	}
 }
+
+date_default_timezone_set('America/Caracas');
 
 $timestamp = date("Y-m-d H:i:s");
 $sql = "INSERT INTO compras VALUES ('$id'+1,'$cliente', '$delivery','$direccion','$zona','$formapago','$bs','$usd','$total','$timestamp','$zonaComision')";

@@ -99,7 +99,7 @@ if ($restasa) {
 
 </head>
 
-<body class="text-center" style="font-size:9px">
+<body class="text-center" style="font-size:1em">
 
 
 
@@ -108,7 +108,7 @@ if ($restasa) {
 	<header class="masthead mb-auto">
 		<div class="inner">
 
-			<img src="./img/logo.png" width="100em" height="100em" class="masthead-brand">
+			<a href="./"><img src="./img/logo.png" width="100em" height="100em" class="masthead-brand"></a>
 			<nav class="nav nav-masthead justify-content-center">
 				<a class="nav-link active" href="./">COMPRAS</a>
 				<a class="nav-link" href="./contabilidad.php">CONTABILIDAD</a>
@@ -139,7 +139,7 @@ if ($restasa) {
 
 			<section>
 				<div style="float:left; min-height: 50vh;" class="w-50 p-3">
-					<label for="inputCliente" class="" style="padding-right:30px">
+					<label for="inputCliente" class="" style="padding-right:0px">
 						<hr style="border-color: white;">
 						<h6>Número de teléfono cliente</h6>
 						<input type="tel" id="inputCliente" class="form-control" placeholder="Número de teléfono cliente" autofocus name="cliente" style="width:250px" required>
@@ -148,8 +148,8 @@ if ($restasa) {
 
 
 
-					<label for="inputDeli" class="">
-						<hr style="border-color: white;">
+					<label for="inputDeli" class="" style="padding-left:0px>
+						<hr style=" border-color: white;">
 						<h6>Número de teléfono delivery</h6>
 						<select name="delivery" class="form-control" id="inputDeli" style="width:250px">
 							<option value="0">Ninguno</option>
@@ -191,7 +191,7 @@ if ($restasa) {
 					</div>
 					<div id='zonaPersonalizada'>
 						<input type='text' class='form-control' placeholder='Zona personalizada' autofocus name='generico' id='generico'>
-						<input type='number' min='0' step='.01' class='form-control' placeholder='Monto personalizado' autofocus name='generico' id='genericoValor'>
+						<input type='number' min='0' step='.01' class='form-control' placeholder='Monto personalizado' autofocus name='genericoValor' id='genericoValor'>
 					</div>
 					<div class="form-check">
 						<input type="checkbox" class="form-check-input" id="boton" name="boton">
@@ -223,7 +223,7 @@ if ($restasa) {
 						<h6>Forma de pago</h6>
 
 						<select id="tipoPago" name="formaRadio" class="form-control" style="width:120px">
-							<option value="">Ninguno</option>
+							<option value="Ambos">Ninguno</option>
 							<option value="Transferencia">Transferencia Banesco o Pago móvil</option>
 							<option value="Efectivo">Efectivo</option>
 							<option value="Ambos">Mixto</option>
@@ -766,15 +766,15 @@ if ($restasa) {
 													<label for="btn_combo1mas" class="col-form-label"> Mega Combo 1</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo1mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo1menos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="combo1" class="col-form-label">Cantidad</label>
+													<label for="combo1" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="combo1" id="combo1" class="cantCombo1 form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -793,15 +793,15 @@ if ($restasa) {
 													<label for="btn_combo2mas" class="col-form-label">Mega Combo 2</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo2mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo2menos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="combo2" class="col-form-label">Cantidad</label>
+													<label for="combo2" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="combo2" class="cantCombo2 form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -819,15 +819,15 @@ if ($restasa) {
 													<label for="btn_combo3mas" class="col-form-label"> Mega Combo 3</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo3mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo3menos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="combo3" class="col-form-label">Cantidad</label>
+													<label for="combo3" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="combo3" class="cantCombo3 form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -844,15 +844,15 @@ if ($restasa) {
 													<label for="btn_combo4mas" class="col-form-label"> Mega Combo 4</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo4mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo4menos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="combo4" class="col-form-label">Cantidad</label>
+													<label for="combo4" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="combo4" class="cantCombo4 form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -870,15 +870,15 @@ if ($restasa) {
 													<label for="btn_combo5mas" class="col-form-label"> Mega Combo 5</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo5mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo5menos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="combo5" class="col-form-label">Cantidad</label>
+													<label for="combo5" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="combo5" class="cantCombo5 form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -895,15 +895,15 @@ if ($restasa) {
 													<label for="btn_combo6mas" class="col-form-label"> Mega Combo 6</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo6mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo6menos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="combo6" class="col-form-label">Cantidad</label>
+													<label for="combo6" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="combo6" class="cantCombo6 form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -920,15 +920,15 @@ if ($restasa) {
 													<label for="btn_combo7mas" class="col-form-label"> Mega Combo 7</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo7mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo7menos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="combo7" class="col-form-label">Cantidad</label>
+													<label for="combo7" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="combo7" class="cantCombo7 form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -965,15 +965,15 @@ if ($restasa) {
 													<label for="btn_combo1duomas" class="col-form-label"> Combo Duo 1</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo1duomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo1duomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="combo1duo" class="col-form-label">Cantidad</label>
+													<label for="combo1duo" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="combo1duo" id="combo1duo" class="cantCombo1duo form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -992,15 +992,15 @@ if ($restasa) {
 													<label for="btn_combo2duomas" class="col-form-label"> Combo Duo 2</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo2duomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo2duomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="combo2duo" class="col-form-label">Cantidad</label>
+													<label for="combo2duo" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="combo2duo" class="cantCombo2duo form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1018,15 +1018,15 @@ if ($restasa) {
 													<label for="btn_combo3duomas" class="col-form-label"> Combo Duo 3</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo3duomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo3duomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="combo3duo" class="col-form-label">Cantidad</label>
+													<label for="combo3duo" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="combo3duo" class="cantCombo3duo form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1043,15 +1043,15 @@ if ($restasa) {
 													<label for="btn_combo4duomas" class="col-form-label"> Combo Duo 4</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo4duomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo4duomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="combo4duo" class="col-form-label">Cantidad</label>
+													<label for="combo4duo" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="combo4duo" class="cantCombo4duo form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1069,15 +1069,15 @@ if ($restasa) {
 													<label for="btn_combo5duomas" class="col-form-label"> Combo Duo 5</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo5duomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo5duomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="combo5duo" class="col-form-label">Cantidad</label>
+													<label for="combo5duo" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="combo5duo" class="cantCombo5duo form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1095,15 +1095,15 @@ if ($restasa) {
 													<label for="btn_combo6duomas" class="col-form-label"> Combo Duo 6</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo6duomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo6duomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="combo6duo" class="col-form-label">Cantidad</label>
+													<label for="combo6duo" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="combo6duo" class="cantCombo6duo form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1120,15 +1120,15 @@ if ($restasa) {
 													<label for="btn_combo7duomas" class="col-form-label"> Combo Duo 7</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo7duomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_combo7duomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="combo7duo" class="col-form-label">Cantidad</label>
+													<label for="combo7duo" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="combo7duo" class="cantCombo7duo form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1165,15 +1165,15 @@ if ($restasa) {
 													<label for="btn_kombo1mas" class="col-form-label"> Kombo 1</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_kombo1mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_kombo1menos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="kombo1" class="col-form-label">Cantidad</label>
+													<label for="kombo1" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="kombo1" id="kombo1" class="cantkombo1 form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1192,15 +1192,15 @@ if ($restasa) {
 													<label for="btn_kombo2mas" class="col-form-label"> kombo 2</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_kombo2mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_kombo2menos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="kombo2" class="col-form-label">Cantidad</label>
+													<label for="kombo2" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="kombo2" class="cantkombo2 form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1218,15 +1218,15 @@ if ($restasa) {
 													<label for="btn_kombo3mas" class="col-form-label"> kombo 3</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_kombo3mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_kombo3menos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="kombo3" class="col-form-label">Cantidad</label>
+													<label for="kombo3" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="kombo3" class="cantkombo3 form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1243,15 +1243,15 @@ if ($restasa) {
 													<label for="btn_kombo4mas" class="col-form-label"> kombo 4</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_kombo4mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_kombo4menos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="kombo4" class="col-form-label">Cantidad</label>
+													<label for="kombo4" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="kombo4" class="cantkombo4 form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1268,15 +1268,15 @@ if ($restasa) {
 													<label for="btn_kombo5mas" class="col-form-label"> kombo 5</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_kombo5mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_kombo5menos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="kombo5" class="col-form-label">Cantidad</label>
+													<label for="kombo5" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="kombo5" class="cantkombo5 form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1294,15 +1294,15 @@ if ($restasa) {
 													<label for="btn_kombo6mas" class="col-form-label"> kombo 6</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_kombo6mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_kombo6menos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="kombo6" class="col-form-label">Cantidad</label>
+													<label for="kombo6" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="kombo6" class="cantkombo6 form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1319,15 +1319,15 @@ if ($restasa) {
 													<label for="btn_kombo7mas" class="col-form-label"> kombo 7</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_kombo7mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_kombo7menos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="kombo7" class="col-form-label">Cantidad</label>
+													<label for="kombo7" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="kombo7" class="cantkombo7 form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1343,15 +1343,15 @@ if ($restasa) {
 													<label for="btn_kombo8mas" class="col-form-label"> kombo 8</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_kombo8mas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_kombo8menos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="kombo8" class="col-form-label">Cantidad</label>
+													<label for="kombo8" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="kombo8" class="cantkombo8 form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1398,15 +1398,15 @@ if ($restasa) {
 													<label for="btn_lmvegetarianomas" class="col-form-label"> Lo mien vegetariano</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_lmvegetarianomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_lmvegetarianomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="lmvegetariano" class="col-form-label">Cantidad</label>
+													<label for="lmvegetariano" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="lmvegetariano" id="lmvegetariano" class="cantlmvegetariano form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1425,15 +1425,15 @@ if ($restasa) {
 													<label for="btn_lmpollomas" class="col-form-label"> Lo mien con pollo</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_lmpollomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_lmpollomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="lmpollo" class="col-form-label">Cantidad</label>
+													<label for="lmpollo" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="lmpollo" class="cantlmpollo form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1452,15 +1452,15 @@ if ($restasa) {
 													<label for="btn_lmcerdomas" class="col-form-label"> Lo mien con cerdo</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_lmcerdomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_lmcerdomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="lmcerdo" class="col-form-label">Cantidad</label>
+													<label for="lmcerdo" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="lmcerdo" class="cantlmcerdo form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1477,15 +1477,15 @@ if ($restasa) {
 													<label for="btn_lmespecialmas" class="col-form-label"> Lo mien especial</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_lmespecialmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_lmespecialmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="lmespecial" class="col-form-label">Cantidad</label>
+													<label for="lmespecial" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="lmespecial" class="cantlmespecial form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1503,15 +1503,15 @@ if ($restasa) {
 													<label for="btn_lmcamaronesmas" class="col-form-label"> Lo mien con camarones</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_lmcamaronesmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_lmcamaronesmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="lmcamarones" class="col-form-label">Cantidad</label>
+													<label for="lmcamarones" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="lmcamarones" class="cantlmcamarones form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1528,15 +1528,15 @@ if ($restasa) {
 													<label for="btn_lmpolloycamaronesmas" class="col-form-label"> Lo mien con pollo y camarones</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_lmpolloycamaronesmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_lmpolloycamaronesmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="lmpolloycamarones" class="col-form-label">Cantidad</label>
+													<label for="lmpolloycamarones" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="lmpolloycamarones" class="cantlmpolloycamarones form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1553,15 +1553,15 @@ if ($restasa) {
 													<label for="btn_lmcarnemas" class="col-form-label"> Lo mien con carne</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_lmcarnemas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_lmcarnemenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="lmcarne" class="col-form-label">Cantidad</label>
+													<label for="lmcarne" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="lmcarne" class="cantlmcarne form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1578,15 +1578,15 @@ if ($restasa) {
 													<label for="btn_lmkowloonmas" class="col-form-label"> Lo mien kowloon</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_lmkowloonmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_lmkowloonmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="lmkowloon" class="col-form-label">Cantidad</label>
+													<label for="lmkowloon" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="lmkowloon" class="cantlmkowloon form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1625,15 +1625,15 @@ if ($restasa) {
 													<label for="btn_pagridulcemas" class="col-form-label"> Pollo agridulce</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_pagridulcemas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_pagridulcemenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="pagridulce" class="col-form-label">Cantidad</label>
+													<label for="pagridulce" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="pagridulce" id="pagridulce" class="cantpagridulce form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1652,15 +1652,15 @@ if ($restasa) {
 													<label for="btn_psoyamas" class="col-form-label"> Pollo con soya</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_psoyamas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_psoyamenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="psoya" class="col-form-label">Cantidad</label>
+													<label for="psoya" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="psoya" class="cantpsoya form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1679,15 +1679,15 @@ if ($restasa) {
 													<label for="btn_pcurrymas" class="col-form-label"> Pollo con curry</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_pcurrymas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_pcurrymenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="pcurry" class="col-form-label">Cantidad</label>
+													<label for="pcurry" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="pcurry" class="cantpcurry form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1704,15 +1704,15 @@ if ($restasa) {
 													<label for="btn_postrasmas" class="col-form-label"> Pollo en salsa de ostras</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_postrasmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_postrasmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="postras" class="col-form-label">Cantidad</label>
+													<label for="postras" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="postras" class="cantpostras form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1730,15 +1730,15 @@ if ($restasa) {
 													<label for="btn_pajonjolimas" class="col-form-label"> Pollo con ajonjolí y miel </label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_pajonjolimas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_pajonjolimenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="pajonjoli" class="col-form-label">Cantidad</label>
+													<label for="pajonjoli" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="pajonjoli" class="cantpajonjoli form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1755,15 +1755,15 @@ if ($restasa) {
 													<label for="btn_pasadomas" class="col-form-label"> Pollo asado cantonés </label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_pasadomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_pasadomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="pasado" class="col-form-label">Cantidad</label>
+													<label for="pasado" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="pasado" class="cantpasado form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1800,15 +1800,15 @@ if ($restasa) {
 													<label for="btn_costrasmas" class="col-form-label"> Carne con salsa de ostras</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_costrasmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_costrasmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="costras" class="col-form-label">Cantidad</label>
+													<label for="costras" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="costras" id="costras" class="cantcostras form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1827,15 +1827,15 @@ if ($restasa) {
 													<label for="btn_ccurrymas" class="col-form-label"> Carne con curry</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_ccurrymas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_ccurrymenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="ccurry" class="col-form-label">Cantidad</label>
+													<label for="ccurry" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="ccurry" class="cantccurry form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1854,15 +1854,15 @@ if ($restasa) {
 													<label for="btn_cbrocolimas" class="col-form-label"> Carne con brócoli </label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cbrocolimas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cbrocolimenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="cbrocoli" class="col-form-label">Cantidad</label>
+													<label for="cbrocoli" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="cbrocoli" class="cantcbrocoli form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1879,15 +1879,15 @@ if ($restasa) {
 													<label for="btn_cvegetalesmas" class="col-form-label"> Carne con vegetales chinos</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cvegetalesmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cvegetalesmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="cvegetales" class="col-form-label">Cantidad</label>
+													<label for="cvegetales" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="cvegetales" class="cantcvegetales form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1930,15 +1930,15 @@ if ($restasa) {
 													<label for="btn_lumpiasmas" class="col-form-label"> Lúmpia (unidad)</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_lumpiasmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_lumpiasmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="lumpias" class="col-form-label">Cantidad</label>
+													<label for="lumpias" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="lumpias" id="lumpias" class="cantlumpias form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1956,15 +1956,15 @@ if ($restasa) {
 													<label for="btn_racionlumpiasmas" class="col-form-label">Ración Lúmpias</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_racionlumpiasmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_racionlumpiasmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="racionlumpias" class="col-form-label">Cantidad</label>
+													<label for="racionlumpias" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="racionlumpias" id="racionlumpias" class="cantracionlumpias form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -1983,15 +1983,15 @@ if ($restasa) {
 													<label for="btn_wantonfmas" class="col-form-label"> Wantón frito</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_wantonfmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_wantonfmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="wantonf" class="col-form-label">Cantidad</label>
+													<label for="wantonf" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="wantonf" class="cantwantonf form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -2010,15 +2010,15 @@ if ($restasa) {
 													<label for="btn_fideossmas" class="col-form-label"> Fideos singapur</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_fideossmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_fideossmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="fideoss" class="col-form-label">Cantidad</label>
+													<label for="fideoss" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="fideoss" class="cantfideoss form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -2035,15 +2035,15 @@ if ($restasa) {
 													<label for="btn_fuyongmas" class="col-form-label"> Fu yong</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_fuyongmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_fuyongmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="fuyong" class="col-form-label">Cantidad</label>
+													<label for="fuyong" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="fuyong" class="cantfuyong form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -2061,15 +2061,15 @@ if ($restasa) {
 													<label for="btn_pancmas" class="col-form-label"> Pan chino 4 unidades </label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_pancmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_pancmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="panc" class="col-form-label">Cantidad</label>
+													<label for="panc" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="panc" class="cantpanc form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -2087,15 +2087,15 @@ if ($restasa) {
 													<label for="btn_costillaunidadmas" class="col-form-label"> Costilla unidad</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_costillaunidadmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_costillaunidadmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="costillaunidad" class="col-form-label">Cantidad</label>
+													<label for="costillaunidad" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="costillaunidad" class="cantcostillaunidad form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -2130,15 +2130,15 @@ if ($restasa) {
 													<label for="btn_sopawmas" class="col-form-label">Sopa wantón</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_sopawmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_sopawmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="sopaw" class="col-form-label">Cantidad</label>
+													<label for="sopaw" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="sopaw" id="sopaw" class="cantsopaw form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -2157,15 +2157,15 @@ if ($restasa) {
 													<label for="btn_swantonmienmas" class="col-form-label">Wantón mien</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_swantonmienmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_swantonmienmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="swantonmien" class="col-form-label">Cantidad</label>
+													<label for="swantonmien" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="swantonmien" class="cantswantonmien form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -2200,15 +2200,15 @@ if ($restasa) {
 													<label for="btn_csvegetalesmas" class="col-form-label">Chop Suey de vegetales</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_csvegetalesmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_csvegetalesmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="csvegetales" class="col-form-label">Cantidad</label>
+													<label for="csvegetales" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="csvegetales" id="csvegetales" class="cantcsvegetales form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -2227,15 +2227,15 @@ if ($restasa) {
 													<label for="btn_cspollomas" class="col-form-label"> Chop Suey de pollo</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cspollomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cspollomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="cspollo" class="col-form-label">Cantidad</label>
+													<label for="cspollo" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="cspollo" class="cantcspollo form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -2254,15 +2254,15 @@ if ($restasa) {
 													<label for="btn_cscerdomas" class="col-form-label"> Chop Suey de cerdo</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cscerdomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cscerdomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="cscerdo" class="col-form-label">Cantidad</label>
+													<label for="cscerdo" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="cscerdo" class="cantcscerdo form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -2279,15 +2279,15 @@ if ($restasa) {
 													<label for="btn_cscarnemas" class="col-form-label"> Chop Suey de carne</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cscarnemas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cscarnemenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="cscarne" class="col-form-label">Cantidad</label>
+													<label for="cscarne" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="cscarne" class="cantcscarne form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -2304,15 +2304,15 @@ if ($restasa) {
 													<label for="btn_cscamaronesmas" class="col-form-label"> Chop Suey de camarones</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cscamaronesmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cscamaronesmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="cscamarones" class="col-form-label">Cantidad</label>
+													<label for="cscamarones" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="cscamarones" class="cantcscamarones form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -2329,15 +2329,15 @@ if ($restasa) {
 													<label for="btn_cspolloycmas" class="col-form-label"> Chop Suey de pollo y camarones</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cspolloycmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cspolloycmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="cspolloyc" class="col-form-label">Cantidad</label>
+													<label for="cspolloyc" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="cspolloyc" class="cantcspolloyc form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -2354,15 +2354,15 @@ if ($restasa) {
 													<label for="btn_csjamonmas" class="col-form-label"> Chop Suey de jamón </label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_csjamonmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_csjamonmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="csjamon" class="col-form-label">Cantidad</label>
+													<label for="csjamon" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="csjamon" class="cantcsjamon form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -2380,15 +2380,15 @@ if ($restasa) {
 													<label for="btn_csespecialmas" class="col-form-label"> Chop Suey especial </label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_csespecialmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_csespecialmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="csespecial" class="col-form-label">Cantidad</label>
+													<label for="csespecial" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="csespecial" class="cantcsespecial form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -2406,15 +2406,15 @@ if ($restasa) {
 													<label for="btn_cskowloonmas" class="col-form-label"> Chop Suey kowloon </label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cskowloonmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cskowloonmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="cskowloon" class="col-form-label">Cantidad</label>
+													<label for="cskowloon" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="cskowloon" class="cantcskowloon form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -2456,15 +2456,15 @@ if ($restasa) {
 												<label for="btn_combosuper1mas" class="col-form-label"> Combo súper 1</label>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Add</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_combosuper1mas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Del</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_combosuper1menos" class="btn btn-sm btn-danger btn-block">-</button>
 											</div>
 											<div class="col">
-												<label for="combosuper1" class="col-form-label">Cantidad</label>
+												<label for="combosuper1" class="col-form-label">Cant</label>
 												<input type="number" min="0" step='.01' name="combosuper1" class="cantcombosuper1 form-control" value="0" readonly>
 											</div>
 											<div class="col">
@@ -2481,15 +2481,15 @@ if ($restasa) {
 												<label for="btn_combosuper2mas" class="col-form-label"> Combo súper 2</label>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Add</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_combosuper2mas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Del</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_combosuper2menos" class="btn btn-sm btn-danger btn-block">-</button>
 											</div>
 											<div class="col">
-												<label for="combosuper2" class="col-form-label">Cantidad</label>
+												<label for="combosuper2" class="col-form-label">Cant</label>
 												<input type="number" min="0" step='.01' name="combosuper2" class="cantcombosuper2 form-control" value="0" readonly>
 											</div>
 											<div class="col">
@@ -2506,15 +2506,15 @@ if ($restasa) {
 												<label for="btn_combosuper3mas" class="col-form-label"> Combo súper 3</label>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Add</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_combosuper3mas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Del</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_combosuper3menos" class="btn btn-sm btn-danger btn-block">-</button>
 											</div>
 											<div class="col">
-												<label for="combosuper3" class="col-form-label">Cantidad</label>
+												<label for="combosuper3" class="col-form-label">Cant</label>
 												<input type="number" min="0" step='.01' name="combosuper3" class="cantcombosuper3 form-control" value="0" readonly>
 											</div>
 											<div class="col">
@@ -2549,15 +2549,15 @@ if ($restasa) {
 												<label for="btn_cmvegetarianomas" class="col-form-label"> Chow mein vegetariano</label>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Add</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_cmvegetarianomas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Del</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_cmvegetarianomenos" class="btn btn-sm btn-danger btn-block">-</button>
 											</div>
 											<div class="col">
-												<label for="cmvegetariano" class="col-form-label">Cantidad</label>
+												<label for="cmvegetariano" class="col-form-label">Cant</label>
 												<input type="number" min="0" step='.01' name="cmvegetariano" class="cantcmvegetariano form-control" value="0" readonly>
 											</div>
 											<div class="col">
@@ -2574,15 +2574,15 @@ if ($restasa) {
 												<label for="btn_cmpollomas" class="col-form-label"> Chow mein pollo </label>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Add</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_cmpollomas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Del</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_cmpollomenos" class="btn btn-sm btn-danger btn-block">-</button>
 											</div>
 											<div class="col">
-												<label for="cmpollo" class="col-form-label">Cantidad</label>
+												<label for="cmpollo" class="col-form-label">Cant</label>
 												<input type="number" min="0" step='.01' name="cmpollo" class="cantcmpollo form-control" value="0" readonly>
 											</div>
 											<div class="col">
@@ -2599,15 +2599,15 @@ if ($restasa) {
 												<label for="btn_cmcerdomas" class="col-form-label"> Chow mein cerdo </label>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Add</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_cmcerdomas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Del</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_cmcerdomenos" class="btn btn-sm btn-danger btn-block">-</button>
 											</div>
 											<div class="col">
-												<label for="cmcerdo" class="col-form-label">Cantidad</label>
+												<label for="cmcerdo" class="col-form-label">Cant</label>
 												<input type="number" min="0" step='.01' name="cmcerdo" class="cantcmcerdo form-control" value="0" readonly>
 											</div>
 											<div class="col">
@@ -2624,15 +2624,15 @@ if ($restasa) {
 												<label for="btn_cmespecialmas" class="col-form-label"> Chow mein especial </label>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Add</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_cmespecialmas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Del</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_cmespecialmenos" class="btn btn-sm btn-danger btn-block">-</button>
 											</div>
 											<div class="col">
-												<label for="cmespecial" class="col-form-label">Cantidad</label>
+												<label for="cmespecial" class="col-form-label">Cant</label>
 												<input type="number" min="0" step='.01' name="cmespecial" class="cantcmespecial form-control" value="0" readonly>
 											</div>
 											<div class="col">
@@ -2649,15 +2649,15 @@ if ($restasa) {
 												<label for="btn_cmcamaronesmas" class="col-form-label"> Chow mein camarones </label>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Add</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_cmcamaronesmas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Del</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_cmcamaronesmenos" class="btn btn-sm btn-danger btn-block">-</button>
 											</div>
 											<div class="col">
-												<label for="cmcamarones" class="col-form-label">Cantidad</label>
+												<label for="cmcamarones" class="col-form-label">Cant</label>
 												<input type="number" min="0" step='.01' name="cmcamarones" class="cantcmcamarones form-control" value="0" readonly>
 											</div>
 											<div class="col">
@@ -2674,15 +2674,15 @@ if ($restasa) {
 												<label for="btn_cmkowloonmas" class="col-form-label"> Chow mein kowloon </label>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Add</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_cmkowloonmas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Del</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_cmkowloonmenos" class="btn btn-sm btn-danger btn-block">-</button>
 											</div>
 											<div class="col">
-												<label for="cmkowloon" class="col-form-label">Cantidad</label>
+												<label for="cmkowloon" class="col-form-label">Cant</label>
 												<input type="number" min="0" step='.01' name="cmkowloon" class="cantcmkowloon form-control" value="0" readonly>
 											</div>
 											<div class="col">
@@ -2699,15 +2699,15 @@ if ($restasa) {
 												<label for="btn_cmcarnemas" class="col-form-label"> Chow mein carne </label>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Add</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_cmcarnemas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Del</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_cmcarnemenos" class="btn btn-sm btn-danger btn-block">-</button>
 											</div>
 											<div class="col">
-												<label for="cmcarne" class="col-form-label">Cantidad</label>
+												<label for="cmcarne" class="col-form-label">Cant</label>
 												<input type="number" min="0" step='.01' name="cmcarne" class="cantcmcarne form-control" value="0" readonly>
 											</div>
 											<div class="col">
@@ -2724,15 +2724,15 @@ if ($restasa) {
 												<label for="btn_cmpolloycamaronesmas" class="col-form-label"> Chow mein pollo y camarones </label>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Add</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_cmpolloycamaronesmas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Del</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_cmpolloycamaronesmenos" class="btn btn-sm btn-danger btn-block">-</button>
 											</div>
 											<div class="col">
-												<label for="cmpolloycamarones" class="col-form-label">Cantidad</label>
+												<label for="cmpolloycamarones" class="col-form-label">Cant</label>
 												<input type="number" min="0" step='.01' name="cmpolloycamarones" class="cantcmpolloycamarones form-control" value="0" readonly>
 											</div>
 											<div class="col">
@@ -2770,15 +2770,15 @@ if ($restasa) {
 												<label for="btn_refresco2mas" class="col-form-label"> Refresco 1.5 lts </label>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Add</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_refresco2mas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Del</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_refresco2menos" class="btn btn-sm btn-danger btn-block">-</button>
 											</div>
 											<div class="col">
-												<label for="refresco2" class="col-form-label">Cantidad</label>
+												<label for="refresco2" class="col-form-label">Cant</label>
 												<input type="number" min="0" step='.01' name="refresco2" class="cantrefresco2 form-control" value="0" readonly>
 											</div>
 											<div class="col">
@@ -2795,15 +2795,15 @@ if ($restasa) {
 												<label for="btn_refresco1mas" class="col-form-label"> Refresco 1 lts </label>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Add</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_refresco1mas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Del</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_refresco1menos" class="btn btn-sm btn-danger btn-block">-</button>
 											</div>
 											<div class="col">
-												<label for="refresco1" class="col-form-label">Cantidad</label>
+												<label for="refresco1" class="col-form-label">Cant</label>
 												<input type="number" min="0" step='.01' name="refresco1" class="cantrefresco1 form-control" value="0" readonly>
 											</div>
 											<div class="col">
@@ -2820,15 +2820,15 @@ if ($restasa) {
 												<label for="btn_liptonmas" class="col-form-label"> Liptón 1.5 Lts (Durazno, limón, verde) </label>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Add</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_liptonmas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Del</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_liptonmenos" class="btn btn-sm btn-danger btn-block">-</button>
 											</div>
 											<div class="col">
-												<label for="lipton" class="col-form-label">Cantidad</label>
+												<label for="lipton" class="col-form-label">Cant</label>
 												<input type="number" min="0" step='.01' name="lipton" class="cantlipton form-control" value="0" readonly>
 											</div>
 											<div class="col">
@@ -2845,15 +2845,15 @@ if ($restasa) {
 												<label for="btn_refrescolmas" class="col-form-label"> Refresco lata </label>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Add</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_refrescolmas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Del</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_refrescolmenos" class="btn btn-sm btn-danger btn-block">-</button>
 											</div>
 											<div class="col">
-												<label for="refrescol" class="col-form-label">Cantidad</label>
+												<label for="refrescol" class="col-form-label">Cant</label>
 												<input type="number" min="0" step='.01' name="refrescol" class="cantrefrescol form-control" value="0" readonly>
 											</div>
 											<div class="col">
@@ -2870,15 +2870,15 @@ if ($restasa) {
 												<label for="btn_agua6mas" class="col-form-label"> Agua 600 ml </label>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Add</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_agua6mas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Del</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_agua6menos" class="btn btn-sm btn-danger btn-block">-</button>
 											</div>
 											<div class="col">
-												<label for="agua6" class="col-form-label">Cantidad</label>
+												<label for="agua6" class="col-form-label">Cant</label>
 												<input type="number" min="0" step='.01' name="agua6" class="cantagua6 form-control" value="0" readonly>
 											</div>
 											<div class="col">
@@ -2923,15 +2923,15 @@ if ($restasa) {
 													<label for="btn_vegetarianomas" class="col-form-label"> Arroz frito vegetariano</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_vegetarianomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_vegetarianomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="vegetariano" class="col-form-label">Cantidad</label>
+													<label for="vegetariano" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="vegetariano" id="vegetariano" class="cantvegetariano form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -2950,15 +2950,15 @@ if ($restasa) {
 													<label for="btn_pollomas" class="col-form-label"> Arroz frito con pollo</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_pollomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_pollomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="pollo" class="col-form-label">Cantidad</label>
+													<label for="pollo" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="pollo" class="cantpollo form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -2976,15 +2976,15 @@ if ($restasa) {
 													<label for="btn_jamonmas" class="col-form-label"> Arroz frito con jamón</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_jamonmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_jamonmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="jamon" class="col-form-label">Cantidad</label>
+													<label for="jamon" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="jamon" class="cantjamon form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -3001,15 +3001,15 @@ if ($restasa) {
 													<label for="btn_cerdomas" class="col-form-label"> Arroz frito con cerdo</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cerdomas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cerdomenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="cerdo" class="col-form-label">Cantidad</label>
+													<label for="cerdo" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="cerdo" class="cantcerdo form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -3026,15 +3026,15 @@ if ($restasa) {
 													<label for="btn_especialmas" class="col-form-label"> Arroz frito especial</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_especialmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_especialmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="especial" class="col-form-label">Cantidad</label>
+													<label for="especial" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="especial" class="cantespecial form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -3052,15 +3052,15 @@ if ($restasa) {
 													<label for="btn_camaronesmas" class="col-form-label"> Arroz frito con camarones</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_camaronesmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_camaronesmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="camarones" class="col-form-label">Cantidad</label>
+													<label for="camarones" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="camarones" class="cantcamarones form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -3078,15 +3078,15 @@ if ($restasa) {
 													<label for="btn_kowloonmas" class="col-form-label"> Arroz frito kowloon</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_kowloonmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_kowloonmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="kowloon" class="col-form-label">Cantidad</label>
+													<label for="kowloon" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="kowloon" class="cantkowloon form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -3103,15 +3103,15 @@ if ($restasa) {
 													<label for="btn_polloycamaronesmas" class="col-form-label"> Arroz frito con pollo y camarones</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_polloycamaronesmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_polloycamaronesmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="polloycamarones" class="col-form-label">Cantidad</label>
+													<label for="polloycamarones" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="polloycamarones" class="cantpolloycamarones form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -3146,15 +3146,15 @@ if ($restasa) {
 													<label for="btn_costillamas" class="col-form-label">Ración de costilla</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_costillamas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_costillamenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="costilla" class="col-form-label">Cantidad</label>
+													<label for="costilla" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="costilla" id="costilla" class="cantcostilla form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -3173,15 +3173,15 @@ if ($restasa) {
 													<label for="btn_cerdoamas" class="col-form-label"> Cerdo asado</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cerdoamas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cerdoamenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="cerdoa" class="col-form-label">Cantidad</label>
+													<label for="cerdoa" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="cerdoa" class="cantcerdoa form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -3200,15 +3200,15 @@ if ($restasa) {
 													<label for="btn_cerdosypmas" class="col-form-label"> Costillas con sal y pimienta</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cerdosypmas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cerdosypmenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="cerdosyp" class="col-form-label">Cantidad</label>
+													<label for="cerdosyp" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="cerdosyp" class="cantcerdosyp form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -3225,15 +3225,15 @@ if ($restasa) {
 													<label for="btn_cerdocurrymas" class="col-form-label"> Cerdo con curry</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cerdocurrymas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cerdocurrymenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="cerdocurry" class="col-form-label">Cantidad</label>
+													<label for="cerdocurry" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="cerdocurry" class="cantcerdocurry form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -3250,15 +3250,15 @@ if ($restasa) {
 													<label for="btn_cerdoostramas" class="col-form-label"> Cerdo con salsa de ostra</label>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Add</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cerdoostramas" class="btn btn-sm btn-success btn-block">+</button>
 												</div>
 												<div class="col">
-													<label class="col-form-label">Del</label>
+													<label class="col-form-label"></label>
 													<button type="button" id="btn_cerdoostramenos" class="btn btn-sm btn-danger btn-block">-</button>
 												</div>
 												<div class="col">
-													<label for="cerdoostra" class="col-form-label">Cantidad</label>
+													<label for="cerdoostra" class="col-form-label">Cant</label>
 													<input type="number" min="0" step='.01' name="cerdoostra" class="cantcerdoostra form-control" value="0" readonly>
 												</div>
 												<div class="col">
@@ -3293,15 +3293,15 @@ if ($restasa) {
 												<label for="btn_comboclasico1mas" class="col-form-label"> Combo clásico 1</label>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Add</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_comboclasico1mas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Del</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_comboclasico1menos" class="btn btn-sm btn-danger btn-block">-</button>
 											</div>
 											<div class="col">
-												<label for="comboclasico1" class="col-form-label">Cantidad</label>
+												<label for="comboclasico1" class="col-form-label">Cant</label>
 												<input type="number" min="0" step='.01' name="comboclasico1" class="cantcomboclasico1 form-control" value="0" readonly>
 											</div>
 											<div class="col">
@@ -3318,15 +3318,15 @@ if ($restasa) {
 												<label for="btn_comboclasico2mas" class="col-form-label"> Combo clásico 2</label>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Add</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_comboclasico2mas" class="btn btn-sm btn-success btn-block">+</button>
 											</div>
 											<div class="col">
-												<label class="col-form-label">Del</label>
+												<label class="col-form-label"></label>
 												<button type="button" id="btn_comboclasico2menos" class="btn btn-sm btn-danger btn-block">-</button>
 											</div>
 											<div class="col">
-												<label for="comboclasico2" class="col-form-label">Cantidad</label>
+												<label for="comboclasico2" class="col-form-label">Cant</label>
 												<input type="number" min="0" step='.01' name="comboclasico2" class="cantcomboclasico2 form-control" value="0" readonly>
 											</div>
 											<div class="col">

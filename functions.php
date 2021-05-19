@@ -3313,7 +3313,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
       totalFaltante.toFixed(2) +
       "$" +
       "/" +
-      (totalFaltante * parseFloat($("#tasaDia").val(), 10)).toFixed(2) +
+      numberWithCommas((totalFaltante * parseFloat($("#tasaDia").val(), 10)).toFixed(2)) +
       "Bs"
     );
   });
@@ -3335,7 +3335,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
       totalFaltante.toFixed(2) +
       "$" +
       "/" +
-      (totalFaltante * parseFloat($("#tasaDia").val(), 10)).toFixed(2) +
+      numberWithCommas((totalFaltante * parseFloat($("#tasaDia").val(), 10)).toFixed(2)) +
       "Bs"
     );
   });
@@ -3410,7 +3410,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
         0 :
         parseFloat($(totalCompra).text()).toFixed(2))
     );
-    console.log("Calculando");
+    //console.log("Calculando");
 
 
     $("#pagoUSD").text($("input[name=dolares]").val());
@@ -3432,23 +3432,29 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     $("#pagoFaltante").text(
       totalFaltante.toFixed(2) +
       "$" +
-      " /  " +
-      (totalFaltante * parseFloat($("#tasaDia").val(), 10)).toFixed(2) +
+      "/" +
+      numberWithCommas((totalFaltante * parseFloat($("#tasaDia").val(), 10)).toFixed(2)) +
       "Bs"
     );
 
 
 
-   
+
     $("#recibir").text($("#inputrecibir").val());
 
 
 
-  }, 100);
+  }, 200);
 
   ///////////////////////////////////////////////////////////////////////
 
   ////////////////////////////////////////////////////////////////////////
+
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
 
   function CopyToClipboard(containerid) {
     // Create a new textarea element and give it id='t'
@@ -3497,11 +3503,11 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
         valorTotal + "$" +
         "\n\n" +
 
-        "Comisión de PayPal:" + String((0.054 * parseFloat(valorTotal)) + 0.3) +
+        "Comisión de PayPal: " + String((0.054 * parseFloat(valorTotal) + 0.3).toFixed(2)) +
         "\n\n" +
-        "Total con la comisión de PayPal: " + String((1.054 * parseFloat(valorTotal)) + 0.3) +
+        "Total con la comisión de PayPal: " + String((1.054 * parseFloat(valorTotal) + 0.3).toFixed(2)) +
         "\n\n" +
-        "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"
+        "Tasa de cambio: " + String(numberWithCommas(parseFloat($("#tasaDia").val()))) + "Bs"
     } else if ($("#tipoPago").val() == "Efectivo") {
 
       var auxval =
@@ -3517,7 +3523,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
         valorTotal + "$" +
         "\n " +
 
-        "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"
+        "Tasa de cambio: " + String(numberWithCommas(parseFloat($("#tasaDia").val()))) + "Bs"
     } else if ($("#tipoPago").val() == "Ambos") {
 
       var auxval =
@@ -3532,7 +3538,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
         "Por un total de: " +
         valorTotal + "$" +
         "\n " +
-        "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"
+        "Tasa de cambio: " + String(numberWithCommas(parseFloat($("#tasaDia").val()))) + "Bs"
     } else if ($("#tipoPago").val() == "Transferencia") {
 
       var auxval =
@@ -3547,7 +3553,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
         "Por un total de: " +
         valorTotal + "$" +
         "\n " +
-        "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs"
+        "Tasa de cambio: " + String(numberWithCommas(parseFloat($("#tasaDia").val()))) + "Bs"
     } else {
       var auxval =
         "Su pedido es:\n\n" +
@@ -3560,9 +3566,9 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
         "\n\n" +
         "Por un total de: " +
         valorTotal +
-        "$" + " / " + String(parseFloat($("#tasaDia").val()) * parseFloat(valorTotal)) + "Bs" +
+        "$" + " / " + String(numberWithCommas(parseFloat($("#tasaDia").val()) * parseFloat(valorTotal))) + "Bs" +
         "\n\n" +
-        "Tasa de cambio: " + String(parseFloat($("#tasaDia").val())) + "Bs" +
+        "Tasa de cambio: " + String(numberWithCommas(parseFloat($("#tasaDia").val()))) + "Bs" +
 
 
         "\n\n" +
@@ -3656,11 +3662,9 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
 
 
       +
-      "Tipo de pago:" + $("#tipoPago").val()
-      +
-        "\n\n"+
-      "Recibir: "+ document.getElementById("recibir").innerText + "$"
-    ;
+      "Tipo de pago:" + $("#tipoPago").val() +
+      "\n\n" +
+      "Recibir: " + document.getElementById("recibir").innerText + "$";
 
     document
       .getElementById("enlaceDelivery")
@@ -3671,7 +3675,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
         "?" +
         "text=" +
         encodeURIComponent(auxval)
-      
+
       );
 
     //+56979184554?text=Hola%20quiero%20contactarlo

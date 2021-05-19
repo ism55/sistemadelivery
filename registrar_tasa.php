@@ -60,7 +60,7 @@ $sql = "INSERT INTO `tasadeldia` (`tasa`, `fecha_hora`) VALUES ('$tasa', current
   <div class="container">
     <header class="masthead mb-auto">
       <div class="inner">
-        <img src="./img/logo.png" width="100em" height="100em" class="masthead-brand">
+        <a href="./"><img src="./img/logo.png" width="100em" height="100em" class="masthead-brand"></a>
         <nav class="nav nav-masthead justify-content-center">
           <a class="nav-link active" href="./">COMPRAS</a>
           <a class="nav-link" href="./contabilidad.php">CONTABILIDAD</a>
@@ -70,8 +70,8 @@ $sql = "INSERT INTO `tasadeldia` (`tasa`, `fecha_hora`) VALUES ('$tasa', current
     </header>
     <div class="row w-100 p-3">
       <div class="col">
-        <h1 class="cover-heading">Lista de platos y precios</h1>
-        <p class="lead">Aquí puede observar y actualizar el precio de los productos</p>
+        <h1 class="cover-heading">Registro de tasa</h1>
+        <p class="lead">Si puede ver esta página, su tasa se configuró correctamente.</p>
       </div>
     </div>
     <main role="main" class="inner cover">
