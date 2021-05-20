@@ -223,7 +223,7 @@ if ($restasa) {
 						<h6>Forma de pago</h6>
 
 						<select id="tipoPago" name="formaRadio" class="form-control" style="width:120px">
-							<option value="Ambos">Ninguno</option>
+							<option value="">Ninguno</option>
 							<option value="Transferencia">Transferencia Banesco o Pago móvil</option>
 							<option value="Efectivo">Efectivo</option>
 							<option value="Ambos">Mixto</option>
@@ -710,7 +710,7 @@ if ($restasa) {
 
 									<div class="row">
 										<div class="col">
-											<span>Cambio: </span>
+											<span>Restante: </span>
 										</div>
 										<div class="col">
 											<span id="pagoFaltante"></span><br>

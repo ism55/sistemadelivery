@@ -3297,47 +3297,54 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     var auxbs = parseFloat($("input[name=bolivares]").val()) * parseFloat($("#tasaDia").val());
 
     $("#pagoBs").text(auxbs);
+    /*
+        var totalFaltante =
+          (isNaN(parseFloat($(subtotalCompra).text()).toFixed(2)) ?
+            0 :
+            parseFloat($(subtotalCompra).text()).toFixed(2)) -
+          (isNaN(parseFloat($("#pagoUSD").text()).toFixed(2)) ?
+            0 :
+            parseFloat($("#pagoUSD").text()).toFixed(2)) -
+          (isNaN(parseFloat($("#pagoBs").text()).toFixed(2)) ?
+            0 :
+            parseFloat($("#pagoBs").text()).toFixed(2) /
+            parseFloat($("#tasaDia").val()));
 
-    var totalFaltante =
-      (isNaN(parseFloat($(subtotalCompra).text()).toFixed(2)) ?
-        0 :
-        parseFloat($(subtotalCompra).text()).toFixed(2)) -
-      (isNaN(parseFloat($("#pagoUSD").text()).toFixed(2)) ?
-        0 :
-        parseFloat($("#pagoUSD").text()).toFixed(2)) -
-      (isNaN(parseFloat($("#pagoBs").text()).toFixed(2)) ?
-        0 :
-        parseFloat($("#pagoBs").text()).toFixed(2) /
-        parseFloat($("#tasaDia").val()));
-    $("#pagoFaltante").text(
-      totalFaltante.toFixed(2) +
-      "$" +
-      "/" +
-      numberWithCommas((totalFaltante * parseFloat($("#tasaDia").val(), 10)).toFixed(2)) +
-      "Bs"
-    );
+        $("#pagoFaltante").text(
+          totalFaltante.toFixed(2) +
+          "$" +
+          "/" +
+          numberWithCommas((totalFaltante * parseFloat($("#tasaDia").val(), 10)).toFixed(2)) +
+          "Bs"
+        );
+
+        */
   });
 
   $("input[name=dolares]").change(function() {
+
     $("#pagoUSD").text($("input[name=dolares]").val());
-    var totalFaltante =
-      (isNaN(parseFloat($(subtotalCompra).text()).toFixed(2)) ?
-        0 :
-        parseFloat($(totalCompra).text()).toFixed(2)) -
-      (isNaN(parseFloat($("#pagoUSD").text()).toFixed(2)) ?
-        0 :
-        parseFloat($("#pagoUSD").text()).toFixed(2)) -
-      (isNaN(parseFloat($("#pagoBs").text()).toFixed(2)) ?
-        0 :
-        parseFloat($("#pagoBs").text()).toFixed(2) /
-        parseFloat($("#tasaDia").val()));
-    $("#pagoFaltante").text(
-      totalFaltante.toFixed(2) +
-      "$" +
-      "/" +
-      numberWithCommas((totalFaltante * parseFloat($("#tasaDia").val(), 10)).toFixed(2)) +
-      "Bs"
-    );
+    /*
+        var totalFaltante =
+          (isNaN(parseFloat($(subtotalCompra).text()).toFixed(2)) ?
+            0 :
+            parseFloat($(totalCompra).text()).toFixed(2)) -
+          (isNaN(parseFloat($("#pagoUSD").text()).toFixed(2)) ?
+            0 :
+            parseFloat($("#pagoUSD").text()).toFixed(2)) -
+          (isNaN(parseFloat($("#pagoBs").text()).toFixed(2)) ?
+            0 :
+            parseFloat($("#pagoBs").text()).toFixed(2) /
+            parseFloat($("#tasaDia").val()));
+
+        $("#pagoFaltante").text(
+          totalFaltante.toFixed(2) +
+          "$" +
+          "/" +
+          numberWithCommas((totalFaltante * parseFloat($("#tasaDia").val(), 10)).toFixed(2)) +
+          "Bs"
+        );
+        */
   });
 
   $("#inputSector").change(function() {
@@ -3429,12 +3436,22 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
         0 :
         parseFloat($("#pagoBs").text()).toFixed(2) /
         parseFloat($("#tasaDia").val()));
+
+    var auxIndicador = "";
+    if (totalFaltante < 0) {
+      auxIndicador = " (Vuelto a cliente)";
+      totalFaltante = Math.abs(totalFaltante);
+    } else if (totalFaltante > 0) {
+      auxIndicador = " (Falta por pagar)";
+      totalFaltante = Math.abs(totalFaltante);
+    }
     $("#pagoFaltante").text(
       totalFaltante.toFixed(2) +
       "$" +
       "/" +
       numberWithCommas((totalFaltante * parseFloat($("#tasaDia").val(), 10)).toFixed(2)) +
-      "Bs"
+      "Bs" +
+      auxIndicador
     );
 
 
@@ -3444,7 +3461,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
 
 
 
-  }, 200);
+  }, 1000);
 
   ///////////////////////////////////////////////////////////////////////
 
@@ -3490,9 +3507,9 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     if ($("#tipoPago").val() == "PayPal") {
 
       var auxval =
-        "Su pedido es:\n\n" +
-        textarea.value +
-        "\n\n" +
+        //"Su pedido es:\n\n" +
+        //textarea.value +
+        //"\n\n" +
         "El sub-total es: " +
         $("#subtotalCompra").text() + "\n\n" +
 
@@ -3507,13 +3524,18 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
         "\n\n" +
         "Total con la comisión de PayPal: " + String((1.054 * parseFloat(valorTotal) + 0.3).toFixed(2)) +
         "\n\n" +
-        "Tasa de cambio: " + String(numberWithCommas(parseFloat($("#tasaDia").val()))) + "Bs"
+        "Tasa de cambio: " + String(numberWithCommas(parseFloat($("#tasaDia").val()))) + "Bs" +
+        "\n\n" +
+        "Por favor, hacer el pago a: " +
+        "\n" +
+        "jing23siet@gmail.com\n" +
+        "Nota de pago:  chinocaracasdelivery";
     } else if ($("#tipoPago").val() == "Efectivo") {
 
       var auxval =
-        "Su pedido es:\n\n" +
-        textarea.value +
-        "\n\n" +
+        //"Su pedido es:\n\n" +
+        //textarea.value +
+        //"\n\n" +
         "El sub-total es: " +
         $("#subtotalCompra").text() + "\n\n" +
 
@@ -3527,9 +3549,9 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     } else if ($("#tipoPago").val() == "Ambos") {
 
       var auxval =
-        "Su pedido es:\n\n" +
-        textarea.value +
-        "\n\n" +
+        //"Su pedido es:\n\n" +
+        //textarea.value +
+        //"\n\n" +
         "El sub-total es: " +
         $("#subtotalCompra").text() + "\n\n" +
 
@@ -3537,14 +3559,29 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
         "\n\n" +
         "Por un total de: " +
         valorTotal + "$" +
-        "\n " +
-        "Tasa de cambio: " + String(numberWithCommas(parseFloat($("#tasaDia").val()))) + "Bs"
+        "\n" +
+        "Tasa de cambio: " + String(numberWithCommas(parseFloat($("#tasaDia").val()))) + "Bs" +
+        "\n\n" +
+        "Por favor, hacer el pago en Efectivo o a PayPal con los siguientes datos: " +
+        "\n" +
+        "jing23siet@gmail.com\n" +
+        "Nota de pago:  chinocaracasdelivery\n\n" +
+        "Bolívares a:\n" +
+        "Banesco Corriente\n" +
+        "Chu Ve Siet\n" +
+        "V14260392\n" +
+        "01340331783311038264\n\n" +
+
+        "Pagomovil\n" +
+        "04241919618\n" +
+        "V20826282\n" +
+        "Banesco (0134)\n";
     } else if ($("#tipoPago").val() == "Transferencia") {
 
       var auxval =
-        "Su pedido es:\n\n" +
-        textarea.value +
-        "\n\n" +
+        //"Su pedido es:\n\n" +
+        //textarea.value +
+        //"\n\n" +
         "El sub-total es: " +
         $("#subtotalCompra").text() + "\n\n" +
 
@@ -3552,8 +3589,20 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
         "\n\n" +
         "Por un total de: " +
         valorTotal + "$" +
-        "\n " +
-        "Tasa de cambio: " + String(numberWithCommas(parseFloat($("#tasaDia").val()))) + "Bs"
+        "\n" +
+        "Tasa de cambio: " + String(numberWithCommas(parseFloat($("#tasaDia").val()))) + "Bs" +
+        "\n\n" +
+        "Por favor, hacer el pago a: " +
+        "\n" +
+        "Banesco Corriente\n" +
+        "Chu Ve Siet\n" +
+        "V14260392\n" +
+        "01340331783311038264\n\n" +
+
+        "Pagomovil\n" +
+        "04241919618\n" +
+        "V20826282\n" +
+        "Banesco (0134)\n";
     } else {
       var auxval =
         "Su pedido es:\n\n" +
@@ -3583,12 +3632,9 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
         "\n" +
         "Efectivo dólares" +
         "\n" +
-        "PayPal"
+        "PayPal";
 
-    }
-
-
-    ;
+    };
 
     document
       .getElementById("enlaceCliente")
@@ -3616,7 +3662,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     document.getElementById("comboslista").innerText;
     textarea.value = document.getElementById("comboslista").innerText;
 
-    var auxval = "Su cambio es de : " + $("#pagoFaltante").text();
+    var auxval = "Restante: " + $("#pagoFaltante").text();
     document
       .getElementById("enlaceCliente2")
       .setAttribute(
@@ -3657,7 +3703,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
       "\n\n" +
       "Contacto del cliente:\n\n" +
       $("input[name=cliente]").val().replaceAll(' ', '').replaceAll("(", '').replaceAll(")", '').replaceAll('-', '') + "\n\n" +
-      "El cambio del cliente es: " + $("#pagoFaltante").text() + "\n\n"
+      "Restante: " + $("#pagoFaltante").text() + "\n\n"
 
 
 
@@ -3702,7 +3748,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
     ventimp.document.write("Teléfono: " + $("input[name=cliente]").val().replaceAll(' ', '').replaceAll("(", '').replaceAll(")", '').replaceAll('-', ''));
     ventimp.document.write("<br>");
     ventimp.document.write("<br>");
-    ventimp.document.write("El cambio del cliente es: " + $("#pagoFaltante").text())
+    ventimp.document.write("Restante: " + $("#pagoFaltante").text())
     ventimp.document.write("<br>");
     ventimp.document.write("<br>");
     ventimp.document.write("Recibir: " + document.getElementById("recibir").innerText + " $ ");
