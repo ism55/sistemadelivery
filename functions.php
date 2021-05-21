@@ -3542,7 +3542,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
         "El costo del delivery es: " + $("#pagoDelivery").text() + "$" +
         "\n\n" +
         "Por un total de: " +
-        valorTotal + "$" +
+        valorTotal + "$" + " / " + String(numberWithCommas(parseFloat($("#tasaDia").val()) * parseFloat(valorTotal))) + "Bs" +
         "\n " +
 
         "Tasa de cambio: " + String(numberWithCommas(parseFloat($("#tasaDia").val()))) + "Bs"
@@ -3558,7 +3558,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
         "El costo del delivery es: " + $("#pagoDelivery").text() + "$" +
         "\n\n" +
         "Por un total de: " +
-        valorTotal + "$" +
+        valorTotal + "$" + " / " + String(numberWithCommas(parseFloat($("#tasaDia").val()) * parseFloat(valorTotal))) + "Bs" +
         "\n" +
         "Tasa de cambio: " + String(numberWithCommas(parseFloat($("#tasaDia").val()))) + "Bs" +
         "\n\n" +
@@ -3588,7 +3588,7 @@ foreach ($resmenu as $row_menu) { // aca puedes hacer la consulta e iterarla con
         "El costo del delivery es: " + $("#pagoDelivery").text() + "$" +
         "\n\n" +
         "Por un total de: " +
-        valorTotal + "$" +
+        valorTotal + "$" + " / " + String(numberWithCommas(parseFloat($("#tasaDia").val()) * parseFloat(valorTotal))) + "Bs" +
         "\n" +
         "Tasa de cambio: " + String(numberWithCommas(parseFloat($("#tasaDia").val()))) + "Bs" +
         "\n\n" +
